@@ -4,27 +4,6 @@ import json
 from datetime import datetime
 import uuid
 
-class BookInfo(BaseModel):
-    book_title: str
-    total_topics: int
-    extraction_timestamp: Optional[str] = Field(default_factory=lambda: datetime.now().isoformat())
-    main_topics: List[str]
-
-    def to_json_schema(self) -> str:
-        """Convert the BookInfo instance to JSON with the required schema."""
-        return json.dumps({
-            "book_title": self.book_title,
-            "total_topics": self.total_topics,
-            "extraction_timestamp": self.extraction_timestamp,
-            "main_topics": self.main_topics
-        }, indent=4)
-
-class Metadata(BaseModel):
-    generated_at: str = Field(default_factory=lambda: datetime.now().isoformat())
-    total_questions: int
-    book_title: str
-    tool_used: str
-
 class Question(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     topic: str
@@ -40,12 +19,6 @@ class QuestionsModel(BaseModel):
     def to_json_schema(self) -> str:
         """Convert the QuestionsModel instance to JSON with the required schema."""
         return json.dumps({
-            "metadata": {
-                "generated_at": self.metadata.generated_at,
-                "total_questions": self.metadata.total_questions,
-                "book_title": self.metadata.book_title,
-                "tool_used": self.metadata.tool_used
-            },
             "questions": [
                 {
                     "id": question.id,
@@ -54,11 +27,34 @@ class QuestionsModel(BaseModel):
                     "question": question.question,
                     "options": question.options,
                     "correct_answer": question.correct_answer,
-                    "page_number": question.page_number
+                    "page_number": question.page_number,
                 }
                 for question in self.questions
             ]
         }, indent=4)
+
+class BookInfo(BaseModel):
+    book_title: str
+    total_topics: int
+    extraction_timestamp: Optional[str] = Field(default_factory=lambda: datetime.now().isoformat())
+    main_topics: List[str]
+
+    def to_json_schema(self) -> str:
+        """Convert the BookInfo instance to JSON with the required schema."""
+        return json.dumps({
+            "book_title": self.book_title,
+            "total_topics": self.total_topics,
+            "extraction_timestamp": self.extraction_timestamp,
+            "main_topics": self.main_topics
+        }, indent=4)
+    
+class Metadata(BaseModel):
+    generated_at: str = Field(default_factory=lambda: datetime.now().isoformat())
+    total_questions: int
+    book_title: str
+    tool_used: str
+
+
 
 class ProjectManagementProfessionalGuide(BaseModel):
     book_info: BookInfo
