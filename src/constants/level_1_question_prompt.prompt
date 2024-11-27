@@ -1,0 +1,17 @@
+From the given context provided below in the backticks, 
+generate me {n} questions from mulitple important topics in the following format on the topic {topic}
+
+id = unique id  like Q1 Q2 etc
+topic - the topic on which question is extracted
+type - MCQ fixed
+question - the question is here
+options - list of exactly 4 options
+topic - {topic} - fixed
+correct_answer - option number(ABCD) for the correct answer
+page_number - Page number from which the question was generated
+
+Here is the context
+
+```
+{context}
+```

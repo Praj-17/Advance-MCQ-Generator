@@ -1,0 +1,376 @@
+{
+    "topics": {
+        "book_title": "The Title of the Book",
+        "total_topics": 7,
+        "extraction_timestamp": null,
+        "main_topics": [
+            "Earnings Conference Call Overview",
+            "DLG Model and Revenue Distribution",
+            "Merchant and Personal Loans",
+            "Cost Optimization and AI Implementation",
+            "UPI Consumer Market Strategy",
+            "Financial Services and Cross-Selling Strategy",
+            "Future Business Opportunities and Expansion"
+        ]
+    },
+    "questions": {
+        "questions": [
+            {
+                "id": "Q1",
+                "topic": "Corporate Governance",
+                "type": "MCQ",
+                "question": "Who is the Company Secretary and Compliance Officer for One 97 Communications Limited?",
+                "options": [
+                    "Vijay Shekhar Sharma",
+                    "Madhur Deora",
+                    "Sunil Kumar Bansal",
+                    "Anuj Mittal"
+                ],
+                "correct_answer": "C",
+                "page_number": 1
+            },
+            {
+                "id": "Q2",
+                "topic": "Corporate Information",
+                "type": "MCQ",
+                "question": "What is the registered office address of One 97 Communications Limited?",
+                "options": [
+                    "One Skymark, Tower-D, Plot No. H-10B, Sector-98, Noida-201304",
+                    "136, First Floor, Devika Tower, Nehru Place, New Delhi-110019",
+                    "Exchange Plaza, Bandra Kurla Complex, Mumbai - 400 051",
+                    "Phiroze Jeejeebhoy Towers, Dalal Street, Fort, Mumbai - 400 001"
+                ],
+                "correct_answer": "B",
+                "page_number": 1
+            },
+            {
+                "id": "Q3",
+                "topic": "SEBI Regulations",
+                "type": "MCQ",
+                "question": "Under which regulation was the disclosure made for the earnings conference call transcript?",
+                "options": [
+                    "Regulation 30 of the SEBI (Listing Obligations and Disclosure Requirements) Regulations, 2015",
+                    "Regulation 31 of the SEBI (Prohibition of Insider Trading) Regulations, 2015",
+                    "Regulation 32 of the SEBI (Substantial Acquisition of Shares and Takeovers) Regulations, 2011",
+                    "Regulation 33 of the SEBI (Mutual Funds) Regulations, 1996"
+                ],
+                "correct_answer": "A",
+                "page_number": 1
+            },
+            {
+                "id": "Q4",
+                "topic": "Earnings Call",
+                "type": "MCQ",
+                "question": "What was the date of Paytm's earnings conference call?",
+                "options": [
+                    "October 29, 2024",
+                    "October 22, 2024",
+                    "September 30, 2024",
+                    "November 1, 2024"
+                ],
+                "correct_answer": "B",
+                "page_number": 2
+            },
+            {
+                "id": "Q5",
+                "topic": "Corporate Strategy",
+                "type": "MCQ",
+                "question": "What is a key focus area for Paytm in improving its financial services according to Vijay Shekhar Sharma?",
+                "options": [
+                    "Enhancing device monetization",
+                    "Expanding into international markets",
+                    "Increasing investment in blockchain technology",
+                    "Developing new mobile payment apps"
+                ],
+                "correct_answer": "A",
+                "page_number": 4
+            },
+            {
+                "id": "Q6",
+                "topic": "DLG Model",
+                "type": "MCQ",
+                "question": "What does DLG stand for in Paytm's business model?",
+                "options": [
+                    "Digital Lending Guarantee",
+                    "Deferred Loan Guarantee",
+                    "Direct Lending Growth",
+                    "Distributed Loan Guarantee"
+                ],
+                "correct_answer": "A",
+                "page_number": 5
+            },
+            {
+                "id": "Q7",
+                "topic": "Financial Performance",
+                "type": "MCQ",
+                "question": "What is the average tenor of loans mentioned by Madhur Deora?",
+                "options": [
+                    "6 to 12 months",
+                    "12 to 18 months",
+                    "18 to 24 months",
+                    "24 to 36 months"
+                ],
+                "correct_answer": "B",
+                "page_number": 6
+            },
+            {
+                "id": "Q8",
+                "topic": "Financial Metrics",
+                "type": "MCQ",
+                "question": "What net payment margin improvement did Alok Srivastava inquire about?",
+                "options": [
+                    "0.5 basis points",
+                    "1 basis point",
+                    "1.5 basis points",
+                    "2 basis points"
+                ],
+                "correct_answer": "B",
+                "page_number": 6
+            },
+            {
+                "id": "Q9",
+                "topic": "Revenue Model",
+                "type": "MCQ",
+                "question": "What is expected to be the overall take rate net of DLG costs?",
+                "options": [
+                    "3%",
+                    "4%",
+                    "5%",
+                    "6%"
+                ],
+                "correct_answer": "C",
+                "page_number": 5
+            },
+            {
+                "id": "Q10",
+                "topic": "Operational Strategy",
+                "type": "MCQ",
+                "question": "According to Vijay Shekhar Sharma, what is the expected impact of AI on Paytm's operations?",
+                "options": [
+                    "Increase in operational costs",
+                    "Reduction in manpower costs",
+                    "Expansion of office locations",
+                    "Decrease in customer service quality"
+                ],
+                "correct_answer": "B",
+                "page_number": 11
+            },
+            {
+                "id": "Q11",
+                "topic": "Strategic Partnerships",
+                "type": "MCQ",
+                "question": "Which company does Paytm collaborate with for a soundbox advertising initiative?",
+                "options": [
+                    "FMCG companies",
+                    "Amazon",
+                    "Flipkart",
+                    "Meesho"
+                ],
+                "correct_answer": "D",
+                "page_number": 11
+            },
+            {
+                "id": "Q12",
+                "topic": "Product Strategy",
+                "type": "MCQ",
+                "question": "What is the main source of revenue from Paytm's devices according to Madhur Deora?",
+                "options": [
+                    "Advertising",
+                    "Transaction fees",
+                    "Subscription revenues",
+                    "One-time sales"
+                ],
+                "correct_answer": "C",
+                "page_number": 9
+            },
+            {
+                "id": "Q13",
+                "topic": "Loan Products",
+                "type": "MCQ",
+                "question": "What is the average take rate expected from non-DLG loans?",
+                "options": [
+                    "Below 5%",
+                    "Exactly 5%",
+                    "Above 5%",
+                    "10%"
+                ],
+                "correct_answer": "C",
+                "page_number": 7
+            },
+            {
+                "id": "Q14",
+                "topic": "Financial Strategy",
+                "type": "MCQ",
+                "question": "What major cost component is Paytm considering converting from an opex to capex model?",
+                "options": [
+                    "Employee salaries",
+                    "Cloud costs",
+                    "Marketing expenses",
+                    "Office rental"
+                ],
+                "correct_answer": "B",
+                "page_number": 12
+            },
+            {
+                "id": "Q15",
+                "topic": "Debt Model",
+                "type": "MCQ",
+                "question": "What is a requirement under the DLG model in terms of lender preferences?",
+                "options": [
+                    "All lenders must be involved in DLG",
+                    "Some lenders prefer the DLG model",
+                    "DLG is mandatory for all loans",
+                    "No lender uses the DLG model"
+                ],
+                "correct_answer": "B",
+                "page_number": 8
+            },
+            {
+                "id": "Q16",
+                "topic": "Product Development",
+                "type": "MCQ",
+                "question": "What innovative payment feature has Paytm developed for desktop use?",
+                "options": [
+                    "Virtual QR code",
+                    "QR code on desktop",
+                    "Mobile NFC payments",
+                    "Voice-activated payments"
+                ],
+                "correct_answer": "B",
+                "page_number": 15
+            },
+            {
+                "id": "Q17",
+                "topic": "Revenue Streams",
+                "type": "MCQ",
+                "question": "In which business model does Paytm not have a collection revenue?",
+                "options": [
+                    "Merchant loans with DLG",
+                    "Merchant loans without DLG",
+                    "Personal loans distribution only",
+                    "All of the above"
+                ],
+                "correct_answer": "C",
+                "page_number": 10
+            },
+            {
+                "id": "Q18",
+                "topic": "Business Growth",
+                "type": "MCQ",
+                "question": "What is a significant factor in scaling Paytm's personal loans business?",
+                "options": [
+                    "Increasing marketing budget",
+                    "Adding new lending partners",
+                    "Offering higher interest rates",
+                    "Reducing loan tenors"
+                ],
+                "correct_answer": "B",
+                "page_number": 13
+            },
+            {
+                "id": "Q19",
+                "topic": "Corporate Finance",
+                "type": "MCQ",
+                "question": "What does Paytm plan to do with excess cash on its balance sheet?",
+                "options": [
+                    "Invest in new technologies",
+                    "Return to shareholders",
+                    "Acquire new companies",
+                    "Increase employee salaries"
+                ],
+                "correct_answer": "B",
+                "page_number": 16
+            },
+            {
+                "id": "Q20",
+                "topic": "Market Expansion",
+                "type": "MCQ",
+                "question": "What is the penetration scope of Paytm's soundboxes in metro cities according to Vijay Shekhar Sharma?",
+                "options": [
+                    "Fully penetrated",
+                    "Nearly double the current penetration",
+                    "Slightly penetrated",
+                    "No penetration"
+                ],
+                "correct_answer": "B",
+                "page_number": 17
+            },
+            {
+                "id": "Q21",
+                "topic": "Consumer Strategy",
+                "type": "MCQ",
+                "question": "What is a future opportunity for Paytm in consumer payments?",
+                "options": [
+                    "Development of new payment apps",
+                    "Expansion into international markets",
+                    "Growth in UPI consumer market share",
+                    "Blockchain payment systems"
+                ],
+                "correct_answer": "C",
+                "page_number": 19
+            },
+            {
+                "id": "Q22",
+                "topic": "Regulatory Compliance",
+                "type": "MCQ",
+                "question": "What does RBI's allowance enable Paytm to do?",
+                "options": [
+                    "Launch new payment apps",
+                    "Increase UPI consumer market share",
+                    "Reduce transaction fees",
+                    "Acquire new companies"
+                ],
+                "correct_answer": "B",
+                "page_number": 20
+            },
+            {
+                "id": "Q23",
+                "topic": "Technology Innovation",
+                "type": "MCQ",
+                "question": "What AI-driven initiative has Paytm implemented to improve customer support?",
+                "options": [
+                    "AI-powered payment processing",
+                    "Interactive IVR response",
+                    "Blockchain customer service",
+                    "Virtual reality support"
+                ],
+                "correct_answer": "B",
+                "page_number": 11
+            },
+            {
+                "id": "Q24",
+                "topic": "Monetization Strategy",
+                "type": "MCQ",
+                "question": "How does Paytm plan to increase monetization from inactive devices?",
+                "options": [
+                    "Selling them to third parties",
+                    "Reactivating and refurbishing them",
+                    "Donating to educational institutions",
+                    "Recycling for raw materials"
+                ],
+                "correct_answer": "B",
+                "page_number": 9
+            },
+            {
+                "id": "Q25",
+                "topic": "Cost Management",
+                "type": "MCQ",
+                "question": "What major cost does Paytm plan to optimize using AI?",
+                "options": [
+                    "Marketing costs",
+                    "Cloud computing costs",
+                    "Employee wages",
+                    "Office rental expenses"
+                ],
+                "correct_answer": "B",
+                "page_number": 12
+            }
+        ],
+        "metadata": {
+            "generated_at": "2024-11-27T20:16:41.925100",
+            "total_questions": 1,
+            "book_title": "The Title of the Book",
+            "tool_used": "gpt-4o"
+        }
+    }
+}

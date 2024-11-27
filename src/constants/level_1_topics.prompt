@@ -1,0 +1,11 @@
+From the given context provided below in the backticks, generate me a list of important topics from it
+
+book_title = The Title of the Book
+total_topics - Thet total number of topics
+main_topics = list of main topics as string
+
+Here is the context
+
+```
+{context}
+```

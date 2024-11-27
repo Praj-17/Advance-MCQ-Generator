@@ -1,0 +1,354 @@
+{
+    "questions": [
+        {
+            "id": "Q1",
+            "topic": "Corporate Information",
+            "type": "MCQ",
+            "question": "What is the name of the Company Secretary and Compliance Officer of One 97 Communications Limited?",
+            "options": [
+                "Sunil Kumar Bansal",
+                "Vijay Shekhar Sharma",
+                "Madhur Deora",
+                "Anuj Mittal"
+            ],
+            "correct_answer": "A",
+            "page_number": 1
+        },
+        {
+            "id": "Q2",
+            "topic": "Corporate Information",
+            "type": "MCQ",
+            "question": "What is the registered office address of One 97 Communications Limited?",
+            "options": [
+                "Tower-D, Plot No. H-10B, Sector-98, Noida",
+                "136, First Floor, Devika Tower, Nehru Place, New Delhi",
+                "Phiroze Jeejeebhoy Towers, Dalal Street, Mumbai",
+                "Exchange Plaza, Bandra Kurla Complex, Mumbai"
+            ],
+            "correct_answer": "B",
+            "page_number": 1
+        },
+        {
+            "id": "Q3",
+            "topic": "Stock Exchange Information",
+            "type": "MCQ",
+            "question": "What is the Scrip Code of One 97 Communications Limited on BSE?",
+            "options": [
+                "543396",
+                "PAYTM",
+                "DL2000PLC108985",
+                "4770770"
+            ],
+            "correct_answer": "A",
+            "page_number": 1
+        },
+        {
+            "id": "Q4",
+            "topic": "Stock Exchange Information",
+            "type": "MCQ",
+            "question": "What is the symbol for One 97 Communications Limited on the National Stock Exchange?",
+            "options": [
+                "BSE",
+                "NSE",
+                "PAYTM",
+                "ONE97"
+            ],
+            "correct_answer": "C",
+            "page_number": 1
+        },
+        {
+            "id": "Q5",
+            "topic": "Regulation and Compliance",
+            "type": "MCQ",
+            "question": "Under which regulation of SEBI is the disclosure of the earnings conference call required?",
+            "options": [
+                "Regulation 30",
+                "Regulation 20",
+                "Regulation 15",
+                "Regulation 45"
+            ],
+            "correct_answer": "A",
+            "page_number": 1
+        },
+        {
+            "id": "Q6",
+            "topic": "Earnings Call Information",
+            "type": "MCQ",
+            "question": "On what date was the earnings conference call conducted?",
+            "options": [
+                "October 22, 2024",
+                "October 29, 2024",
+                "September 30, 2024",
+                "November 1, 2024"
+            ],
+            "correct_answer": "A",
+            "page_number": 1
+        },
+        {
+            "id": "Q7",
+            "topic": "Earnings Call Information",
+            "type": "MCQ",
+            "question": "Who among the following is the Founder and CEO of Paytm?",
+            "options": [
+                "Sunil Kumar Bansal",
+                "Vijay Shekhar Sharma",
+                "Madhur Deora",
+                "Anuj Mittal"
+            ],
+            "correct_answer": "B",
+            "page_number": 2
+        },
+        {
+            "id": "Q8",
+            "topic": "Earnings Call Information",
+            "type": "MCQ",
+            "question": "What time was the Paytm Q2FY25 Earnings Call scheduled to start?",
+            "options": [
+                "16:00 PM IST",
+                "17:00 PM IST",
+                "18:00 PM IST",
+                "19:00 PM IST"
+            ],
+            "correct_answer": "B",
+            "page_number": 2
+        },
+        {
+            "id": "Q9",
+            "topic": "Financial Model",
+            "type": "MCQ",
+            "question": "In the DLG model discussed, what is the anticipated net take rate during the life of the loan?",
+            "options": [
+                "3%",
+                "4%",
+                "5%",
+                "6%"
+            ],
+            "correct_answer": "C",
+            "page_number": 3
+        },
+        {
+            "id": "Q10",
+            "topic": "Financial Projections",
+            "type": "MCQ",
+            "question": "What average tenor is expected for the merchant loans as per the earnings call discussion?",
+            "options": [
+                "6 months",
+                "9 months",
+                "12 months",
+                "18 months"
+            ],
+            "correct_answer": "C",
+            "page_number": 3
+        },
+        {
+            "id": "Q11",
+            "topic": "Financial Projections",
+            "type": "MCQ",
+            "question": "Which type of loans were specifically mentioned to have data provided in the earnings release?",
+            "options": [
+                "Consumer Loans",
+                "Merchant Loans",
+                "Home Loans",
+                "Personal Loans"
+            ],
+            "correct_answer": "B",
+            "page_number": 3
+        },
+        {
+            "id": "Q12",
+            "topic": "Financial Metrics",
+            "type": "MCQ",
+            "question": "What was the observed improvement in the net payment margin (NPM) as discussed?",
+            "options": [
+                "1 basis point",
+                "2 basis points",
+                "3 basis points",
+                "4 basis points"
+            ],
+            "correct_answer": "B",
+            "page_number": 4
+        },
+        {
+            "id": "Q13",
+            "topic": "Financial Metrics",
+            "type": "MCQ",
+            "question": "What is the predicted influence of the UPI incentive on the payment processing margin?",
+            "options": [
+                "Decrease the margin",
+                "Have no effect",
+                "Significantly increase the margin",
+                "Slightly increase the margin"
+            ],
+            "correct_answer": "C",
+            "page_number": 4
+        },
+        {
+            "id": "Q14",
+            "topic": "Device Strategy",
+            "type": "MCQ",
+            "question": "What core revenue is emphasized from the devices according to the earnings call?",
+            "options": [
+                "Transaction fees",
+                "Subscription revenues",
+                "Advertising revenues",
+                "Referral fees"
+            ],
+            "correct_answer": "B",
+            "page_number": 5
+        },
+        {
+            "id": "Q15",
+            "topic": "Device Strategy",
+            "type": "MCQ",
+            "question": "What factor drives the redeployment of inactive devices?",
+            "options": [
+                "Cost reduction",
+                "New merchant acquisition",
+                "Refurbishment and redeployment",
+                "Partnership with retailers"
+            ],
+            "correct_answer": "C",
+            "page_number": 5
+        },
+        {
+            "id": "Q16",
+            "topic": "Business Model",
+            "type": "MCQ",
+            "question": "What was indicated as a driver for higher net payment margin?",
+            "options": [
+                "Better monetization of merchants",
+                "Increased lending",
+                "Higher transaction volume",
+                "New partnerships"
+            ],
+            "correct_answer": "A",
+            "page_number": 4
+        },
+        {
+            "id": "Q17",
+            "topic": "Business Strategy",
+            "type": "MCQ",
+            "question": "Which emerging market practice is Paytm aligning with according to the discussion?",
+            "options": [
+                "Direct lending",
+                "DLG model",
+                "Subscription model",
+                "Advertising model"
+            ],
+            "correct_answer": "B",
+            "page_number": 6
+        },
+        {
+            "id": "Q18",
+            "topic": "Business Strategy",
+            "type": "MCQ",
+            "question": "What is the focus to scale the personal loan business according to the management?",
+            "options": [
+                "Digital marketing",
+                "Adding new lending partners",
+                "Expanding internationally",
+                "Increasing interest rates"
+            ],
+            "correct_answer": "B",
+            "page_number": 7
+        },
+        {
+            "id": "Q19",
+            "topic": "Business Strategy",
+            "type": "MCQ",
+            "question": "What is the future focus for Paytm's financial services business?",
+            "options": [
+                "Asset management",
+                "Loan distribution",
+                "Wealth management",
+                "Payment solutions"
+            ],
+            "correct_answer": "B",
+            "page_number": 8
+        },
+        {
+            "id": "Q20",
+            "topic": "Future Initiatives",
+            "type": "MCQ",
+            "question": "What technology is being leveraged to increase productivity per sales employee?",
+            "options": [
+                "Blockchain",
+                "AI",
+                "IoT",
+                "Big Data"
+            ],
+            "correct_answer": "B",
+            "page_number": 9
+        },
+        {
+            "id": "Q21",
+            "topic": "Future Initiatives",
+            "type": "MCQ",
+            "question": "What is Paytm's approach to cloud costs as discussed in the call?",
+            "options": [
+                "Switch to a capex model",
+                "Increase cloud investments",
+                "Reduce cloud usage",
+                "Outsource cloud services"
+            ],
+            "correct_answer": "A",
+            "page_number": 9
+        },
+        {
+            "id": "Q22",
+            "topic": "Future Initiatives",
+            "type": "MCQ",
+            "question": "What is a potential area for Paytm to expand its payments business?",
+            "options": [
+                "Cross-border payments",
+                "Mobile recharge",
+                "Event management",
+                "Healthcare payments"
+            ],
+            "correct_answer": "A",
+            "page_number": 10
+        },
+        {
+            "id": "Q23",
+            "topic": "Regulatory Compliance",
+            "type": "MCQ",
+            "question": "What is the maximum permissible DLG percentage according to regulatory guidelines?",
+            "options": [
+                "1%",
+                "2%",
+                "3%",
+                "5%"
+            ],
+            "correct_answer": "D",
+            "page_number": 11
+        },
+        {
+            "id": "Q24",
+            "topic": "Regulatory Compliance",
+            "type": "MCQ",
+            "question": "What is the main reason for adopting the DLG model according to Vijay Shekhar Sharma?",
+            "options": [
+                "Regulatory best practices",
+                "Higher profitability",
+                "Market competition",
+                "Customer demand"
+            ],
+            "correct_answer": "A",
+            "page_number": 12
+        },
+        {
+            "id": "Q25",
+            "topic": "Financial Strategy",
+            "type": "MCQ",
+            "question": "What is Paytm's approach to managing excess cash as discussed in the call?",
+            "options": [
+                "Invest in new projects",
+                "Distribute dividends",
+                "Maintain cash for operations",
+                "Return cash to shareholders"
+            ],
+            "correct_answer": "C",
+            "page_number": 15
+        }
+    ]
+}

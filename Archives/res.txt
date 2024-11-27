@@ -1,0 +1,354 @@
+{
+    "questions": [
+        {
+            "id": "Q1",
+            "topic": "Corporate Information",
+            "type": "MCQ",
+            "question": "What is the Corporate Office address of One 97 Communications Limited?",
+            "options": [
+                "One Skymark, Tower-D, Plot No. H-10B, Sector-98, Noida-201304",
+                "136, First Floor, Devika Tower, Nehru Place, New Delhi-110019",
+                "Phiroze Jeejeebhoy Towers, Dalal Street, Fort, Mumbai - 400 001",
+                "Exchange Plaza, Bandra Kurla Complex, Mumbai - 400 051"
+            ],
+            "correct_answer": "A",
+            "page_number": 1
+        },
+        {
+            "id": "Q2",
+            "topic": "Financial Disclosure",
+            "type": "MCQ",
+            "question": "Under which regulation does One 97 Communications Limited disclose its earnings conference call transcript?",
+            "options": [
+                "Regulation 20",
+                "Regulation 30",
+                "Regulation 40",
+                "Regulation 50"
+            ],
+            "correct_answer": "B",
+            "page_number": 1
+        },
+        {
+            "id": "Q3",
+            "topic": "Earnings Call",
+            "type": "MCQ",
+            "question": "On which date was the Paytm Q2FY25 Earnings Call conducted?",
+            "options": [
+                "October 22, 2024",
+                "October 29, 2024",
+                "September 30, 2024",
+                "November 1, 2024"
+            ],
+            "correct_answer": "A",
+            "page_number": 1
+        },
+        {
+            "id": "Q4",
+            "topic": "Earnings Call Disclaimer",
+            "type": "MCQ",
+            "question": "What is the nature of the statements made during the earnings call?",
+            "options": [
+                "Guaranteed predictions",
+                "Forward-looking statements",
+                "Legal advice",
+                "Taxation advice"
+            ],
+            "correct_answer": "B",
+            "page_number": 2
+        },
+        {
+            "id": "Q5",
+            "topic": "Management Team",
+            "type": "MCQ",
+            "question": "Who is the Founder and CEO of One 97 Communications Limited?",
+            "options": [
+                "Madhur Deora",
+                "Sunil Kumar Bansal",
+                "Anuj Mittal",
+                "Vijay Shekhar Sharma"
+            ],
+            "correct_answer": "D",
+            "page_number": 3
+        },
+        {
+            "id": "Q6",
+            "topic": "Financial Models",
+            "type": "MCQ",
+            "question": "In the DLG model, what is the expected net take rate over the life of the loan?",
+            "options": [
+                "3%",
+                "4%",
+                "5%",
+                "6%"
+            ],
+            "correct_answer": "C",
+            "page_number": 4
+        },
+        {
+            "id": "Q7",
+            "topic": "Merchant Loans",
+            "type": "MCQ",
+            "question": "What is the average tenor of the loans discussed during the earnings call?",
+            "options": [
+                "6 months",
+                "12 months",
+                "18 months",
+                "24 months"
+            ],
+            "correct_answer": "B",
+            "page_number": 5
+        },
+        {
+            "id": "Q8",
+            "topic": "Net Payment Margin",
+            "type": "MCQ",
+            "question": "What contributed to the improvement in net payment margin?",
+            "options": [
+                "Reduction in staff",
+                "Increased subscription fees",
+                "Better monetization of merchants and control over payment gateway costs",
+                "Higher advertising expenditure"
+            ],
+            "correct_answer": "C",
+            "page_number": 5
+        },
+        {
+            "id": "Q9",
+            "topic": "Device Monetization",
+            "type": "MCQ",
+            "question": "What is the core piece of increased monetization from devices?",
+            "options": [
+                "Additional device sales",
+                "Subscription revenues",
+                "Advertising fees",
+                "Lending options"
+            ],
+            "correct_answer": "B",
+            "page_number": 6
+        },
+        {
+            "id": "Q10",
+            "topic": "DLG Model",
+            "type": "MCQ",
+            "question": "What does DLG stand for in the earnings call context?",
+            "options": [
+                "Digital Loan Guarantee",
+                "Direct Loan Growth",
+                "Deferred Loan Guarantee",
+                "Digital Lending Growth"
+            ],
+            "correct_answer": "A",
+            "page_number": 7
+        },
+        {
+            "id": "Q11",
+            "topic": "Cost Structure",
+            "type": "MCQ",
+            "question": "What is one of the largest costs mentioned during the earnings call?",
+            "options": [
+                "Marketing costs",
+                "Cloud costs",
+                "Employee salaries",
+                "Office rent"
+            ],
+            "correct_answer": "B",
+            "page_number": 8
+        },
+        {
+            "id": "Q12",
+            "topic": "AI Implementation",
+            "type": "MCQ",
+            "question": "How much manpower cost was reduced through AI implementation in support?",
+            "options": [
+                "20%",
+                "40%",
+                "60%",
+                "80%"
+            ],
+            "correct_answer": "C",
+            "page_number": 9
+        },
+        {
+            "id": "Q13",
+            "topic": "Personal Loan Distribution",
+            "type": "MCQ",
+            "question": "What is the disbursal amount for personal loans last quarter?",
+            "options": [
+                "Rs 1000 crores",
+                "Rs 1600 crores",
+                "Rs 2000 crores",
+                "Rs 2400 crores"
+            ],
+            "correct_answer": "B",
+            "page_number": 10
+        },
+        {
+            "id": "Q14",
+            "topic": "Advertising Initiatives",
+            "type": "MCQ",
+            "question": "Which company showed interest in advertising on the sound box?",
+            "options": [
+                "Amazon",
+                "Flipkart",
+                "Meesho",
+                "Snapdeal"
+            ],
+            "correct_answer": "C",
+            "page_number": 11
+        },
+        {
+            "id": "Q15",
+            "topic": "Collection Revenue",
+            "type": "MCQ",
+            "question": "Where is the collection revenue accounted for in the financial statements?",
+            "options": [
+                "Other direct expenses",
+                "Financial services revenue",
+                "Marketing expenses",
+                "Employee costs"
+            ],
+            "correct_answer": "B",
+            "page_number": 13
+        },
+        {
+            "id": "Q16",
+            "topic": "DLG Accounting",
+            "type": "MCQ",
+            "question": "How is the DLG cost treated in the P&L?",
+            "options": [
+                "Deferred over loan life",
+                "Expensed upfront",
+                "Capitalized as asset",
+                "Ignored"
+            ],
+            "correct_answer": "B",
+            "page_number": 14
+        },
+        {
+            "id": "Q17",
+            "topic": "Cash Usage",
+            "type": "MCQ",
+            "question": "What is the company's stance on using excess cash?",
+            "options": [
+                "Invest in marketing",
+                "Return to shareholders",
+                "Hold for future opportunities",
+                "Increase employee salaries"
+            ],
+            "correct_answer": "C",
+            "page_number": 15
+        },
+        {
+            "id": "Q18",
+            "topic": "Market Penetration",
+            "type": "MCQ",
+            "question": "What is the potential penetration scope for Paytm soundboxes in metro cities?",
+            "options": [
+                "50% more",
+                "70% more",
+                "Double",
+                "Triple"
+            ],
+            "correct_answer": "C",
+            "page_number": 16
+        },
+        {
+            "id": "Q19",
+            "topic": "Inactive Devices",
+            "type": "MCQ",
+            "question": "What is a common issue found with inactive devices?",
+            "options": [
+                "Software malfunction",
+                "Battery outage",
+                "Network issues",
+                "User error"
+            ],
+            "correct_answer": "B",
+            "page_number": 17
+        },
+        {
+            "id": "Q20",
+            "topic": "Wealth and Insurance",
+            "type": "MCQ",
+            "question": "What is the expected timeline for wealth and insurance business to show material contribution?",
+            "options": [
+                "1-2 quarters",
+                "3-4 quarters",
+                "5-6 quarters",
+                "7-8 quarters"
+            ],
+            "correct_answer": "B",
+            "page_number": 18
+        },
+        {
+            "id": "Q21",
+            "topic": "EBITDA Margin",
+            "type": "MCQ",
+            "question": "What is the company's current stance on guiding EBITDA margin?",
+            "options": [
+                "Providing specific guidance",
+                "Not providing specific guidance",
+                "Targeting 10% margin",
+                "Targeting 20% margin"
+            ],
+            "correct_answer": "B",
+            "page_number": 19
+        },
+        {
+            "id": "Q22",
+            "topic": "Cross-border Payments",
+            "type": "MCQ",
+            "question": "What kind of payment innovations are being anticipated with the RBI payment gateway license?",
+            "options": [
+                "Lending services",
+                "Cross-border multi-currency",
+                "Insurance products",
+                "Real estate investments"
+            ],
+            "correct_answer": "B",
+            "page_number": 20
+        },
+        {
+            "id": "Q23",
+            "topic": "UPI Market",
+            "type": "MCQ",
+            "question": "What is the number of UPI customers transferred to OCL?",
+            "options": [
+                "50 million",
+                "100 million",
+                "130 million",
+                "200 million"
+            ],
+            "correct_answer": "C",
+            "page_number": 21
+        },
+        {
+            "id": "Q24",
+            "topic": "Financial Services",
+            "type": "MCQ",
+            "question": "Which aspect of financial services is emphasized over disbursements?",
+            "options": [
+                "Number of loans",
+                "Revenue per customer",
+                "Total GWP",
+                "Number of partners"
+            ],
+            "correct_answer": "B",
+            "page_number": 22
+        },
+        {
+            "id": "Q25",
+            "topic": "AI in Sales",
+            "type": "MCQ",
+            "question": "How is AI expected to impact sales employee productivity?",
+            "options": [
+                "Decrease productivity",
+                "No impact",
+                "Enhance productivity",
+                "Eliminate the need for sales employees"
+            ],
+            "correct_answer": "C",
+            "page_number": 23
+        }
+    ]
+}
