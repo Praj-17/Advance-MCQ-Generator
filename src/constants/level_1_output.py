@@ -72,7 +72,7 @@ if __name__ == "__main__":
     book_info = BookInfo(
         book_title="Project Management Professional Guide",
         total_topics=10,
-        extraction_timestamp=datetime.utcnow().isoformat(),
+        extraction_timestamp=datetime.now().isoformat(),
         main_topics=["Initiation", "Planning", "Execution", "Monitoring", "Closing"]
     )
 
