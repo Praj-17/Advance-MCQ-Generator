@@ -16,8 +16,6 @@ class OpenAiRunnerClass:
         with open(r"src\constants\level_1_topics.prompt", "r") as f:
             self.topics_prompt = f.read()
         
-        with open(r"src\constants\level_2_question_prompt.prompt", "r") as f:
-            self.RAG_question_prompt = f.read()
     
     def _format_prompt_mcq(self, context, prompt, topic, n):
         return prompt.format(context = context, topic = topic, n= n)
@@ -37,15 +35,15 @@ class OpenAiRunnerClass:
         
         return questions
     
-    def generate_mcq_with_RAG(self, topic, n = 5):
-        # Generate the PDF
-        # Fetch relevant Documents for the Topic
+    def generate_mcq_with_RAG(self, context, topic, documents, n = 5):
+        questions = self.generate_mcqs(context=context, topic=topic, n= n)
 
-        # Format the Text to generate context wiht metadata
-        # Generate Prompt
-        # Generate_questions
-        
-        pass
+        # now add source to these questions
+        for question in questions:
+            question['source'] = documents
+        return questions
+
+    
     
     def generate_book_title(self, context):
         prompt = self._format_prompt(context, self.topics_prompt)

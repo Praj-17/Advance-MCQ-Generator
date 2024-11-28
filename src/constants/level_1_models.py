@@ -12,6 +12,7 @@ class Question(BaseModel):
     options: List[str]
     correct_answer: str
     page_number: int
+    explanation: str
 
 class QuestionsModel(BaseModel):
     questions: List[Question]
@@ -28,6 +29,7 @@ class QuestionsModel(BaseModel):
                     "options": question.options,
                     "correct_answer": question.correct_answer,
                     "page_number": question.page_number,
+                    "explanation" : question.explanation
                 }
                 for question in self.questions
             ]

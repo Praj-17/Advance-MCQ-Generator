@@ -50,6 +50,8 @@ class ChromaVectorStore:
         )
 
         self.embeddings_model_name = embedding_model
+        self.method = "RAG Pipeline"
+        self.vector_store = "Chroma"
 
         # Initialize Chroma client
         self.chroma_client = chromadb.PersistentClient(
