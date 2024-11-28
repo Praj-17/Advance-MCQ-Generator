@@ -1,10 +1,12 @@
 from SimplerLLM.language.llm import LLM, LLMProvider
 from SimplerLLM.language.llm_addons import generate_pydantic_json_model as gen_json
-# from src.constants import ProjectManagementProfessionalGuide
+from src.constants import QuestionsModel, BookInfo,Metadata
+import json
 from dotenv import load_dotenv
 load_dotenv()
+import os
 
-class OpenAiRunner:
+class OpenAiRunnerClass:
     def __init__(self, model_name = "gpt-4o") -> None:
         self.model_name = model_name
         self.llm_instance = LLM.create(provider=LLMProvider.OPENAI, model_name=model_name)
@@ -13,12 +15,16 @@ class OpenAiRunner:
         
         with open(r"src\constants\level_1_topics.prompt", "r") as f:
             self.topics_prompt = f.read()
+        
+        with open(r"src\constants\level_2_question_prompt.prompt", "r") as f:
+            self.RAG_question_prompt = f.read()
     
     def _format_prompt_mcq(self, context, prompt, topic, n):
         return prompt.format(context = context, topic = topic, n= n)
     
     def _format_prompt(self, context, prompt):
         return prompt.format(context = context)
+    
     
     
     def generate_mcqs(self, context, topic, n = 5):
@@ -30,6 +36,16 @@ class OpenAiRunner:
 
         
         return questions
+    
+    def generate_mcq_with_RAG(self, topic, n = 5):
+        # Generate the PDF
+        # Fetch relevant Documents for the Topic
+
+        # Format the Text to generate context wiht metadata
+        # Generate Prompt
+        # Generate_questions
+        
+        pass
     
     def generate_book_title(self, context):
         prompt = self._format_prompt(context, self.topics_prompt)
@@ -778,7 +794,7 @@ be made available on the company website subsequently. Thank you all for joining
 disconnect your lines.
 Mr. Vijay Shekhar Sharma, Founder and CEO: Thank you. Bye.
 """
-    gem = OpenAiRunner()
+    gem = OpenAiRunnerClass()
     res = gem.generate_topics_and_mcqs(context= context)
     print(res)
 

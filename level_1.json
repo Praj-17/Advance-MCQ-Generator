@@ -1,0 +1,1581 @@
+{
+    "topics": {
+        "book_title": "The Title of the Book",
+        "total_topics": 22,
+        "extraction_timestamp": null,
+        "main_topics": [
+            "Introduction to Project Planning and Management",
+            "Characteristics of a Project",
+            "Project Planning and its Purpose",
+            "Project Plan and Planning Process",
+            "What is Project Management?",
+            "Role and Responsibilities of a Project Manager",
+            "Project Cycle and its Phases",
+            "Need Assessment and its Importance",
+            "Types of Needs Assessment and Information Collection",
+            "Stakeholder Analysis and its Importance",
+            "Problem Analysis and Problem Trees",
+            "Objectives and SMART Approach",
+            "Logical Framework Approach",
+            "Action Planning and Scheduling",
+            "Project Budgeting",
+            "Project Implementation",
+            "Monitoring and Reviewing",
+            "Monitoring and Evaluation (M&E) Plan",
+            "Types of Monitoring",
+            "What is Evaluation?",
+            "Criteria for Evaluation",
+            "Planning for Monitoring and Evaluation"
+        ]
+    },
+    "questions": {
+        "questions": [
+            {
+                "id": "Q1",
+                "topic": "Introduction to Project Planning and Management",
+                "type": "MCQ",
+                "question": "What is a key characteristic of a project?",
+                "options": [
+                    "It has an indefinite time frame.",
+                    "It is a repetitive activity.",
+                    "It has a beginning and an end.",
+                    "It has unlimited resources."
+                ],
+                "correct_answer": "C",
+                "page_number": 2
+            },
+            {
+                "id": "Q2",
+                "topic": "Introduction to Project Planning and Management",
+                "type": "MCQ",
+                "question": "Which of the following is NOT a step in the project planning process?",
+                "options": [
+                    "Estimating the resources required",
+                    "Defining the technical approach",
+                    "Monitoring project progress",
+                    "Scheduling all tasks to be performed"
+                ],
+                "correct_answer": "C",
+                "page_number": 4
+            },
+            {
+                "id": "Q3",
+                "topic": "Introduction to Project Planning and Management",
+                "type": "MCQ",
+                "question": "What is the main purpose of project management?",
+                "options": [
+                    "To increase the scope of a project",
+                    "To plan, organize, and control project activities",
+                    "To extend the project indefinitely",
+                    "To eliminate all project risks"
+                ],
+                "correct_answer": "B",
+                "page_number": 5
+            },
+            {
+                "id": "Q4",
+                "topic": "Introduction to Project Planning and Management",
+                "type": "MCQ",
+                "question": "Who is typically responsible for managing a project's scope, schedule, and cost?",
+                "options": [
+                    "Project Sponsor",
+                    "Project Manager",
+                    "Project Team Member",
+                    "Stakeholder"
+                ],
+                "correct_answer": "B",
+                "page_number": 6
+            },
+            {
+                "id": "Q5",
+                "topic": "Introduction to Project Planning and Management",
+                "type": "MCQ",
+                "question": "Which of the following best describes a project plan?",
+                "options": [
+                    "A temporary document that is discarded after project initiation",
+                    "A formal, approved document used to manage a project",
+                    "A detailed guide for performing day-to-day project activities",
+                    "An informal agreement between stakeholders"
+                ],
+                "correct_answer": "B",
+                "page_number": 3
+            },
+            {
+                "id": "Q1",
+                "topic": "Characteristics of a Project",
+                "type": "MCQ",
+                "question": "What is the most distinguishing feature of a project?",
+                "options": [
+                    "A project involves varied activities.",
+                    "A project has a specific time frame.",
+                    "A project follows a planned method.",
+                    "A project has limited resources."
+                ],
+                "correct_answer": "B",
+                "page_number": 1
+            },
+            {
+                "id": "Q2",
+                "topic": "Characteristics of a Project",
+                "type": "MCQ",
+                "question": "Which of the following is NOT a key characteristic of a project?",
+                "options": [
+                    "A project has boundaries.",
+                    "A project is a one-time effort.",
+                    "A project continues indefinitely.",
+                    "A project requires finite resources."
+                ],
+                "correct_answer": "C",
+                "page_number": 2
+            },
+            {
+                "id": "Q3",
+                "topic": "Characteristics of a Project",
+                "type": "MCQ",
+                "question": "What does it mean when a project is described as 'unique'?",
+                "options": [
+                    "It has a specific time frame.",
+                    "It follows a planned method.",
+                    "Its result is different from other functions of the organization.",
+                    "It uses various resources."
+                ],
+                "correct_answer": "C",
+                "page_number": 1
+            },
+            {
+                "id": "Q4",
+                "topic": "Characteristics of a Project",
+                "type": "MCQ",
+                "question": "Why is a project considered a temporary endeavor?",
+                "options": [
+                    "It has limited resources.",
+                    "It has a clearly defined start and end time.",
+                    "It requires a project manager.",
+                    "It involves interdependent tasks."
+                ],
+                "correct_answer": "B",
+                "page_number": 1
+            },
+            {
+                "id": "Q5",
+                "topic": "Characteristics of a Project",
+                "type": "MCQ",
+                "question": "Which of the following roles is responsible for the outcomes of a project?",
+                "options": [
+                    "Project sponsor",
+                    "Project stakeholder",
+                    "Project manager",
+                    "Project team"
+                ],
+                "correct_answer": "C",
+                "page_number": 2
+            },
+            {
+                "id": "Q1",
+                "topic": "Project Planning and its Purpose",
+                "type": "MCQ",
+                "question": "What does a project typically involve?",
+                "options": [
+                    "A permanent team and ongoing activities",
+                    "Varied activities with no specific objectives",
+                    "Varied activities with quantifiable deliverables",
+                    "A set of continuous processes with no end date"
+                ],
+                "correct_answer": "C",
+                "page_number": 1
+            },
+            {
+                "id": "Q2",
+                "topic": "Project Planning and its Purpose",
+                "type": "MCQ",
+                "question": "What is the primary purpose of project planning?",
+                "options": [
+                    "To execute tasks as they arise",
+                    "To define tasks, estimate resources, and provide a management framework",
+                    "To maintain the status quo",
+                    "To continuously redefine project goals"
+                ],
+                "correct_answer": "B",
+                "page_number": 3
+            },
+            {
+                "id": "Q3",
+                "topic": "Project Planning and its Purpose",
+                "type": "MCQ",
+                "question": "Which of the following is NOT a characteristic of a project?",
+                "options": [
+                    "Has a definite start and end time",
+                    "Is a continuous process without a specific goal",
+                    "Is a temporary endeavor",
+                    "Has limited resources"
+                ],
+                "correct_answer": "B",
+                "page_number": 2
+            },
+            {
+                "id": "Q4",
+                "topic": "Project Planning and its Purpose",
+                "type": "MCQ",
+                "question": "What does the project planning process typically include?",
+                "options": [
+                    "Ignoring risks and focusing solely on execution",
+                    "Estimating project size and scope, scheduling tasks, and assessing risks",
+                    "Planning only high-level goals without details",
+                    "Assigning tasks without time estimates"
+                ],
+                "correct_answer": "B",
+                "page_number": 3
+            },
+            {
+                "id": "Q5",
+                "topic": "Project Planning and its Purpose",
+                "type": "MCQ",
+                "question": "In project planning, what are 'commitments'?",
+                "options": [
+                    "Tasks that are planned, documented, and agreed to by affected groups",
+                    "Unplanned tasks that arise during the project",
+                    "Resources that are unlimited and readily available",
+                    "Objectives that are subject to change with no documentation"
+                ],
+                "correct_answer": "A",
+                "page_number": 3
+            },
+            {
+                "id": "Q1",
+                "topic": "Project Plan and Planning Process",
+                "type": "MCQ",
+                "question": "What is a project plan?",
+                "options": [
+                    "A detailed financial report for the project",
+                    "A formal, approved document used to manage and control a project",
+                    "A list of project team members",
+                    "An informal note about project goals"
+                ],
+                "correct_answer": "B",
+                "page_number": 3
+            },
+            {
+                "id": "Q2",
+                "topic": "Project Plan and Planning Process",
+                "type": "MCQ",
+                "question": "Which of the following is NOT a step in the project planning process?",
+                "options": [
+                    "Define the organization used to execute the project",
+                    "Identify the known risks in executing the project",
+                    "Define personal goals of the project manager",
+                    "Estimate the resources required to perform each task"
+                ],
+                "correct_answer": "C",
+                "page_number": 4
+            },
+            {
+                "id": "Q3",
+                "topic": "Project Plan and Planning Process",
+                "type": "MCQ",
+                "question": "What is the purpose of project planning?",
+                "options": [
+                    "To hire new employees",
+                    "To define each major task, estimate time and resources, and provide a framework for management review and control",
+                    "To set up a new company",
+                    "To ensure the project has unlimited resources"
+                ],
+                "correct_answer": "B",
+                "page_number": 3
+            },
+            {
+                "id": "Q4",
+                "topic": "Project Plan and Planning Process",
+                "type": "MCQ",
+                "question": "How is a project defined according to the provided context?",
+                "options": [
+                    "A permanent effort to accomplish a goal",
+                    "An endeavor with no specific timeframe",
+                    "A temporary endeavor undertaken to create a unique product or service",
+                    "A continuous process with no end date"
+                ],
+                "correct_answer": "C",
+                "page_number": 2
+            },
+            {
+                "id": "Q5",
+                "topic": "Project Plan and Planning Process",
+                "type": "MCQ",
+                "question": "Which document evolves as the project moves through its various stages?",
+                "options": [
+                    "Project Charter",
+                    "Project Plan",
+                    "Employee Handbook",
+                    "Financial Statement"
+                ],
+                "correct_answer": "B",
+                "page_number": 3
+            },
+            {
+                "id": "Q1",
+                "topic": "What is Project Management?",
+                "type": "MCQ",
+                "question": "Which of the following best defines Project Management?",
+                "options": [
+                    "A process of achieving project objectives through a set of activities within a specific time frame.",
+                    "A temporary endeavor undertaken to create a unique product or service.",
+                    "A method of maintaining ongoing operations within an organization.",
+                    "A strategy for indefinite programs extending across multiple business objectives."
+                ],
+                "correct_answer": "A",
+                "page_number": 4
+            },
+            {
+                "id": "Q2",
+                "topic": "What is Project Management?",
+                "type": "MCQ",
+                "question": "What is the primary purpose of Project Management?",
+                "options": [
+                    "To establish a permanent team structure.",
+                    "To integrate and coordinate project tasks and resources for goal achievement.",
+                    "To provide continuous monitoring of all organizational activities.",
+                    "To develop strategies for indefinite project extensions."
+                ],
+                "correct_answer": "B",
+                "page_number": 5
+            },
+            {
+                "id": "Q3",
+                "topic": "What is Project Management?",
+                "type": "MCQ",
+                "question": "Which of the following is a key characteristic of a project?",
+                "options": [
+                    "It is a repetitive process.",
+                    "It has a definite start and end date.",
+                    "It requires unlimited resources.",
+                    "It focuses on maintaining existing systems."
+                ],
+                "correct_answer": "B",
+                "page_number": 2
+            },
+            {
+                "id": "Q4",
+                "topic": "What is Project Management?",
+                "type": "MCQ",
+                "question": "Why are projects considered 'temporary endeavors'?",
+                "options": [
+                    "They have unlimited resources.",
+                    "Their objectives are broad and undefined.",
+                    "They have a clear start and end date.",
+                    "They do not require planning and management."
+                ],
+                "correct_answer": "C",
+                "page_number": 2
+            },
+            {
+                "id": "Q5",
+                "topic": "What is Project Management?",
+                "type": "MCQ",
+                "question": "Which of the following is NOT a purpose of Project Management?",
+                "options": [
+                    "To accomplish specific business goals.",
+                    "To maintain ongoing operations indefinitely.",
+                    "To meet or exceed stakeholders' needs and expectations.",
+                    "To effectively schedule and control project activities."
+                ],
+                "correct_answer": "B",
+                "page_number": 5
+            },
+            {
+                "id": "Q1",
+                "topic": "Role and Responsibilities of a Project Manager",
+                "type": "MCQ",
+                "question": "What is one of the primary responsibilities of a project manager?",
+                "options": [
+                    "Designing the project logo",
+                    "Managing the project's scope, schedule, and cost",
+                    "Writing the project code",
+                    "Approving all financial transactions"
+                ],
+                "correct_answer": "B",
+                "page_number": 6
+            },
+            {
+                "id": "Q2",
+                "topic": "Role and Responsibilities of a Project Manager",
+                "type": "MCQ",
+                "question": "Which skill is NOT essential for a project manager according to the document?",
+                "options": [
+                    "Leadership",
+                    "Creative thinking",
+                    "Cooking",
+                    "Negotiation"
+                ],
+                "correct_answer": "C",
+                "page_number": 6
+            },
+            {
+                "id": "Q3",
+                "topic": "Role and Responsibilities of a Project Manager",
+                "type": "MCQ",
+                "question": "Who is responsible for negotiating a resolution to team member resource conflicts?",
+                "options": [
+                    "Project Sponsor",
+                    "Project Manager",
+                    "Project Owner",
+                    "Project Team Leader"
+                ],
+                "correct_answer": "B",
+                "page_number": 6
+            },
+            {
+                "id": "Q4",
+                "topic": "Role and Responsibilities of a Project Manager",
+                "type": "MCQ",
+                "question": "A project manager must provide input to the performance reviews of:",
+                "options": [
+                    "The project owner",
+                    "The project team members",
+                    "The project stakeholders",
+                    "The project clients"
+                ],
+                "correct_answer": "B",
+                "page_number": 6
+            },
+            {
+                "id": "Q5",
+                "topic": "Role and Responsibilities of a Project Manager",
+                "type": "MCQ",
+                "question": "Which of the following is a key duty of a project manager?",
+                "options": [
+                    "Serving as the central point of contact for the project",
+                    "Designing the project website",
+                    "Approving all project invoices",
+                    "Hiring all subcontractors"
+                ],
+                "correct_answer": "A",
+                "page_number": 6
+            },
+            {
+                "id": "Q1",
+                "topic": "Project Cycle and its Phases",
+                "type": "MCQ",
+                "question": "Which of the following is NOT a key characteristic of a project?",
+                "options": [
+                    "A project has a beginning and an end.",
+                    "A project has unlimited resources.",
+                    "A project follows a planned, organized method to meet its objectives.",
+                    "Every project is unique."
+                ],
+                "correct_answer": "B",
+                "page_number": 2
+            },
+            {
+                "id": "Q2",
+                "topic": "Project Cycle and its Phases",
+                "type": "MCQ",
+                "question": "What is the primary purpose of project planning?",
+                "options": [
+                    "To manage and control a project using an approved document.",
+                    "To define each major task, estimate time and resources required, and provide a framework for management review and control.",
+                    "To dissolve the project team once objectives are met.",
+                    "To ensure that the project has a manager responsible for its outcomes."
+                ],
+                "correct_answer": "B",
+                "page_number": 3
+            },
+            {
+                "id": "Q3",
+                "topic": "Project Cycle and its Phases",
+                "type": "MCQ",
+                "question": "Which phase of the project cycle involves carrying out further research into the people affected by a problem?",
+                "options": [
+                    "Identification",
+                    "Design",
+                    "Implementation",
+                    "Evaluation"
+                ],
+                "correct_answer": "B",
+                "page_number": 8
+            },
+            {
+                "id": "Q4",
+                "topic": "Project Cycle and its Phases",
+                "type": "MCQ",
+                "question": "What is a key aspect of lesson learning in the project cycle?",
+                "options": [
+                    "It makes the project cycle appear linear, with one tool following another.",
+                    "It ensures that planning tools are only used at the start of the project.",
+                    "It emphasizes that many planning tools can be used at any stage of the project.",
+                    "It requires that once a project is designed, it cannot be changed."
+                ],
+                "correct_answer": "C",
+                "page_number": 8
+            },
+            {
+                "id": "Q5",
+                "topic": "Project Cycle and its Phases",
+                "type": "MCQ",
+                "question": "Which of the following is a purpose of project management?",
+                "options": [
+                    "To keep the project team unchanged throughout the project.",
+                    "To integrate project purposes, people, and processes.",
+                    "To ensure that the project has no constraints.",
+                    "To make sure all stakeholders agree on every decision."
+                ],
+                "correct_answer": "B",
+                "page_number": 9
+            },
+            {
+                "id": "Q1",
+                "topic": "Need Assessment and its Importance",
+                "type": "MCQ",
+                "question": "What is a need according to the context of Need Assessment?",
+                "options": [
+                    "The current state of affairs",
+                    "The desired future state",
+                    "A discrepancy between the current and desired state",
+                    "A performance that meets the current standard"
+                ],
+                "correct_answer": "C",
+                "page_number": 10
+            },
+            {
+                "id": "Q2",
+                "topic": "Need Assessment and its Importance",
+                "type": "MCQ",
+                "question": "Which of the following is NOT a characteristic of a good needs analysis?",
+                "options": [
+                    "Focuses on the results that should be obtained",
+                    "Provides a subjective basis for decision-making",
+                    "Involves all stakeholders in establishing priorities",
+                    "Is a cyclic process that integrates within strategic planning"
+                ],
+                "correct_answer": "B",
+                "page_number": 11
+            },
+            {
+                "id": "Q3",
+                "topic": "Need Assessment and its Importance",
+                "type": "MCQ",
+                "question": "What is a primary aim of conducting a needs assessment?",
+                "options": [
+                    "To implement a project without beneficiary input",
+                    "To assess the extent and causes of community social problems",
+                    "To evaluate the project's long-term impact",
+                    "To design a project without constraints"
+                ],
+                "correct_answer": "B",
+                "page_number": 11
+            },
+            {
+                "id": "Q4",
+                "topic": "Need Assessment and its Importance",
+                "type": "MCQ",
+                "question": "What is the purpose of collecting information on demography during a needs assessment?",
+                "options": [
+                    "To evaluate financial resources",
+                    "To understand the target population's service needs",
+                    "To improve technological aspects",
+                    "To enhance physical resources"
+                ],
+                "correct_answer": "B",
+                "page_number": 12
+            },
+            {
+                "id": "Q5",
+                "topic": "Need Assessment and its Importance",
+                "type": "MCQ",
+                "question": "What does SWOT analysis assess in a needs assessment context?",
+                "options": [
+                    "Technological advancements only",
+                    "External threats without considering internal strengths",
+                    "Both internal strengths and weaknesses, and external opportunities and threats",
+                    "Financial resources exclusively"
+                ],
+                "correct_answer": "C",
+                "page_number": 13
+            },
+            {
+                "id": "Q1",
+                "topic": "Types of Needs Assessment and Information Collection",
+                "type": "MCQ",
+                "question": "What is the primary purpose of a needs assessment?",
+                "options": [
+                    "To allocate resources for project implementation",
+                    "To identify performance problems and establish priorities",
+                    "To create a project budget and timeline",
+                    "To evaluate project success post-implementation"
+                ],
+                "correct_answer": "B",
+                "page_number": 10
+            },
+            {
+                "id": "Q2",
+                "topic": "Types of Needs Assessment and Information Collection",
+                "type": "MCQ",
+                "question": "Which type of information is typically collected during a needs assessment?",
+                "options": [
+                    "Project timelines and budgets",
+                    "Stakeholder feedback and opinions",
+                    "Population demographics and infrastructure",
+                    "Training requirements for project staff"
+                ],
+                "correct_answer": "C",
+                "page_number": 12
+            },
+            {
+                "id": "Q3",
+                "topic": "Types of Needs Assessment and Information Collection",
+                "type": "MCQ",
+                "question": "What is an example of a formal needs assessment method?",
+                "options": [
+                    "Casual conversation with community members",
+                    "Review of past project reports",
+                    "Survey and interview techniques",
+                    "Observation of community activities"
+                ],
+                "correct_answer": "C",
+                "page_number": 11
+            },
+            {
+                "id": "Q4",
+                "topic": "Types of Needs Assessment and Information Collection",
+                "type": "MCQ",
+                "question": "Which analysis method is commonly used for needs assessment in community development projects?",
+                "options": [
+                    "PESTE analysis",
+                    "Root Cause Analysis",
+                    "SWOT analysis",
+                    "Cost-Benefit Analysis"
+                ],
+                "correct_answer": "C",
+                "page_number": 13
+            },
+            {
+                "id": "Q5",
+                "topic": "Types of Needs Assessment and Information Collection",
+                "type": "MCQ",
+                "question": "Why is it important to conduct a capacity assessment after needs assessment?",
+                "options": [
+                    "To ensure all project activities are on schedule",
+                    "To identify strengths the community can use to address problems",
+                    "To finalize project budgets and resource allocation",
+                    "To evaluate the project's impact and outcomes"
+                ],
+                "correct_answer": "B",
+                "page_number": 15
+            },
+            {
+                "id": "Q1",
+                "topic": "Stakeholder Analysis and its Importance",
+                "type": "MCQ",
+                "question": "What is the primary purpose of conducting a stakeholder analysis at the beginning of the project design?",
+                "options": [
+                    "To identify the project manager",
+                    "To determine the project budget",
+                    "To understand which organizations or groups of people have an interest in the issues",
+                    "To select the project team members"
+                ],
+                "correct_answer": "C",
+                "page_number": 17
+            },
+            {
+                "id": "Q2",
+                "topic": "Stakeholder Analysis and its Importance",
+                "type": "MCQ",
+                "question": "Who are considered primary stakeholders in a project?",
+                "options": [
+                    "Those who only fund the project",
+                    "Those who benefit from, or are adversely affected by, an activity",
+                    "Those who are external observers",
+                    "Those who work in the project team"
+                ],
+                "correct_answer": "B",
+                "page_number": 20
+            },
+            {
+                "id": "Q3",
+                "topic": "Stakeholder Analysis and its Importance",
+                "type": "MCQ",
+                "question": "Why is it important to identify sub-groups within a community during stakeholder analysis?",
+                "options": [
+                    "To increase the project budget",
+                    "To divide the project tasks equally",
+                    "To account for different interests and impacts on these sub-groups",
+                    "To ensure all sub-groups receive equal funding"
+                ],
+                "correct_answer": "C",
+                "page_number": 17
+            },
+            {
+                "id": "Q4",
+                "topic": "Stakeholder Analysis and its Importance",
+                "type": "MCQ",
+                "question": "What should be done if stakeholders are not identified at the project planning stage?",
+                "options": [
+                    "The project should be canceled",
+                    "The project is at risk of failure",
+                    "Additional funding should be sought",
+                    "The project plan should be rewritten"
+                ],
+                "correct_answer": "B",
+                "page_number": 20
+            },
+            {
+                "id": "Q5",
+                "topic": "Stakeholder Analysis and its Importance",
+                "type": "MCQ",
+                "question": "Which of the following is NOT a main area covered in stakeholder analysis?",
+                "options": [
+                    "Interest",
+                    "Level of knowledge",
+                    "Stakeholder's favorite color",
+                    "Resource mobilization capacity"
+                ],
+                "correct_answer": "C",
+                "page_number": 18
+            },
+            {
+                "id": "Q1",
+                "topic": "Problem Analysis and Problem Trees",
+                "type": "MCQ",
+                "question": "What is the main purpose of conducting a problem analysis?",
+                "options": [
+                    "To identify the project manager",
+                    "To understand the causes and effects of problems",
+                    "To allocate project resources",
+                    "To create a budget plan"
+                ],
+                "correct_answer": "B",
+                "page_number": 23
+            },
+            {
+                "id": "Q2",
+                "topic": "Problem Analysis and Problem Trees",
+                "type": "MCQ",
+                "question": "What does a 'problem tree' primarily help to identify?",
+                "options": [
+                    "Project stakeholders",
+                    "Project budget",
+                    "Causes and effects of a problem",
+                    "Project timeline"
+                ],
+                "correct_answer": "C",
+                "page_number": 22
+            },
+            {
+                "id": "Q3",
+                "topic": "Problem Analysis and Problem Trees",
+                "type": "MCQ",
+                "question": "What are the two levels of causes identified in a problem analysis?",
+                "options": [
+                    "Direct and Indirect",
+                    "Major and Minor",
+                    "Underlying and Root-causes",
+                    "Primary and Secondary"
+                ],
+                "correct_answer": "C",
+                "page_number": 22
+            },
+            {
+                "id": "Q4",
+                "topic": "Problem Analysis and Problem Trees",
+                "type": "MCQ",
+                "question": "In a problem tree, what does the 'trunk' represent?",
+                "options": [
+                    "The main problem",
+                    "The project's goal",
+                    "The resources needed",
+                    "The stakeholders involved"
+                ],
+                "correct_answer": "A",
+                "page_number": 23
+            },
+            {
+                "id": "Q5",
+                "topic": "Problem Analysis and Problem Trees",
+                "type": "MCQ",
+                "question": "Which of the following is a consequence of a high pregnancy rate among teenage girls, according to the problem analysis?",
+                "options": [
+                    "Increased school attendance",
+                    "Decreased unemployment",
+                    "Increased maternal morbidity",
+                    "Improved family income"
+                ],
+                "correct_answer": "C",
+                "page_number": 22
+            },
+            {
+                "id": "Q1",
+                "topic": "Objectives and SMART Approach",
+                "type": "MCQ",
+                "question": "What does the 'S' in SMART objectives stand for?",
+                "options": [
+                    "Specific",
+                    "Strategic",
+                    "Sensible",
+                    "Sustainable"
+                ],
+                "correct_answer": "A",
+                "page_number": 26
+            },
+            {
+                "id": "Q2",
+                "topic": "Objectives and SMART Approach",
+                "type": "MCQ",
+                "question": "Which of the following is NOT a characteristic of SMART objectives?",
+                "options": [
+                    "Specific",
+                    "Measurable",
+                    "Achievable",
+                    "Random"
+                ],
+                "correct_answer": "D",
+                "page_number": 26
+            },
+            {
+                "id": "Q3",
+                "topic": "Objectives and SMART Approach",
+                "type": "MCQ",
+                "question": "Why is it important for objectives to be 'Measurable' in the SMART framework?",
+                "options": [
+                    "To ensure objectives are easy to achieve",
+                    "To allow for tracking and assessing progress",
+                    "To make objectives more ambitious",
+                    "To ensure objectives are vague"
+                ],
+                "correct_answer": "B",
+                "page_number": 26
+            },
+            {
+                "id": "Q4",
+                "topic": "Objectives and SMART Approach",
+                "type": "MCQ",
+                "question": "In the SMART framework, why should objectives be 'Relevant'?",
+                "options": [
+                    "To ensure objectives are challenging",
+                    "To align with the broader goals and needs of the organization",
+                    "To make objectives easy to achieve",
+                    "To prioritize short-term gains"
+                ],
+                "correct_answer": "B",
+                "page_number": 26
+            },
+            {
+                "id": "Q5",
+                "topic": "Objectives and SMART Approach",
+                "type": "MCQ",
+                "question": "What does the 'T' in SMART objectives represent?",
+                "options": [
+                    "Time-bound",
+                    "Transformative",
+                    "Tangible",
+                    "Technical"
+                ],
+                "correct_answer": "A",
+                "page_number": 27
+            },
+            {
+                "id": "Q1",
+                "topic": "Logical Framework Approach",
+                "type": "MCQ",
+                "question": "What is the primary purpose of a Logical Framework Approach?",
+                "options": [
+                    "To make the project management rigid and inflexible.",
+                    "To identify the management team for a project.",
+                    "To strengthen project design, implementation, and evaluation.",
+                    "To ensure that the project has a large budget."
+                ],
+                "correct_answer": "C",
+                "page_number": 29
+            },
+            {
+                "id": "Q2",
+                "topic": "Logical Framework Approach",
+                "type": "MCQ",
+                "question": "What are the four levels of objectives in a Logical Framework?",
+                "options": [
+                    "Goal, Purpose, Outputs, Inputs",
+                    "Objective, Strategy, Plan, Execution",
+                    "Idea, Design, Implementation, Completion",
+                    "Vision, Mission, Strategy, Tactics"
+                ],
+                "correct_answer": "A",
+                "page_number": 30
+            },
+            {
+                "id": "Q3",
+                "topic": "Logical Framework Approach",
+                "type": "MCQ",
+                "question": "Which statement best describes the role of 'Assumptions' in a Logical Framework?",
+                "options": [
+                    "Assumptions are predictions about the project's budget.",
+                    "Assumptions are conditions that could affect the project's success.",
+                    "Assumptions are detailed descriptions of each project activity.",
+                    "Assumptions are the project's primary objectives."
+                ],
+                "correct_answer": "B",
+                "page_number": 35
+            },
+            {
+                "id": "Q4",
+                "topic": "Logical Framework Approach",
+                "type": "MCQ",
+                "question": "Why is it important to involve primary stakeholders in the development of a Logical Framework?",
+                "options": [
+                    "Because they provide the project's financial resources.",
+                    "Because they are responsible for writing the final report.",
+                    "Because they offer valuable insights and ensure the project meets their needs.",
+                    "Because they can predict the exact outcomes of the project."
+                ],
+                "correct_answer": "C",
+                "page_number": 31
+            },
+            {
+                "id": "Q5",
+                "topic": "Logical Framework Approach",
+                "type": "MCQ",
+                "question": "What question does the 'Indicators' column in a Logical Framework address?",
+                "options": [
+                    "What are the potential problems along the way?",
+                    "How will the project be funded?",
+                    "How do we know when we have achieved our objectives?",
+                    "Who will manage the project?"
+                ],
+                "correct_answer": "C",
+                "page_number": 30
+            },
+            {
+                "id": "Q1",
+                "topic": "Action Planning and Scheduling",
+                "type": "MCQ",
+                "question": "What is the purpose of a project budget in action planning?",
+                "options": [
+                    "To estimate the time required for project completion",
+                    "To prepare a valid estimate of the costs associated with project activities",
+                    "To determine the number of personnel needed",
+                    "To identify potential risks in the project"
+                ],
+                "correct_answer": "B",
+                "page_number": 44
+            },
+            {
+                "id": "Q2",
+                "topic": "Action Planning and Scheduling",
+                "type": "MCQ",
+                "question": "What should an activity planning worksheet help us consider?",
+                "options": [
+                    "Who will do what",
+                    "When activities will happen",
+                    "What types of inputs will be needed",
+                    "All of the above"
+                ],
+                "correct_answer": "D",
+                "page_number": 43
+            },
+            {
+                "id": "Q3",
+                "topic": "Action Planning and Scheduling",
+                "type": "MCQ",
+                "question": "Why should the action plan be viewed as a flexible document?",
+                "options": [
+                    "Because it is completed during the execution phase",
+                    "Because it needs to be updated based on project progress",
+                    "Because it includes only financial information",
+                    "Because it does not require stakeholder involvement"
+                ],
+                "correct_answer": "B",
+                "page_number": 43
+            },
+            {
+                "id": "Q4",
+                "topic": "Action Planning and Scheduling",
+                "type": "MCQ",
+                "question": "What is the starting point for developing an action plan?",
+                "options": [
+                    "Conducting a stakeholder analysis",
+                    "Completing the log frame",
+                    "Determining the project budget",
+                    "Performing a risk assessment"
+                ],
+                "correct_answer": "B",
+                "page_number": 43
+            },
+            {
+                "id": "Q5",
+                "topic": "Action Planning and Scheduling",
+                "type": "MCQ",
+                "question": "Which of the following is a key component of a project budget?",
+                "options": [
+                    "Time estimates for each activity",
+                    "Cost estimates for inputs and resources",
+                    "List of project stakeholders",
+                    "Schedule of project meetings"
+                ],
+                "correct_answer": "B",
+                "page_number": 44
+            },
+            {
+                "id": "Q1",
+                "topic": "Project Budgeting",
+                "type": "MCQ",
+                "question": "What is the main purpose of a project budget?",
+                "options": [
+                    "To reduce the project's overall expenses",
+                    "To prepare a valid estimate of the costs associated with project activities",
+                    "To ensure that all team members are paid equally",
+                    "To allocate resources randomly"
+                ],
+                "correct_answer": "B",
+                "page_number": 44
+            },
+            {
+                "id": "Q2",
+                "topic": "Project Budgeting",
+                "type": "MCQ",
+                "question": "What should be considered when developing a project budget?",
+                "options": [
+                    "Only the direct costs of materials",
+                    "Both cash and in-kind contributions",
+                    "Only the salaries of the project team",
+                    "The cost of office supplies"
+                ],
+                "correct_answer": "B",
+                "page_number": 44
+            },
+            {
+                "id": "Q3",
+                "topic": "Project Budgeting",
+                "type": "MCQ",
+                "question": "During which stage should the project budget be developed?",
+                "options": [
+                    "After completing the project",
+                    "In the final stage of project implementation",
+                    "At the early stages of project design",
+                    "Only if the project faces financial difficulties"
+                ],
+                "correct_answer": "C",
+                "page_number": 44
+            },
+            {
+                "id": "Q4",
+                "topic": "Project Budgeting",
+                "type": "MCQ",
+                "question": "What is the role of a finance specialist in project budgeting?",
+                "options": [
+                    "To ensure team members are satisfied with their salaries",
+                    "To help project design team make realistic estimates for project expenses",
+                    "To approve all expenditures without oversight",
+                    "To manage only the revenue side of the budget"
+                ],
+                "correct_answer": "B",
+                "page_number": 44
+            },
+            {
+                "id": "Q5",
+                "topic": "Project Budgeting",
+                "type": "MCQ",
+                "question": "Which of the following is NOT a component of a project budget?",
+                "options": [
+                    "Estimates for all inputs and resources",
+                    "Identification of all sources of revenue",
+                    "Random allocation of funds",
+                    "Cost share or leverage requirements"
+                ],
+                "correct_answer": "C",
+                "page_number": 44
+            },
+            {
+                "id": "Q1",
+                "topic": "Project Implementation",
+                "type": "MCQ",
+                "question": "What is the primary objective of project monitoring?",
+                "options": [
+                    "To assess the needs of the community",
+                    "To track the progress against planned activities",
+                    "To evaluate the success after project completion",
+                    "To train project staff"
+                ],
+                "correct_answer": "B",
+                "page_number": 45
+            },
+            {
+                "id": "Q2",
+                "topic": "Project Implementation",
+                "type": "MCQ",
+                "question": "Which component is not typically monitored in project management?",
+                "options": [
+                    "Staff performance",
+                    "Community social problems",
+                    "Procurement procedures",
+                    "Planned expenditure"
+                ],
+                "correct_answer": "B",
+                "page_number": 46
+            },
+            {
+                "id": "Q3",
+                "topic": "Project Implementation",
+                "type": "MCQ",
+                "question": "What is a key reason for conducting a baseline survey before project implementation?",
+                "options": [
+                    "To finalize the project budget",
+                    "To establish baseline data for comparison",
+                    "To recruit project staff",
+                    "To develop a stakeholder analysis"
+                ],
+                "correct_answer": "B",
+                "page_number": 46
+            },
+            {
+                "id": "Q4",
+                "topic": "Project Implementation",
+                "type": "MCQ",
+                "question": "What role does evaluation play in project management?",
+                "options": [
+                    "It assesses whether project objectives have been met",
+                    "It focuses solely on financial auditing",
+                    "It replaces the need for monitoring",
+                    "It is only concerned with stakeholder satisfaction"
+                ],
+                "correct_answer": "A",
+                "page_number": 49
+            },
+            {
+                "id": "Q5",
+                "topic": "Project Implementation",
+                "type": "MCQ",
+                "question": "What is a common timing for conducting an evaluation in a project lifecycle?",
+                "options": [
+                    "Before the project begins",
+                    "During the initial planning phase",
+                    "Midterm and end of the project",
+                    "Only after several years post-completion"
+                ],
+                "correct_answer": "C",
+                "page_number": 46
+            },
+            {
+                "id": "Q1",
+                "topic": "Monitoring and Reviewing",
+                "type": "MCQ",
+                "question": "What is the primary purpose of monitoring in a project?",
+                "options": [
+                    "To assess the project's impact after completion",
+                    "To track the project's progress and activities regularly",
+                    "To conduct a SWOT analysis",
+                    "To develop a budget for the project"
+                ],
+                "correct_answer": "B",
+                "page_number": 45
+            },
+            {
+                "id": "Q2",
+                "topic": "Monitoring and Reviewing",
+                "type": "MCQ",
+                "question": "Which of the following is NOT a component typically monitored in a project?",
+                "options": [
+                    "Project inputs",
+                    "Project outputs",
+                    "Project assumptions",
+                    "Project risks"
+                ],
+                "correct_answer": "C",
+                "page_number": 46
+            },
+            {
+                "id": "Q3",
+                "topic": "Monitoring and Reviewing",
+                "type": "MCQ",
+                "question": "What is the difference between monitoring and evaluation in project management?",
+                "options": [
+                    "Monitoring is done at the end of the project, while evaluation is ongoing.",
+                    "Monitoring focuses on inputs and outputs, while evaluation focuses on outcomes and impact.",
+                    "Monitoring is for external stakeholders, while evaluation is for internal stakeholders.",
+                    "There is no significant difference between monitoring and evaluation."
+                ],
+                "correct_answer": "B",
+                "page_number": 46
+            },
+            {
+                "id": "Q4",
+                "topic": "Monitoring and Reviewing",
+                "type": "MCQ",
+                "question": "Which of the following is a key element included in a Monitoring and Evaluation (M&E) plan?",
+                "options": [
+                    "Future project proposals",
+                    "Data collection methods and tools",
+                    "Stakeholder analysis",
+                    "Project budget forecasts"
+                ],
+                "correct_answer": "B",
+                "page_number": 46
+            },
+            {
+                "id": "Q5",
+                "topic": "Monitoring and Reviewing",
+                "type": "MCQ",
+                "question": "Why is it important to involve stakeholders in the monitoring and reviewing process?",
+                "options": [
+                    "To ensure stakeholders financially contribute to the project",
+                    "To identify and address stakeholder needs and expectations",
+                    "To reduce project costs",
+                    "To ensure the project manager has assistance in data collection"
+                ],
+                "correct_answer": "B",
+                "page_number": 45
+            },
+            {
+                "id": "Q1",
+                "topic": "Monitoring and Evaluation (M&E) Plan",
+                "type": "MCQ",
+                "question": "What is the primary objective of monitoring in a project?",
+                "options": [
+                    "To ensure budget is not exceeded",
+                    "To identify and solve problems during implementation",
+                    "To assess the impact of the project",
+                    "To develop new project strategies"
+                ],
+                "correct_answer": "B",
+                "page_number": 46
+            },
+            {
+                "id": "Q2",
+                "topic": "Monitoring and Evaluation (M&E) Plan",
+                "type": "MCQ",
+                "question": "Which of the following is a characteristic of a good indicator in an M&E plan?",
+                "options": [
+                    "It should be qualitative only",
+                    "It must be cost-effective",
+                    "It should be vague to cover multiple areas",
+                    "It should depend on personal judgments"
+                ],
+                "correct_answer": "B",
+                "page_number": 40
+            },
+            {
+                "id": "Q3",
+                "topic": "Monitoring and Evaluation (M&E) Plan",
+                "type": "MCQ",
+                "question": "What is the role of 'Assumptions' in a log frame?",
+                "options": [
+                    "They define the project's main objectives",
+                    "They outline the project budget",
+                    "They identify external factors that may affect project success",
+                    "They list the stakeholders involved in the project"
+                ],
+                "correct_answer": "C",
+                "page_number": 35
+            },
+            {
+                "id": "Q4",
+                "topic": "Monitoring and Evaluation (M&E) Plan",
+                "type": "MCQ",
+                "question": "What is the purpose of conducting a baseline survey before project implementation?",
+                "options": [
+                    "To establish project goals",
+                    "To gather initial data for comparison with future progress",
+                    "To evaluate the project's final impact",
+                    "To allocate resources effectively"
+                ],
+                "correct_answer": "B",
+                "page_number": 45
+            },
+            {
+                "id": "Q5",
+                "topic": "Monitoring and Evaluation (M&E) Plan",
+                "type": "MCQ",
+                "question": "What is the main aim of evaluation in the context of project implementation?",
+                "options": [
+                    "To adjust project budgets",
+                    "To measure project efficiency and impact",
+                    "To develop new project indicators",
+                    "To increase stakeholder involvement"
+                ],
+                "correct_answer": "B",
+                "page_number": 48
+            },
+            {
+                "id": "Q1",
+                "topic": "Types of Monitoring",
+                "type": "MCQ",
+                "question": "What is the main purpose of project monitoring?",
+                "options": [
+                    "To create a project budget",
+                    "To check the quality of outputs",
+                    "To track project activities against the plan",
+                    "To evaluate project impact"
+                ],
+                "correct_answer": "C",
+                "page_number": 45
+            },
+            {
+                "id": "Q2",
+                "topic": "Types of Monitoring",
+                "type": "MCQ",
+                "question": "Which of the following is an example of internal monitoring?",
+                "options": [
+                    "Monitoring project outputs",
+                    "Assessing the political environment",
+                    "Tracking staff performance",
+                    "Evaluating project impact"
+                ],
+                "correct_answer": "C",
+                "page_number": 47
+            },
+            {
+                "id": "Q3",
+                "topic": "Types of Monitoring",
+                "type": "MCQ",
+                "question": "What type of monitoring focuses on tracking the project's budget and non-financial resources?",
+                "options": [
+                    "Input Monitoring",
+                    "Output Monitoring",
+                    "Activity Monitoring",
+                    "Impact Monitoring"
+                ],
+                "correct_answer": "A",
+                "page_number": 45
+            },
+            {
+                "id": "Q4",
+                "topic": "Types of Monitoring",
+                "type": "MCQ",
+                "question": "Which level of monitoring focuses on ensuring that the expected results of interventions are achieved?",
+                "options": [
+                    "Input Monitoring",
+                    "Output Monitoring",
+                    "Activity Monitoring",
+                    "Impact Monitoring"
+                ],
+                "correct_answer": "B",
+                "page_number": 45
+            },
+            {
+                "id": "Q5",
+                "topic": "Types of Monitoring",
+                "type": "MCQ",
+                "question": "What is the focus of external monitoring?",
+                "options": [
+                    "Tracking internal resources like staff and budget",
+                    "Ensuring timely implementation of activities",
+                    "Evaluating the management style of the project manager",
+                    "Monitoring the financial health of the organization"
+                ],
+                "correct_answer": "B",
+                "page_number": 47
+            },
+            {
+                "id": "Q1",
+                "topic": "What is Evaluation?",
+                "type": "MCQ",
+                "question": "What is the primary objective of evaluation in project management?",
+                "options": [
+                    "To monitor the daily activities of the project",
+                    "To ascertain whether the project has achieved its intended objectives",
+                    "To allocate resources for the project",
+                    "To increase the project's budget"
+                ],
+                "correct_answer": "B",
+                "page_number": 49
+            },
+            {
+                "id": "Q2",
+                "topic": "What is Evaluation?",
+                "type": "MCQ",
+                "question": "Which of the following is NOT a specific criterion used in evaluation?",
+                "options": [
+                    "Efficiency",
+                    "Effectiveness",
+                    "Impact",
+                    "Flexibility"
+                ],
+                "correct_answer": "D",
+                "page_number": 49
+            },
+            {
+                "id": "Q3",
+                "topic": "What is Evaluation?",
+                "type": "MCQ",
+                "question": "When is evaluation typically conducted during a project?",
+                "options": [
+                    "Only at the start of the project",
+                    "Periodically, mid-term, at the end, and years after completion",
+                    "Every day",
+                    "Only when problems arise"
+                ],
+                "correct_answer": "B",
+                "page_number": 49
+            },
+            {
+                "id": "Q4",
+                "topic": "What is Evaluation?",
+                "type": "MCQ",
+                "question": "Who can conduct external evaluations of a project?",
+                "options": [
+                    "Project manager",
+                    "Assigned project staff",
+                    "Donors or consultants",
+                    "Community members"
+                ],
+                "correct_answer": "C",
+                "page_number": 49
+            },
+            {
+                "id": "Q5",
+                "topic": "What is Evaluation?",
+                "type": "MCQ",
+                "question": "Which of the following statements about evaluation is true?",
+                "options": [
+                    "It is only conducted at the end of a project.",
+                    "It provides recommendations for future project improvements.",
+                    "It focuses solely on financial aspects.",
+                    "It doesn't require any baseline data."
+                ],
+                "correct_answer": "B",
+                "page_number": 49
+            },
+            {
+                "id": "Q1",
+                "topic": "Criteria for Evaluation",
+                "type": "MCQ",
+                "question": "What is the primary objective of evaluation in project management?",
+                "options": [
+                    "To monitor project progress",
+                    "To ascertain whether the project has achieved its intended objectives",
+                    "To allocate resources efficiently",
+                    "To provide ongoing performance feedback to the project manager"
+                ],
+                "correct_answer": "B",
+                "page_number": 49
+            },
+            {
+                "id": "Q2",
+                "topic": "Criteria for Evaluation",
+                "type": "MCQ",
+                "question": "Which of the following is NOT a criterion used for evaluation by big organizations?",
+                "options": [
+                    "Efficiency",
+                    "Effectiveness",
+                    "Sustainability",
+                    "Impact"
+                ],
+                "correct_answer": "C",
+                "page_number": 49
+            },
+            {
+                "id": "Q3",
+                "topic": "Criteria for Evaluation",
+                "type": "MCQ",
+                "question": "What does 'Efficiency' measure in the context of project evaluation?",
+                "options": [
+                    "The extent of achievement of development objectives",
+                    "Whether the resources used for activities are appropriate in terms of output",
+                    "The impact of project implementation on the problem addressed",
+                    "The long-term sustainability of the project's outcomes"
+                ],
+                "correct_answer": "B",
+                "page_number": 49
+            },
+            {
+                "id": "Q4",
+                "topic": "Criteria for Evaluation",
+                "type": "MCQ",
+                "question": "When is an 'ex post evaluation' typically conducted?",
+                "options": [
+                    "During the implementation of the project",
+                    "At the end of the project",
+                    "Periodically throughout the project",
+                    "Years after the completion of the project"
+                ],
+                "correct_answer": "D",
+                "page_number": 49
+            },
+            {
+                "id": "Q5",
+                "topic": "Criteria for Evaluation",
+                "type": "MCQ",
+                "question": "Who can conduct external evaluations of a project?",
+                "options": [
+                    "Project manager",
+                    "Assigned project staff",
+                    "Donors or consultants",
+                    "Local community members"
+                ],
+                "correct_answer": "C",
+                "page_number": 49
+            },
+            {
+                "id": "Q1",
+                "topic": "Planning for Monitoring and Evaluation",
+                "type": "MCQ",
+                "question": "What is the primary objective of evaluation in project management?",
+                "options": [
+                    "To allocate resources efficiently",
+                    "To ascertain whether the project has achieved its intended objectives",
+                    "To monitor daily project activities",
+                    "To train project staff"
+                ],
+                "correct_answer": "B",
+                "page_number": 48
+            },
+            {
+                "id": "Q2",
+                "topic": "Planning for Monitoring and Evaluation",
+                "type": "MCQ",
+                "question": "Which of the following is NOT a type of monitoring commonly used in development work?",
+                "options": [
+                    "Management/administration",
+                    "Finance",
+                    "Project activities",
+                    "Cultural analysis"
+                ],
+                "correct_answer": "D",
+                "page_number": 47
+            },
+            {
+                "id": "Q3",
+                "topic": "Planning for Monitoring and Evaluation",
+                "type": "MCQ",
+                "question": "What does the 'If-and-Then' test in a log frame help to determine?",
+                "options": [
+                    "Project budget allocations",
+                    "Logical connection between objectives",
+                    "Stakeholder analysis",
+                    "Training requirements for staff"
+                ],
+                "correct_answer": "B",
+                "page_number": 36
+            },
+            {
+                "id": "Q4",
+                "topic": "Planning for Monitoring and Evaluation",
+                "type": "MCQ",
+                "question": "What should be included in a Monitoring and Evaluation (M&E) plan?",
+                "options": [
+                    "Only the project budget",
+                    "A description of intended results, indicators, targets, data source, baseline values, and responsible persons",
+                    "Just a list of indicators",
+                    "A list of project stakeholders"
+                ],
+                "correct_answer": "B",
+                "page_number": 46
+            },
+            {
+                "id": "Q5",
+                "topic": "Planning for Monitoring and Evaluation",
+                "type": "MCQ",
+                "question": "Which of the following is a characteristic of a good indicator?",
+                "options": [
+                    "It is qualitative only",
+                    "It is specific and measurable",
+                    "It is expensive to measure",
+                    "It requires complex data collection tools"
+                ],
+                "correct_answer": "B",
+                "page_number": 39
+            }
+        ],
+        "metadata": {
+            "generated_at": "2024-11-28T16:10:38.931579",
+            "total_questions": 110,
+            "book_title": "The Title of the Book",
+            "tool_used": "gpt-4o"
+        }
+    }
+}

@@ -1,1 +1,9 @@
 simplerllm
+chromadb
+openai
+pydantic
+json
+langchain
+langchain-openai
+PyMuPDF
+langchain-community

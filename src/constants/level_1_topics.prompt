@@ -1,5 +1,7 @@
 From the given context provided below in the backticks, generate me a list of important topics from it
 
+An important chapter in a PDF is a section that significantly advances the document’s main objectives or themes. Its importance is highlighted by key concepts, detailed analysis, or pivotal data. It can be identified through prominent headings, placement in the table of contents, frequent references, and emphasized content within the text.
+
 book_title = The Title of the Book
 total_topics - Thet total number of topics
 main_topics = list of main topics as string

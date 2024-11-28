@@ -9,6 +9,7 @@ options - list of exactly 4 options
 topic - {topic} - fixed
 correct_answer - option number(ABCD) for the correct answer
 page_number - Page number from which the question was generated
+explaination - The explaination of why the answer is correct, also mention the page number here
 
 Here is the context
 
