@@ -22,10 +22,10 @@ class AdvanceQuestionGenerator:
         pdf_name = pdf_name.replace(" ", "_").replace(".", "_")
         return pdf_name
     
-    def _process_documents_context(rag_output):
+    def _process_documents_context(self, rag_output):
         context = ""
         for document in rag_output:
-            context_n = document['documemt'] + "Page numner" + document['metadata']['page_number']
+            context_n = document['document'] + "Page number" + document['metadata']['page_number']
             context = context + context_n + "\n"
         return context
     
@@ -33,25 +33,29 @@ class AdvanceQuestionGenerator:
         all_text_str = self.pdf.extract_all_text(pdf_path)
         all_text = self.pdf.extract_all_text_page_wise(pdf_path)
         collection_name = self._process_input_pdf(pdf_path)
+        print("Text Extraction done")
         self.RAG.store_texts(all_text, collection_name=collection_name)
+        print("Storage Done")
 
         all_questions = []
 
         # Now generate all relevant Topics
         book_info = self.openai.generate_book_title(all_text_str)
-        for topic in book_info.get("main_topics"):
+        for i, topic in enumerate(book_info.get("main_topics")):
+            print("processing topic", topic, i+1, "/", len(book_info.get("main_topics")))
             results, output = self.RAG.fetch_relevant_documents(topic, collection_name, top_k=1)
             context = self._process_documents_context(output)
             questions = self.openai.generate_mcqs(context=context, topic=topic, n = 10)
-            for question in questions:
+            for question in questions['questions']:
                 question['source'] = output
 
 
-            all_questions.extend(questions)
+            all_questions.extend(questions['questions'])
         
         # Finally add a metadata Object
         obj = MetadataRAG(total_questions= len(all_questions), 
                           book_title=book_info.get("book_title"),
+                          tool_used= self.openai.model_name,
                           generation_method=self.RAG.method,
                           embedding_model=self.RAG.embeddings_model_name, 
                           vectore_store=self.RAG.vector_store)
@@ -62,13 +66,6 @@ class AdvanceQuestionGenerator:
         }
 
 
-        
-
-
-
-            # Now call the MCQ generation API
-        print(output)
-
 
     # Generate Level_2
 
@@ -76,7 +73,7 @@ if __name__ == "__main__":
     gen = AdvanceQuestionGenerator()
     res = gen.generate_level_2(r"data/Project Management.pdf")
 
-    with open("level_2json", "w") as f:
+    with open("level_2_auto_id.json", "w") as f:
         json.dump(res, f, indent=4)
 
 

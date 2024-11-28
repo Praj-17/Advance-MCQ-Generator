@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from typing import List, Optional
 import json
 from datetime import datetime
@@ -13,6 +13,18 @@ class Question(BaseModel):
     correct_answer: str
     page_number: int
     explanation: str
+
+    @field_validator('id')
+    def generate_id(cls, v):
+        # Always generate a new UUID, ignoring any input value
+        return str(uuid.uuid4())
+
+    class Config:
+        # Prevent assignment of unexpected fields
+        extra = 'forbid'
+        # Optionally, make the model immutable after creation
+        # allow_mutation = False
+
 
 class QuestionsModel(BaseModel):
     questions: List[Question]

@@ -96,12 +96,25 @@ class ChromaVectorStore:
         """
         collection = self.get_or_create_collection(collection_name)
 
+        # Fetch existing IDs to avoid duplicates
+        try:
+            existing_docs = collection.get(ids=[f"page_{page_num}" for page_num in pages.keys()])
+            existing_ids = set(existing_docs["ids"])
+        except Exception as e:
+            print(f"Error fetching existing document IDs: {e}")
+            existing_ids = set()
+
         texts = []
         embeddings = []
         metadatas = []
         ids = []
 
         for page_num, text in pages.items():
+            doc_id = f"page_{page_num}"
+            if doc_id in existing_ids:
+                print(f"Document with ID '{doc_id}' already exists. Skipping to avoid duplicates.")
+                continue  # Skip adding this document
+
             if not text.strip():
                 print(f"Warning: Page {page_num} is empty. Skipping.")
                 continue
@@ -113,7 +126,7 @@ class ChromaVectorStore:
             embeddings.append(embedding)
             texts.append(text)
             metadatas.append({"page_number": page_num})
-            ids.append(f"page_{page_num}")
+            ids.append(doc_id)
 
         if texts:
             try:
@@ -129,7 +142,6 @@ class ChromaVectorStore:
         else:
             print(f"No valid texts to add to collection '{collection_name}'.")
 
-    
     def fetch_relevant_documents(
         self, topic: str, collection_name: str, top_k: int = 5
     ) -> List[Dict[str, Any]]:
@@ -139,7 +151,7 @@ class ChromaVectorStore:
         :param topic: The topic to search for.
         :param collection_name: The name of the collection to query.
         :param top_k: The number of top documents to retrieve.
-        :return: A list of dictionaries containing the document, metadata, and confidence score.
+        :return: A tuple containing the raw results and a list of dictionaries with the document, metadata, and confidence score.
         """
         collection = self.get_or_create_collection(collection_name)
 
@@ -179,23 +191,30 @@ class ChromaVectorStore:
 
 
 if __name__ == "__main__":
-    chroma_store = ChromaVectorStore()
-    pdf_name = "Project_Management_pdf"
+    try:
+        chroma_store = ChromaVectorStore()
+        pdf_name = "Project_Management_pdf"
 
-    # with open("extracted_data.json", "r") as f:
-    #     data = json.load(f)
+        # Load data from 'extracted_data.json'
+        with open("extracted_data.json", "r") as f:
+            data = json.load(f)
 
-    # chroma_store.store_texts(data, collection_name=pdf_name)
+        # Store texts into the Chroma collection
+        chroma_store.store_texts(data, collection_name=pdf_name)
 
-    query = "Project Manager"
+        query = "Project Manager"
 
-    results, output = chroma_store.fetch_relevant_documents_2(query, pdf_name)
-    print(output)
+        # Fetch relevant documents using the correct method name
+        results, output = chroma_store.fetch_relevant_documents(query, pdf_name)
+        print(output)
 
-    with open("RAG_output.json", "w") as f:
-        json.dump(output, f, indent=4)
+        # Save outputs to JSON files
+        with open("RAG_output.json", "w") as f:
+            json.dump(output, f, indent=4)
 
-    with open("results.json", "w") as f:
-        json.dump(results, f, indent=4)
+        with open("results.json", "w") as f:
+            json.dump(results, f, indent=4)
 
-
+    except Exception as e:
+        print(f"An error occurred: {e}")
+        sys.exit(1)
