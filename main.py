@@ -6,8 +6,8 @@ import os
 import re
 
 class AdvanceQuestionGenerator:
-    def __init__(self) -> None:
-        self.openai = OpenAiRunnerClass()
+    def __init__(self, openai_key = None) -> None:
+        self.openai = OpenAiRunnerClass(openai_key)
         self.RAG = ChromaVectorStore()
         self.pdf = PDFtoText()
 

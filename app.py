@@ -4,18 +4,7 @@ import time
 import re
 import json
 import asyncio
-from dotenv import load_dotenv
 from main import AdvanceQuestionGenerator  # Import the new class
-
-# Load environment variables and OpenAI API key
-load_dotenv()
-openai_api_key = os.getenv("OPENAI_API_KEY")
-
-if not openai_api_key:
-    st.error("🚨 **OPENAI_API_KEY** is not set. Please provide it as an environment variable.")
-    st.stop()
-
-os.environ["OPENAI_API_KEY"] = openai_api_key
 
 # Set page configuration
 st.set_page_config(
@@ -49,7 +38,7 @@ st.markdown("""
 
 st.title("📄🤖 Interactive PDF Q&A Chatbot")
 
-# Initialize session state
+# Initialize session state variables
 if "messages" not in st.session_state:
     st.session_state.messages = []
 if "ingested_files" not in st.session_state:
@@ -60,29 +49,54 @@ if "level_1_results" not in st.session_state:
     st.session_state.level_1_results = {}
 if "level_2_results" not in st.session_state:
     st.session_state.level_2_results = {}
+if "OPENAI_API_KEY" not in st.session_state:
+    st.session_state.OPENAI_API_KEY = None
+if "api_key_valid" not in st.session_state:
+    st.session_state.api_key_valid = False
 
 # Fixed Collection Name
 COLLECTION_NAME = "default"
 
-# Sidebar for PDF upload and settings
+# Sidebar for API Key Input and PDF upload
 with st.sidebar:
-    st.header("📥 Upload and Process PDF(s)")
+    st.header("🔐 **OpenAI API Key**")
     
-    # Removed "Collection Settings" Section
-    # Since the collection name is fixed, we no longer need user input for it
+    # API Key Input Field
+    api_key_input = st.text_input(
+        "Enter your OpenAI API Key",
+        type="password",
+        placeholder="sk-...",
+        help="Your API key is used to access OpenAI's services. It is not stored or shared.",
+    )
+    
+    # Validate API Key
+    if api_key_input:
+        if api_key_input.startswith("sk-"):
+            st.session_state["OPENAI_API_KEY"] = api_key_input
+            st.session_state["api_key_valid"] = True
+            os.environ["OPENAI_API_KEY"] = api_key_input  # Set environment variable for use in the app
+            st.success("✅ **API Key is valid and has been set.**")
+        else:
+            st.session_state["api_key_valid"] = False
+            st.error("❌ **Invalid API Key.** It should start with `sk-`.")
+    else:
+        st.session_state["api_key_valid"] = False
+        st.warning("⚠️ **Please enter your OpenAI API Key to enable functionalities.**")
     
     st.markdown("---")
     
-    # File uploader
-    st.markdown("### Upload PDF File(s)")
+    st.header("📥 Upload and Process PDF(s)")
+    
+    # File uploader - Limited to single file (set to True for multiple files if needed)
     uploaded_files = st.file_uploader(
         "Choose PDF file(s)",
         type=["pdf"],
-        accept_multiple_files=True,
-        help="Upload one or multiple PDF files for processing."
+        accept_multiple_files=True,  # Set to False to limit to single file
+        help="Upload one or multiple PDF files for processing.",
+        disabled=not st.session_state.api_key_valid  # Disable uploader if API key is invalid
     )
     
-    if uploaded_files:
+    if uploaded_files and st.session_state.api_key_valid:
         temp_dir = os.getenv("TEMP_FILE_DIRECTORY", "temp_files")
         os.makedirs(temp_dir, exist_ok=True)
         
@@ -113,13 +127,23 @@ with st.sidebar:
                     st.warning(f"⚠️ Could not delete temporary file **{uploaded_file.name}**: {e}")
         
         st.markdown(f"**Total files ingested:** {len(st.session_state.ingested_files)}")
-    elif st.session_state.ingested_files:
+    elif st.session_state.ingested_files and st.session_state.api_key_valid:
         st.info(f"✅ {len(st.session_state.ingested_files)} file(s) already ingested. Ready to ask questions.")
+    elif not st.session_state.api_key_valid:
+        st.info("🔒 **Upload functionalities are disabled until a valid API Key is provided.**")
     
     st.markdown("---")
     st.markdown("### About")
     st.markdown("""
-    This application allows you to upload PDF files, process them, and interactively ask questions based on the content of the PDFs.
+    This application allows you to upload PDF files, process them, interactively ask questions, and generate MCQ questions based on the content of the PDFs.
+    The application uses OpenAI's API services to power the LLM use case.
+    """)
+    st.markdown("---")
+    st.markdown("### 💻 Deployment Considerations")
+    st.markdown("""
+    The application relies on APIs because it is being hosted on a server with 512MB of RAM and 1GB storage. Therefore, the usage of any local models like Ollama or HF is not feasible.
+    
+    However, given a significant amount of compute, we can always use local models as needed.
     """)
 
 # Define tabs
@@ -148,16 +172,16 @@ with tab_chat:
                                 st.json({"source": doc})
                 else:
                     st.write("ℹ️ No relevant segments found.")
-    
+
     # Chat input
     def response_generator(response):
         for word in response.split():
             yield word + " "
             time.sleep(0.05)
-    
+
     def normalize_text(text):
         return re.sub(r'[^\w\s]', '', text).lower().strip()
-    
+
     greeting_responses = {
         "hi": "👋 Hello! How can I assist you today?",
         "hello": "👋 Hello! What can I do for you?",
@@ -166,14 +190,14 @@ with tab_chat:
         "good afternoon": "☀️ Good afternoon! How can I help you today?",
         "good evening": "🌙 Good evening! How may I assist you?"
     }
-    
+
     if prompt := st.chat_input(placeholder="Type your question here..."):
         st.session_state.messages.append({"role": "user", "content": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
-    
+
         normalized_prompt = normalize_text(prompt)
-    
+
         if normalized_prompt in greeting_responses:
             response = greeting_responses[normalized_prompt]
             st.session_state.messages.append({"role": "assistant", "content": response})
@@ -201,13 +225,13 @@ with tab_chat:
                         st.error(f"❌ Error getting answer: {e}")
                         answer = "I'm sorry, I couldn't process your request."
                         documents = []
-    
+
             st.session_state.messages.append({
                 "role": "assistant",
                 "content": answer,
                 "documents": documents
             })
-    
+
             with st.chat_message("assistant"):
                 message_placeholder = st.empty()
                 full_response = ""
@@ -215,7 +239,7 @@ with tab_chat:
                     full_response += word
                     message_placeholder.markdown(full_response + "▌")
                 message_placeholder.markdown(full_response)
-    
+
             if documents:
                 st.markdown("**📄 Relevant Document Segments:**")
                 num_cols = 2
@@ -236,7 +260,13 @@ with tab_level1:
     if not st.session_state.ingested_files:
         st.warning("⚠️ Please upload and process at least one PDF file in the sidebar before generating questions.")
     else:
-        if st.button("Generate Level 1"):
+        # Disable the button if API key is invalid
+        generate_level1_disabled = not st.session_state.api_key_valid
+        
+        if generate_level1_disabled:
+            st.info("🔒 **Provide a valid OpenAI API Key to enable this functionality.**")
+        
+        if st.button("Generate Level 1", disabled=generate_level1_disabled):
             with st.spinner("🔄 Generating Level 1 questions..."):
                 try:
                     # For demonstration, process the first ingested file
@@ -272,7 +302,13 @@ with tab_level2:
     if not st.session_state.ingested_files:
         st.warning("⚠️ Please upload and process at least one PDF file in the sidebar before generating questions.")
     else:
-        if st.button("Generate Level 2"):
+        # Disable the button if API key is invalid
+        generate_level2_disabled = not st.session_state.api_key_valid
+        
+        if generate_level2_disabled:
+            st.info("🔒 **Provide a valid OpenAI API Key to enable this functionality.**")
+        
+        if st.button("Generate Level 2", disabled=generate_level2_disabled):
             with st.spinner("🔄 Generating Level 2 questions..."):
                 try:
                     # For demonstration, process the first ingested file

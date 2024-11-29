@@ -9,9 +9,9 @@ import os
 load_dotenv()
 
 class OpenAiRunnerClass:
-    def __init__(self, model_name: str = "gpt-4o") -> None:
+    def __init__(self, model_name: str = "gpt-4o", openai_key  = None) -> None:
         self.model_name = model_name
-        self.llm_instance = LLM.create(provider=LLMProvider.OPENAI, model_name=model_name)
+
         with open(r"src\constants\level_1_question_prompt.prompt", "r",encoding = "utf-8") as f:
             self.question_prompt = f.read()
         
@@ -20,6 +20,12 @@ class OpenAiRunnerClass:
         
         with open(r"src\constants\chat_prompt.prompt", "r",encoding = "utf-8") as f:
             self.chat_prompt = f.read()
+        
+        if not openai_key:
+            self.openai_key = os.getenv("OPENAI_API_KEY")
+        else:
+            self.openai_key = openai_key
+        self.llm_instance = LLM.create(provider=LLMProvider.OPENAI, model_name=model_name, api_key=self.openai_key)
     
     def _format_prompt_mcq(self, context: str, prompt: str, topic: str, n: int) -> str:
         return prompt.format(context=context, topic=topic, n=n)
