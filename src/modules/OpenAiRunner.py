@@ -1,7 +1,7 @@
 import asyncio
 from SimplerLLM.language.llm import LLM, LLMProvider
 from SimplerLLM.language.llm_addons import generate_pydantic_json_model as gen_json
-from src.constants import QuestionsModel, BookInfo, Metadata
+from src.constants import QuestionsModel, BookInfo, Metadata, ChatResponse
 import json
 from dotenv import load_dotenv
 import os
@@ -12,17 +12,24 @@ class OpenAiRunnerClass:
     def __init__(self, model_name: str = "gpt-4o") -> None:
         self.model_name = model_name
         self.llm_instance = LLM.create(provider=LLMProvider.OPENAI, model_name=model_name)
-        with open(r"src\constants\level_1_question_prompt.prompt", "r") as f:
+        with open(r"src\constants\level_1_question_prompt.prompt", "r",encoding = "utf-8") as f:
             self.question_prompt = f.read()
         
-        with open(r"src\constants\level_1_topics.prompt", "r") as f:
+        with open(r"src\constants\level_1_topics.prompt", "r",encoding = "utf-8") as f:
             self.topics_prompt = f.read()
+        
+        with open(r"src\constants\chat_prompt.prompt", "r",encoding = "utf-8") as f:
+            self.chat_prompt = f.read()
     
     def _format_prompt_mcq(self, context: str, prompt: str, topic: str, n: int) -> str:
         return prompt.format(context=context, topic=topic, n=n)
     
     def _format_prompt(self, context: str, prompt: str) -> str:
         return prompt.format(context=context)
+    
+    def _format_prompt_chat(self, context, question, prompt):
+            return prompt.format(context = context, question=question) 
+    
     
     async def generate_mcqs(self, context: str, topic: str, n: int = 5) -> dict:
         """
@@ -36,6 +43,13 @@ class OpenAiRunnerClass:
         # Parse the JSON response
         questions = json.loads(json_response.to_json_schema())
         return questions
+    async def chat(self, context, question):
+        prompt = self._format_prompt_chat(context=context, question=question, prompt=self.chat_prompt)
+
+        answer = gen_json(llm_instance=self.llm_instance, model_class=ChatResponse, prompt=prompt)
+
+        return answer.model_dump()
+
     
     async def generate_mcq_with_RAG(self, context: str, topic: str, documents: list, n: int = 5) -> dict:
         """
@@ -56,9 +70,10 @@ class OpenAiRunnerClass:
         json_response = await asyncio.to_thread(
             gen_json, model_class=BookInfo, prompt=prompt, llm_instance=self.llm_instance
         )
+
+        obj = BookInfo(**(json_response.model_dump()))
         # Parse the JSON response
-        book_info = json.loads(json_response.to_json_schema())
-        return book_info
+        return json.loads(obj.to_json_schema())
     
     async def generate_topics_and_mcqs(self, context: str) -> dict:
         """
@@ -89,13 +104,10 @@ class OpenAiRunnerClass:
             book_title=book_info.get("book_title", "")
         )
         
-        return {
-            "topics": book_info,
-            "questions": {
-                "questions": all_questions, 
-                "metadata": metadata.model_dump()
+        return  {
+                "metadata": metadata.model_dump(),
+                "questions": all_questions
             }
-        }
 
 # Example usage:
 # async def main():

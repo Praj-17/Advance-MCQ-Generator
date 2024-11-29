@@ -2,6 +2,8 @@ import asyncio
 from src import OpenAiRunnerClass, ChromaVectorStore, PDFtoText
 from src import MetadataRAG
 import json
+import os
+import re
 
 class AdvanceQuestionGenerator:
     def __init__(self) -> None:
@@ -38,9 +40,14 @@ class AdvanceQuestionGenerator:
         Returns:
             str: Sanitized PDF name.
         """
-        pdf_name = pdf_path.split('/')[-1]
-        pdf_name = pdf_name.replace(" ", "_").replace(".", "_")
-        return pdf_name
+        # Extract the base name of the file regardless of path separators
+        pdf_name = os.path.basename(pdf_path)
+        
+        # Replace spaces with underscores and remove other special characters
+        # This regex keeps alphanumerics, underscores, and dots (for the extension)
+        sanitized_pdf_name = re.sub(r'[^\w\.]', '_', pdf_name)
+        
+        return sanitized_pdf_name
 
     async def _process_documents_context(self, rag_output: list) -> str:
         """
@@ -58,6 +65,36 @@ class AdvanceQuestionGenerator:
             context += context_n
         return context
 
+    async def generate_chat_RAG(self, question, pdf_path):
+        collection_name = await self.ingest_input_pdf(pdf_path)
+
+        # Noe Fetch relevant documents for this question from this collection
+
+        results, output = await asyncio.to_thread(
+            self.RAG.fetch_relevant_documents, question, collection_name, top_k=3
+        ) 
+
+        context = await self._process_documents_context(output)
+        ans = await self.openai.chat(context=context, question=question)
+
+        return ans, output
+
+
+
+    
+
+    async def ingest_input_pdf(self, pdf_path):
+        all_text = await asyncio.to_thread(self.pdf.extract_all_text_page_wise, pdf_path)
+        
+        # Process PDF name
+        collection_name = await self._process_input_pdf(pdf_path)
+        
+        # Store texts in RAG vector store in a separate thread
+        await asyncio.to_thread(self.RAG.store_texts, all_text, collection_name=collection_name)
+
+        return collection_name
+
+
     # Generate Level_2
     async def generate_level_2(self, pdf_path: str) -> dict:
         """
@@ -71,15 +108,8 @@ class AdvanceQuestionGenerator:
         """
         # Extract all text and page-wise text from PDF in separate threads
         all_text_str = await asyncio.to_thread(self.pdf.extract_all_text, pdf_path)
-        all_text = await asyncio.to_thread(self.pdf.extract_all_text_page_wise, pdf_path)
-        
-        # Process PDF name
-        collection_name = await self._process_input_pdf(pdf_path)
-        print("Text Extraction done")
-        
-        # Store texts in RAG vector store in a separate thread
-        await asyncio.to_thread(self.RAG.store_texts, all_text, collection_name=collection_name)
-        print("Storage Done")
+
+        collection_name = await self.ingest_input_pdf(pdf_path)
 
         # Generate book information asynchronously
         book_info = await self.openai.generate_book_title(all_text_str)
@@ -152,7 +182,7 @@ async def main():
     pdf_path = r"data/Project Management.pdf"
     
     # Generate Level 2 questions
-    res = await gen.generate_level_2(pdf_path)
+    res = await gen.generate_level_1(pdf_path)
     
     # Save the results to a JSON file
     with open("level_2_auto_id.json", "w") as f:

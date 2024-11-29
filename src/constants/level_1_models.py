@@ -50,7 +50,7 @@ class QuestionsModel(BaseModel):
 class BookInfo(BaseModel):
     book_title: str
     total_topics: int
-    extraction_timestamp: Optional[str] = Field(default_factory=lambda: datetime.now().isoformat())
+    extraction_timestamp: str = Field(default_factory=lambda: datetime.now().isoformat())
     main_topics: List[str]
 
     def to_json_schema(self) -> str:

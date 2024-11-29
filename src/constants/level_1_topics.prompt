@@ -1,15 +1,19 @@
-From the given context provided below in the backticks, generate me a list of important topics from it
+From the given a book text provided below in the backticks, generate me a list of important topics  and the title of the book from it
 
 An important chapter in a PDF is a section that significantly advances the document’s main objectives or themes. Its importance is highlighted by key concepts, detailed analysis, or pivotal data. It can be identified through prominent headings, placement in the table of contents, frequent references, and emphasized content within the text.
 
 there can also, be subtopics and topics without separate , group subtopics like this in a single topic.
 Make sure the Topics do not exceed 10
 
-book_title = The Title of the Book
+This is how to identify the title of the book_title
+
+A book title is the designated name of the work, typically appearing at the beginning of raw text. It often stands alone on a separate line, may be preceded by labels like “Title:”, and is usually concise. By its position and contextual cues, the title is distinguished from the main body content within the raw text.
+
+book_title = identified title of the book
 total_topics - Thet total number of topics
 main_topics = list of main topics as string
 
-Here is the context
+Here is the book text
 
 ```
 {context}
