@@ -4,6 +4,7 @@ import time
 import re
 import json
 import asyncio
+import datetime  # Import datetime module for timestamps
 from main import AdvanceQuestionGenerator  # Import the updated class
 
 # Set page configuration
@@ -61,6 +62,8 @@ if "temperature" not in st.session_state:
     st.session_state.temperature = 0.7  # Default temperature
 if "uploaded_file" not in st.session_state:
     st.session_state.uploaded_file = None  # Store the uploaded file object
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []  # Store chat interactions as list of dictionaries
 
 # Sidebar for API Key Input and PDF upload
 with st.sidebar:
@@ -184,16 +187,14 @@ with st.sidebar:
     st.markdown("### 💻 Deployment Considerations")
     st.markdown("""
     The application relies on APIs because it is being hosted on a server with 512MB of RAM and 1GB storage. Therefore, the usage of any local models like Ollama or HF is not feasible.
-    
+
     However, given a significant amount of compute, we can always use local models as needed.
     """)
 
 # Define tabs
 tab_chat, tab_level1, tab_level2, tab_faqs, tab_samples, tab_contact = st.tabs(
-    ["💬 Chat", "🟢 Level 1", "🟢 Level 2", "❓ FAQs", "📄 Sample Queries", "📞 Contact Me"]
+    ["💬 Chat", "🟢 Level 1", "🟢 Level 2", "❓ FAQs", "📄 Sample Outputs", "📞 Contact Me"]
 )
-
-# The rest of your code remains unchanged...
 
 # Chat tab
 with tab_chat:
@@ -207,6 +208,7 @@ with tab_chat:
         # Clear outputs button
         if st.button("🗑️ Clear Chat History"):
             st.session_state.messages = []
+            st.session_state.chat_history = []
             st.rerun()
         
         # Display chat messages
@@ -221,9 +223,9 @@ with tab_chat:
                         for idx, doc in enumerate(message['documents']):
                             col = cols[idx % num_cols]
                             with col:
-                                with st.expander(f"📄 Segment {idx + 1}"):
-                                    # Display each document as JSON with a 'source' key
-                                    st.json({"source": doc})
+                                # Display each document without using an expander
+                                st.markdown(f"**Segment {idx + 1}:**")
+                                st.json({"source": doc})
                     else:
                         st.write("ℹ️ No relevant segments found.")
 
@@ -245,18 +247,19 @@ with tab_chat:
             "good evening": "🌙 Good evening! How may I assist you?"
         }
 
-        if prompt := st.chat_input(placeholder="Type your question here..."):
+        # Handle chat input
+        prompt = st.chat_input(placeholder="Type your question here...")
+        if prompt:
+            normalized_prompt = normalize_text(prompt)
+            is_greeting = normalized_prompt in greeting_responses
+
             st.session_state.messages.append({"role": "user", "content": prompt})
             with st.chat_message("user"):
                 st.markdown(prompt)
 
-            normalized_prompt = normalize_text(prompt)
-
-            if normalized_prompt in greeting_responses:
+            if is_greeting:
                 response = greeting_responses[normalized_prompt]
-                st.session_state.messages.append({"role": "assistant", "content": response})
-                with st.chat_message("assistant"):
-                    st.markdown(response)
+                documents = []
             else:
                 with st.spinner("🤔 Thinking..."):
                     try:
@@ -267,38 +270,56 @@ with tab_chat:
                                 prompt, st.session_state.collection_name
                             )
                         )
-                        answer = answer_data.get('answer', 'No answer provided.')
+                        response = answer_data.get('answer', 'No answer provided.')
                     except Exception as e:
                         st.error(f"❌ Error getting answer: {e}")
-                        answer = "I'm sorry, I couldn't process your request."
+                        response = "I'm sorry, I couldn't process your request."
                         documents = []
 
-                st.session_state.messages.append({
-                    "role": "assistant",
-                    "content": answer,
-                    "documents": documents
-                })
+            st.session_state.messages.append({
+                "role": "assistant",
+                "content": response,
+                "documents": documents if not is_greeting else []
+            })
 
-                with st.chat_message("assistant"):
-                    message_placeholder = st.empty()
-                    full_response = ""
-                    for word in response_generator(answer):
-                        full_response += word
-                        message_placeholder.markdown(full_response + "▌")
-                    message_placeholder.markdown(full_response)
+            # Append to chat history
+            st.session_state.chat_history.append({
+                "input": prompt,
+                "output": response,
+                "segments": documents if not is_greeting else [],
+                "timestamp": datetime.datetime.now().isoformat()
+            })
 
-                if documents:
-                    st.markdown("**📄 Relevant Document Segments:**")
-                    num_cols = 2
-                    cols = st.columns(num_cols)
-                    for idx, doc in enumerate(documents):
-                        col = cols[idx % num_cols]
-                        with col:
-                            with st.expander(f"📄 Segment {idx + 1}"):
-                                # Display each document as JSON with a 'source' key
-                                st.json({"source": doc})
-                else:
-                    st.write("ℹ️ No relevant segments found.")
+            with st.chat_message("assistant"):
+                message_placeholder = st.empty()
+                full_response = ""
+                for word in response_generator(response):
+                    full_response += word
+                    message_placeholder.markdown(full_response + "▌")
+                message_placeholder.markdown(full_response)
+
+            if documents:
+                st.markdown("**📄 Relevant Document Segments:**")
+                num_cols = 2
+                cols = st.columns(num_cols)
+                for idx, doc in enumerate(documents):
+                    col = cols[idx % num_cols]
+                    with col:
+                        # Display each document without using an expander
+                        st.markdown(f"**Segment {idx + 1}:**")
+                        st.json({"source": doc})
+            elif not is_greeting:
+                st.write("ℹ️ No relevant segments found.")
+        
+        # Now, after processing the new input, we can display the download button
+        if st.session_state.chat_history:
+            chat_history_json = json.dumps(st.session_state.chat_history, indent=4, default=str)
+            st.download_button(
+                label="📥 Download Chat History",
+                data=chat_history_json,
+                file_name="chat_history.json",
+                mime="application/json"
+            )
 
 # Level 1 Generation tab
 with tab_level1:
@@ -415,45 +436,48 @@ with tab_faqs:
         with st.expander(f"Q: {faq['question']}"):
             st.write(f"A: {faq['answer']}")
 
-# Sample Queries tab
+# Sample Outputs tab
 with tab_samples:
-    st.header("📄 Sample Queries")
-    
-    json_file_path = "src/constants/example_queries.json"
-    
-    if os.path.exists(json_file_path):
-        try:
-            with open(json_file_path, 'r', encoding='utf-8') as f:
-                sample_queries = json.load(f)
-        except json.JSONDecodeError:
-            st.error("❌ Invalid JSON file. Please check the file format.")
-            sample_queries = []
-    else:
-        st.warning(f"⚠️ JSON file not found at path: `{json_file_path}`")
-        sample_queries = []
-    
-    pdf_url = "https://github.com/Praj-17/PDF-RAG-LLAMA/blob/main/Data/IARC%20Sci%20Pub%20163_Chapter%203.pdf"
+        # Sample PDF download link
+    pdf_url = "https://file.notion.so/f/f/4e5eef6f-0e71-4510-94ea-9060620f5b8d/430448d6-64c6-4747-950b-bb7972032c72/Project_Management.pdf?table=block&id=14a6b20a-8ac1-80dd-ad9c-dfaee829d20b&spaceId=4e5eef6f-0e71-4510-94ea-9060620f5b8d&expirationTimestamp=1733061600000&signature=-nOP1Nw3VvUkVRTL4XcrZQbcllBNCB14E-W56ZVUUP0&downloadName=Project+Management.pdf"
     st.markdown(f"[📥 Download Sample PDF]({pdf_url})")
+    st.header("📄 Sample Outputs for All Tabs")
     
-    if sample_queries:
-        st.markdown("### 📚 Here are some sample queries and their answers created from the above PDF:")
+    # Placeholders for JSON file paths
+    sample_chat_json_path = "src/constants/chat_history.json"
+    sample_level1_json_path = "src/constants/level_1_questions_Project_Management.pdf.json"
+    sample_level2_json_path = "src/constants/level_2_questions_Project_Management.pdf.json"
     
-        for query in sample_queries:
-            st.subheader(f"Q: {query['question']}")
-            st.write(f"A: {query['answer']}")
-            if query.get('documents'):
-                st.markdown("**📄 Relevant Document Segments:**")
-                num_cols = 3
-                cols = st.columns(num_cols)
-                for doc in query['documents']:
-                    col = cols[doc['index'] % num_cols]
-                    with col:
-                        with st.expander(f"📄 Segment {doc['index'] + 1}"):
-                            st.write(doc['text'])
-            else:
-                st.write("ℹ️ No relevant segments found.")
+    # Sample Chat Outputs
+    st.subheader("💬 Sample Chat Outputs")
+    if os.path.exists(sample_chat_json_path):
+        with open(sample_chat_json_path, 'r', encoding='utf-8') as f:
+            sample_chat = json.load(f)
+        with st.expander("View Sample Chat JSON"):
+            st.json(sample_chat)
     else:
-        st.info("ℹ️ No sample queries to display. Please ensure the JSON file path is correct and the file is properly formatted.")
+        st.info("ℹ️ Sample chat JSON file not found. Please ensure the path is correct.")
+    
+    # Sample Level 1 Outputs
+    st.subheader("🟢 Sample Level 1 Outputs")
+    if os.path.exists(sample_level1_json_path):
+        with open(sample_level1_json_path, 'r', encoding='utf-8') as f:
+            sample_level1 = json.load(f)
+        with st.expander("View Sample Level 1 JSON"):
+            st.json(sample_level1)
+    else:
+        st.info("ℹ️ Sample Level 1 JSON file not found. Please ensure the path is correct.")
+    
+    # Sample Level 2 Outputs
+    st.subheader("🟢 Sample Level 2 Outputs")
+    if os.path.exists(sample_level2_json_path):
+        with open(sample_level2_json_path, 'r', encoding='utf-8') as f:
+            sample_level2 = json.load(f)
+        with st.expander("View Sample Level 2 JSON"):
+            st.json(sample_level2)
+    else:
+        st.info("ℹ️ Sample Level 2 JSON file not found. Please ensure the path is correct.")
+    
 
 # Contact tab
 with tab_contact:
@@ -461,19 +485,16 @@ with tab_contact:
     st.write("Feel free to reach out through any of the following platforms 😊:")
     
     st.markdown("### 📧 Email")
-    if st.button("✉️ Send Email"):
-        st.write("mailto:pwaykos1@gmail.com")
+    st.write("pwaykos1@gmail.com")
     
     st.markdown("### 📱 Phone")
-    if st.button("📞 Call 724-954-2810"):
-        st.write("tel:+17249542810")
+    st.write("+1 724-954-2810")
     
     st.markdown("### 🔗 LinkedIn")
-    st.markdown("[![LinkedIn](https://img.icons8.com/color/48/000000/linkedin.png)](https://www.linkedin.com/in/your-linkedin-profile)")
+    st.markdown("[![LinkedIn](https://img.icons8.com/color/48/000000/linkedin.png)](https://www.linkedin.com/in/prajwal-waykole-3b5b00167/)")
     
     st.markdown("### 🐙 GitHub")
     st.markdown("[![GitHub](https://img.icons8.com/ios-glyphs/30/000000/github.png)](https://github.com/praj-17)")
     
     st.markdown("### 📄 Resume")
-
     st.markdown("[![Resume](https://img.icons8.com/doodle/48/000000/resume.png)](https://drive.google.com/file/d/1OiSCu4e_1R7cawKSU80cr63Cd2-4OVq7/view?usp=drivesdk)")
