@@ -11,6 +11,8 @@ load_dotenv()
 class OpenAiRunnerClass:
     def __init__(self, model_name: str = "gpt-4o", openai_key  = None) -> None:
         self.model_name = model_name
+        if not model_name:
+            self.model_name = "gpt-4o"
 
         with open(r"src\constants\level_1_question_prompt.prompt", "r",encoding = "utf-8") as f:
             self.question_prompt = f.read()
@@ -25,7 +27,7 @@ class OpenAiRunnerClass:
             self.openai_key = os.getenv("OPENAI_API_KEY")
         else:
             self.openai_key = openai_key
-        self.llm_instance = LLM.create(provider=LLMProvider.OPENAI, model_name=model_name, api_key=self.openai_key)
+        self.llm_instance = LLM.create(provider=LLMProvider.OPENAI, model_name=self.model_name, api_key=self.openai_key)
     
     def _format_prompt_mcq(self, context: str, prompt: str, topic: str, n: int) -> str:
         return prompt.format(context=context, topic=topic, n=n)
@@ -46,6 +48,7 @@ class OpenAiRunnerClass:
         json_response = await asyncio.to_thread(
             gen_json, model_class=QuestionsModel, prompt=prompt, llm_instance=self.llm_instance
         )
+
         # Parse the JSON response
         questions = json.loads(json_response.to_json_schema())
         return questions
@@ -77,9 +80,31 @@ class OpenAiRunnerClass:
             gen_json, model_class=BookInfo, prompt=prompt, llm_instance=self.llm_instance
         )
 
-        obj = BookInfo(**(json_response.model_dump()))
+        # obj = BookInfo(**(json_response.model_dump()))
         # Parse the JSON response
-        return json.loads(obj.to_json_schema())
+
+        if isinstance(json_response, BookInfo):
+            print("In If")
+            ans = json_response.to_json_schema()
+        elif isinstance(json_response, str):
+            print("In elIf")
+            j = json.loads(json_response)
+            obj = BookInfo(**j)
+            ans =  obj.to_json_schema()
+        else:
+            raise ValueError("OpenAI did not return a Valid Output Type")
+        
+        if isinstance(ans, str):
+            return json.loads(ans)
+        elif isinstance(ans, dict):
+            return ans
+        elif isinstance(ans, BookInfo):
+            ans = ans.to_json_schema()
+            return json.loads(ans)
+        else:
+            raise ValueError("OpenAI did not return a Valid Output Type")
+
+
     
     async def generate_topics_and_mcqs(self, context: str) -> dict:
         """
@@ -87,6 +112,8 @@ class OpenAiRunnerClass:
         """
         # Generate book information
         book_info = await self.generate_book_title(context)
+        print("Generated book Title", book_info, type(book_info))
+
         main_topics = book_info.get("main_topics", [])
         
         # Create tasks for generating MCQs for each topic

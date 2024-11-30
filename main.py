@@ -6,29 +6,115 @@ import os
 import re
 
 class AdvanceQuestionGenerator:
-    def __init__(self, openai_key = None) -> None:
-        self.openai = OpenAiRunnerClass(openai_key)
+    def __init__(self, openai_key=None, model_name=None) -> None:
+        self.openai = OpenAiRunnerClass(model_name=model_name, openai_key=openai_key)
         self.RAG = ChromaVectorStore()
         self.pdf = PDFtoText()
+        self.ingested_pdfs = []  # List to keep track of ingested PDFs
+        self.collection_texts = {}  # Dict to map collection_name to extracted text
 
-    # Generate Level_1
-    async def generate_level_1(self, pdf_path: str) -> dict:
+    async def ingest_input_pdf(self, pdf_path):
+        # Process PDF name
+        collection_name = await self._process_input_pdf(pdf_path)
+        
+        if pdf_path in self.ingested_pdfs:
+            print(f"{pdf_path} is already ingested.")
+            return collection_name
+
+        # Extract all text and page-wise text from PDF in separate threads
+        all_text_page_wise = await asyncio.to_thread(self.pdf.extract_all_text_page_wise, pdf_path)
+        all_text = await asyncio.to_thread(self.pdf.extract_all_text, pdf_path)
+
+        # Store the extracted text
+        self.collection_texts[collection_name] = all_text
+
+        # Store texts in RAG vector store in a separate thread
+        await asyncio.to_thread(self.RAG.store_texts, all_text_page_wise, collection_name=collection_name)
+
+        self.ingested_pdfs.append(pdf_path)
+
+        return collection_name
+
+    async def generate_level_1(self, collection_name: str) -> dict:
         """
-        Asynchronously generate Level 1 questions from a PDF.
+        Asynchronously generate Level 1 questions from the ingested collection.
 
         Args:
-            pdf_path (str): Path to the input PDF file.
+            collection_name (str): Name of the collection.
 
         Returns:
             dict: Generated topics and questions.
         """
-        # Extract all text from PDF in a separate thread
-        all_text = await asyncio.to_thread(self.pdf.extract_all_text, pdf_path)
-        
+        # Retrieve the extracted text
+        all_text = self.collection_texts.get(collection_name)
+        if not all_text:
+            raise ValueError(f"No extracted text found for collection {collection_name}")
+
         # Generate topics and MCQs using OpenAI
         res = await self.openai.generate_topics_and_mcqs(context=all_text)
 
         return res
+
+    async def generate_level_2(self, collection_name: str) -> dict:
+        """
+        Asynchronously generate Level 2 questions from the ingested collection using Retrieval-Augmented Generation (RAG).
+
+        Args:
+            collection_name (str): Name of the collection.
+
+        Returns:
+            dict: Metadata and generated questions.
+        """
+        # Retrieve the extracted text
+        all_text_str = self.collection_texts.get(collection_name)
+        if not all_text_str:
+            raise ValueError(f"No extracted text found for collection {collection_name}")
+
+        # Generate book information asynchronously
+        book_info = await self.openai.generate_book_title(all_text_str)
+        main_topics = book_info.get("main_topics", [])
+
+        all_questions = []
+
+        # Create a list of tasks for each topic to generate MCQs concurrently
+        tasks = [
+            self._process_topic(topic, collection_name)
+            for topic in main_topics
+        ]
+
+        # Execute all tasks concurrently
+        questions_list = await asyncio.gather(*tasks)
+
+        # Aggregate all questions
+        for questions in questions_list:
+            all_questions.extend(questions)
+
+        # Create metadata object
+        obj = MetadataRAG(
+            total_questions=len(all_questions), 
+            book_title=book_info.get("book_title", ""),
+            tool_used=self.openai.model_name,
+            generation_method=self.RAG.method,
+            embedding_model=self.RAG.embeddings_model_name, 
+            vectore_store=self.RAG.vector_store
+        )
+
+        return {
+            "metadata": obj.model_dump(),
+            "questions": all_questions
+        }
+
+    async def generate_chat_RAG(self, question, collection_name):
+        # Fetch relevant documents for this question from this collection
+
+        results, output = await asyncio.to_thread(
+            self.RAG.fetch_relevant_documents, question, collection_name, top_k=3
+        ) 
+
+        context = await self._process_documents_context(output)
+        ans = await self.openai.chat(context=context, question=question)
+
+        return ans, output
 
     async def _process_input_pdf(self, pdf_path: str) -> str:
         """
@@ -65,93 +151,12 @@ class AdvanceQuestionGenerator:
             context += context_n
         return context
 
-    async def generate_chat_RAG(self, question, pdf_path):
-        collection_name = await self.ingest_input_pdf(pdf_path)
-
-        # Noe Fetch relevant documents for this question from this collection
-
-        results, output = await asyncio.to_thread(
-            self.RAG.fetch_relevant_documents, question, collection_name, top_k=3
-        ) 
-
-        context = await self._process_documents_context(output)
-        ans = await self.openai.chat(context=context, question=question)
-
-        return ans, output
-
-
-
-    
-
-    async def ingest_input_pdf(self, pdf_path):
-        all_text = await asyncio.to_thread(self.pdf.extract_all_text_page_wise, pdf_path)
-        
-        # Process PDF name
-        collection_name = await self._process_input_pdf(pdf_path)
-        
-        # Store texts in RAG vector store in a separate thread
-        await asyncio.to_thread(self.RAG.store_texts, all_text, collection_name=collection_name)
-
-        return collection_name
-
-
-    # Generate Level_2
-    async def generate_level_2(self, pdf_path: str) -> dict:
-        """
-        Asynchronously generate Level 2 questions from a PDF using Retrieval-Augmented Generation (RAG).
-
-        Args:
-            pdf_path (str): Path to the input PDF file.
-
-        Returns:
-            dict: Metadata and generated questions.
-        """
-        # Extract all text and page-wise text from PDF in separate threads
-        all_text_str = await asyncio.to_thread(self.pdf.extract_all_text, pdf_path)
-
-        collection_name = await self.ingest_input_pdf(pdf_path)
-
-        # Generate book information asynchronously
-        book_info = await self.openai.generate_book_title(all_text_str)
-        main_topics = book_info.get("main_topics", [])
-
-        all_questions = []
-
-        # Create a list of tasks for each topic to generate MCQs concurrently
-        tasks = [
-            self._process_topic(topic, all_text_str, collection_name)
-            for topic in main_topics
-        ]
-
-        # Execute all tasks concurrently
-        questions_list = await asyncio.gather(*tasks)
-
-        # Aggregate all questions
-        for questions in questions_list:
-            all_questions.extend(questions)
-
-        # Create metadata object
-        obj = MetadataRAG(
-            total_questions=len(all_questions), 
-            book_title=book_info.get("book_title", ""),
-            tool_used=self.openai.model_name,
-            generation_method=self.RAG.method,
-            embedding_model=self.RAG.embeddings_model_name, 
-            vectore_store=self.RAG.vector_store
-        )
-
-        return {
-            "metadata": obj.model_dump(),
-            "questions": all_questions
-        }
-
-    async def _process_topic(self, topic: str, context_str: str, collection_name: str) -> list:
+    async def _process_topic(self, topic: str, collection_name: str) -> list:
         """
         Asynchronously process a single topic to generate MCQs.
 
         Args:
             topic (str): The topic for which to generate questions.
-            context_str (str): The context string extracted from the PDF.
             collection_name (str): Name of the RAG collection.
 
         Returns:
@@ -175,19 +180,3 @@ class AdvanceQuestionGenerator:
             question['source'] = output
         
         return questions.get('questions', [])
-
-# Example usage
-async def main():
-    gen = AdvanceQuestionGenerator()
-    pdf_path = r"data/Project Management.pdf"
-    
-    # Generate Level 2 questions
-    res = await gen.generate_level_1(pdf_path)
-    
-    # Save the results to a JSON file
-    with open("level_2_auto_id.json", "w") as f:
-        json.dump(res, f, indent=4)
-    print("Level 2 questions generated and saved to level_2_auto_id.json")
-
-if __name__ == "__main__":
-    asyncio.run(main())
