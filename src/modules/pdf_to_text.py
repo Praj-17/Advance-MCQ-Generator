@@ -1,80 +1,131 @@
-import os
-import fitz
+import fitz  # PyMuPDF
 
-class PDFtoText():
-    def __init__(self) -> None:
+class PDFtoText:
+    def __init__(self):
         pass
 
     def open_pdf(self, pdf):
-        if os.path.exists(str(pdf)) or isinstance(pdf,bytes):
-                self.pdf = fitz.open(pdf)
-                self.page_count = self.pdf.page_count
-                return self.pdf
-                # self.pdf.close()
+        """
+        Opens a PDF file from a file-like object or bytes.
+
+        Args:
+            pdf: The PDF file to open. Can be bytes or a file-like object.
+
+        Returns:
+            pdf_doc: The opened PDF document.
+        """
+        if not pdf:
+            raise ValueError("PDF file is None or empty")
+
+        if isinstance(pdf, bytes):
+            pdf_doc = fitz.open(stream=pdf, filetype='pdf')
+        elif hasattr(pdf, 'read'):
+            pdf.seek(0)  # Reset file pointer to the beginning
+            pdf_bytes = pdf.read()
+            pdf_doc = fitz.open(stream=pdf_bytes, filetype='pdf')
         else:
-            raise ValueError(f"PDF path is incorrect", pdf)
+            raise ValueError("Invalid PDF input. Must be bytes or a file-like object.")
+
+        return pdf_doc
+
     def extract_all_text(self, pdf):
-         # Open the PDF file
-        if not pdf: return None
-        self.pdf = self.open_pdf(pdf)
-        
-        all_text = ''
+        """
+        Extracts all text from the PDF.
 
-        # Iterate through all pages
-        for page_number in range(self.page_count) :
-            # Get the page
-            page = self.pdf[page_number]
+        Args:
+            pdf: The PDF file to extract text from (bytes or file-like object).
 
-            # Extract text from the page
-            text = page.get_text()
-            all_text += text
-
-            # Print or process the extracted text as needed
-            # print(f"Page {page_number + 1}:\n{text}\n")
+        Returns:
+            all_text: The extracted text as a single string.
+        """
+        if not pdf:
+            return None
+        with self.open_pdf(pdf) as doc:
+            all_text = ''
+            # Iterate through all pages
+            for page_number in range(doc.page_count):
+                # Get the page
+                page = doc[page_number]
+                # Extract text from the page
+                text = page.get_text()
+                all_text += text
         return all_text
-    
+
     def extract_all_text_page_wise(self, pdf):
-         # Open the PDF file
-        if not pdf: return None
-        self.pdf = self.open_pdf(pdf)
-        
-        all_text = {}
+        """
+        Extracts text from the PDF page by page.
 
-        # Iterate through all pages
-        for page_number in range(self.page_count) :
-            # Get the page
-            page = self.pdf[page_number]
+        Args:
+            pdf: The PDF file to extract text from (bytes or file-like object).
 
-            # Extract text from the page
-            text = page.get_text()
-            all_text[str(page_number + 1)] = text
+        Returns:
+            all_text: A dictionary with page numbers as keys and page text as values.
+        """
+        if not pdf:
+            return None
+        with self.open_pdf(pdf) as doc:
+            all_text = {}
+            # Iterate through all pages
+            for page_number in range(doc.page_count):
+                # Get the page
+                page = doc[page_number]
+                # Extract text from the page
+                text = page.get_text()
+                all_text[str(page_number + 1)] = text
         return all_text
-    def extract_text_from_single_page(self,pdf, page_number):
-        if not pdf: return None
-        self.pdf = self.open_pdf(pdf)
-        if page_number -1> self.page_count:
-             raise ValueError("Invlaid pagenumber")
-        else:
-             return self.pdf[page_number-1].get_text()
-    def extract_text_from_interval(self,pdf,page_number, interval =1):
-        if not pdf: return None
-        self.pdf = self.open_pdf(pdf)
-        text = ""
-        if page_number > self.page_count:
-            raise ValueError("Invlaid pagenumber")
-        else:
-            # Calculate the start and end pages
-            start_page = max(0, page_number - interval)
-            end_page = min(self.page_count - 1, page_number + interval)
 
-            for page_number in range(start_page, end_page + 1):
-                text += self.extract_text_from_single_page(pdf=pdf, page_number=page_number)
+    def extract_text_from_single_page(self, pdf, page_number):
+        """
+        Extracts text from a single page of the PDF.
+
+        Args:
+            pdf: The PDF file to extract text from.
+            page_number: The page number to extract (1-based indexing).
+
+        Returns:
+            text: The extracted text from the specified page.
+        """
+        if not pdf:
+            return None
+        with self.open_pdf(pdf) as doc:
+            if page_number - 1 >= doc.page_count:
+                raise ValueError("Invalid page number")
+            else:
+                return doc[page_number - 1].get_text()
+
+    def extract_text_from_interval(self, pdf, page_number, interval=1):
+        """
+        Extracts text from a range of pages around a specified page.
+
+        Args:
+            pdf: The PDF file to extract text from.
+            page_number: The central page number (1-based indexing).
+            interval: The number of pages before and after the central page to include.
+
+        Returns:
+            text: The extracted text from the specified range of pages.
+        """
+        if not pdf:
+            return None
+        with self.open_pdf(pdf) as doc:
+            text = ""
+            if page_number > doc.page_count:
+                raise ValueError("Invalid page number")
+            else:
+                # Calculate the start and end pages (0-based indexing)
+                start_page = max(0, page_number - interval - 1)
+                end_page = min(doc.page_count - 1, page_number + interval - 1)
+
+                for page_num in range(start_page, end_page + 1):
+                    text += doc[page_num].get_text()
         return text
 
-if __name__  == "__main__":
+# Example usage:
+if __name__ == "__main__":
     import json
-    pdftotext =PDFtoText()
-    text = pdftotext.extract_all_text_page_wise(r"E:\Prajwal\Advance MCQ Generator\data\Project Management.pdf")
-
-    with open("extracted_data.json", "w") as f:
-        json.dump( text,f, indent=4)
+    pdftotext = PDFtoText()
+    # Replace 'your_pdf_file.pdf' with the path to your PDF file for testing
+    with open('your_pdf_file.pdf', 'rb') as pdf_file:
+        text = pdftotext.extract_all_text_page_wise(pdf_file)
+        with open("extracted_data.json", "w", encoding='utf-8') as f:
+            json.dump(text, f, indent=4, ensure_ascii=False)

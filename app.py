@@ -59,6 +59,8 @@ if "model_name" not in st.session_state:
     st.session_state.model_name = "gpt-4o-mini"  # Default model name set to 'gpt-4o-mini'
 if "temperature" not in st.session_state:
     st.session_state.temperature = 0.7  # Default temperature
+if "uploaded_file" not in st.session_state:
+    st.session_state.uploaded_file = None  # Store the uploaded file object
 
 # Sidebar for API Key Input and PDF upload
 with st.sidebar:
@@ -136,42 +138,41 @@ with st.sidebar:
         type=["pdf"],
         accept_multiple_files=False,  # Set to False to limit to single file
         help="Upload a PDF file for processing.",
-        disabled=not st.session_state.api_key_valid  # Disable uploader if API key is invalid
+        disabled=not st.session_state.api_key_valid or st.session_state.ingested_file is not None  # Disable uploader if API key is invalid or a file is already ingested
     )
     
     if uploaded_file and st.session_state.api_key_valid:
-        temp_dir = os.getenv("TEMP_FILE_DIRECTORY", "temp_files")
-        os.makedirs(temp_dir, exist_ok=True)
-        
-        file_path = os.path.join(temp_dir, uploaded_file.name)
-        
-        # Save the uploaded file to the temp directory
-        with open(file_path, "wb") as f:
-            f.write(uploaded_file.getbuffer())
-        
+        st.session_state.uploaded_file = uploaded_file  # Store the uploaded file in session state
         st.info(f"📄 **{uploaded_file.name}** uploaded successfully.")
         
         with st.spinner(f"🔄 Ingesting **{uploaded_file.name}**..."):
             try:
                 # Run the async ingestion
-                collection_name = asyncio.run(st.session_state.question_generator.ingest_input_pdf(file_path))
+                collection_name = asyncio.run(st.session_state.question_generator.ingest_input_pdf(uploaded_file))
                 st.success(f"✅ **{uploaded_file.name}** ingested into the vector store.")
                 st.session_state.ingested_file = uploaded_file.name
                 st.session_state.collection_name = collection_name
             except Exception as e:
                 st.error(f"❌ Failed to ingest **{uploaded_file.name}**: {e}")
-        
-        # Optionally, remove the file after ingestion
-        try:
-            os.remove(file_path)
-        except Exception as e:
-            st.warning(f"⚠️ Could not delete temporary file **{uploaded_file.name}**: {e}")
+                st.session_state.uploaded_file = None  # Reset the uploaded file
         
         st.markdown(f"**File ingested:** {st.session_state.ingested_file}")
     elif st.session_state.ingested_file and st.session_state.api_key_valid:
         st.info(f"✅ **{st.session_state.ingested_file}** is already ingested. Ready to ask questions.")
     elif not st.session_state.api_key_valid:
         st.info("🔒 **Upload functionalities are disabled until a valid API Key is provided.**")
+    
+    # Reset Ingested Data Button
+    st.markdown("---")
+    st.header("🗑️ Reset Ingested Data")
+    if st.session_state.api_key_valid and st.session_state.ingested_file:
+        if st.button("Reset Ingested Data"):
+            # Clear all session state variables
+            st.session_state.clear()
+            # Rerun the app after reset
+            st.rerun()
+    else:
+        st.info("🔒 **Reset functionality is disabled until data is ingested.**")
     
     st.markdown("---")
     st.markdown("### About")
@@ -192,6 +193,8 @@ tab_chat, tab_level1, tab_level2, tab_faqs, tab_samples, tab_contact = st.tabs(
     ["💬 Chat", "🟢 Level 1", "🟢 Level 2", "❓ FAQs", "📄 Sample Queries", "📞 Contact Me"]
 )
 
+# The rest of your code remains unchanged...
+
 # Chat tab
 with tab_chat:
     st.header("💬 Chat with Your PDF")
@@ -204,7 +207,7 @@ with tab_chat:
         # Clear outputs button
         if st.button("🗑️ Clear Chat History"):
             st.session_state.messages = []
-            st.experimental_rerun()
+            st.rerun()
         
         # Display chat messages
         for message in st.session_state.messages:
@@ -307,7 +310,7 @@ with tab_level1:
         # Clear outputs button
         if st.button("🗑️ Clear Level 1 Output"):
             st.session_state.level_1_result = None
-            st.experimental_rerun()
+            st.rerun()
         
         # Disable the button if API key is invalid
         generate_level1_disabled = not st.session_state.api_key_valid or not st.session_state.question_generator
@@ -355,7 +358,7 @@ with tab_level2:
         # Clear outputs button
         if st.button("🗑️ Clear Level 2 Output"):
             st.session_state.level_2_result = None
-            st.experimental_rerun()
+            st.rerun()
         
         # Disable the button if API key is invalid
         generate_level2_disabled = not st.session_state.api_key_valid or not st.session_state.question_generator
@@ -403,7 +406,7 @@ with tab_faqs:
     faqs = [
         {"question": "How do I upload a PDF file?", "answer": "Use the file uploader in the sidebar to upload your PDF file."},
         {"question": "How do I ask a question about the PDF?", "answer": "Type your question in the chat input at the bottom of the Chat tab."},
-        {"question": "How do I delete all the ingested data?", "answer": "You will have to delete the folder `chroma` manually from the code-base."},
+        {"question": "How do I delete all the ingested data?", "answer": "Use the 'Reset Ingested Data' button in the sidebar to clear all ingested data, including the uploaded PDF and any generated content."},
         {"question": "Why is there only one collection?", "answer": "The application is designed to handle only one PDF at a time for simplicity."},
         {"question": "Can I change the model and temperature?", "answer": "Yes, use the configurations in the sidebar to select the model and set the temperature."},
     ]

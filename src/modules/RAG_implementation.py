@@ -55,7 +55,9 @@ class ChromaVectorStore:
 
         # Initialize Chroma client
         self.chroma_client = chromadb.PersistentClient(
-            path=persist_directory
+            path=persist_directory,
+            settings=Settings(allow_reset  = True)
+            
         )
 
     def get_or_create_collection(self, collection_name: str):
@@ -189,6 +191,8 @@ class ChromaVectorStore:
 
         return results, fetched_docs
 
+    def reset_client(self):
+        return self.chroma_client.reset()
 
 if __name__ == "__main__":
     try:
