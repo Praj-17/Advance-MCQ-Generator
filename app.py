@@ -66,6 +66,7 @@ with st.sidebar:
         type="password",
         placeholder="sk-...",
         help="Your API key is used to access OpenAI's services. It is not stored or shared.",
+        value=st.session_state.get("OPENAI_API_KEY", "")  # Persist the API key input
     )
     
     # Validate API Key
@@ -163,6 +164,11 @@ with tab_chat:
     elif not st.session_state.ingested_file:
         st.error("⚠️ Please upload and process a PDF file first.")
     else:
+        # Clear outputs button
+        if st.button("🗑️ Clear Chat History"):
+            st.session_state.messages = []
+            st.rerun()
+        
         # Display chat messages
         for message in st.session_state.messages:
             with st.chat_message(message["role"]):
@@ -261,6 +267,11 @@ with tab_level1:
     if not st.session_state.ingested_file:
         st.warning("⚠️ Please upload and process a PDF file in the sidebar before generating questions.")
     else:
+        # Clear outputs button
+        if st.button("🗑️ Clear Level 1 Output"):
+            st.session_state.level_1_result = None
+            st.rerun()
+        
         # Disable the button if API key is invalid
         generate_level1_disabled = not st.session_state.api_key_valid or not st.session_state.question_generator
         
@@ -279,21 +290,23 @@ with tab_level1:
                     st.session_state.level_1_result = level_1_result
                     
                     st.success("✅ Level 1 questions generated successfully.")
-                    
-                    # Display the JSON results
-                    st.markdown("### 📊 Level 1 JSON Results")
-                    st.json(level_1_result)
-                    
-                    # Optionally, allow downloading the results
-                    json_output = json.dumps(level_1_result, indent=4)
-                    st.download_button(
-                        label="📥 Download Level 1 Questions",
-                        data=json_output,
-                        file_name=f"level_1_questions_{st.session_state.collection_name}.json",
-                        mime="application/json"
-                    )
                 except Exception as e:
                     st.error(f"❌ Failed to generate Level 1 questions: {e}")
+                    st.session_state.level_1_result = None
+        
+        # Display the Level 1 result if available
+        if st.session_state.level_1_result:
+            st.markdown("### 📊 Level 1 JSON Results")
+            st.json(st.session_state.level_1_result)
+            
+            # Optionally, allow downloading the results
+            json_output = json.dumps(st.session_state.level_1_result, indent=4)
+            st.download_button(
+                label="📥 Download Level 1 Questions",
+                data=json_output,
+                file_name=f"level_1_questions_{st.session_state.collection_name}.json",
+                mime="application/json"
+            )
 
 # Level 2 Generation tab
 with tab_level2:
@@ -302,6 +315,11 @@ with tab_level2:
     if not st.session_state.ingested_file:
         st.warning("⚠️ Please upload and process a PDF file in the sidebar before generating questions.")
     else:
+        # Clear outputs button
+        if st.button("🗑️ Clear Level 2 Output"):
+            st.session_state.level_2_result = None
+            st.rerun()
+        
         # Disable the button if API key is invalid
         generate_level2_disabled = not st.session_state.api_key_valid or not st.session_state.question_generator
         
@@ -322,21 +340,23 @@ with tab_level2:
                     st.session_state.level_2_result = result
                     
                     st.success("✅ Level 2 questions generated successfully.")
-                    
-                    # Display the JSON results
-                    st.markdown("### 📊 Level 2 JSON Results")
-                    st.json(result)
-                    
-                    # Optionally, allow downloading the results
-                    json_output = json.dumps(result, indent=4)
-                    st.download_button(
-                        label="📥 Download Level 2 Questions",
-                        data=json_output,
-                        file_name=f"level_2_questions_{st.session_state.collection_name}.json",
-                        mime="application/json"
-                    )
                 except Exception as e:
                     st.error(f"❌ Failed to generate Level 2 questions: {e}")
+                    st.session_state.level_2_result = None
+        
+        # Display the Level 2 result if available
+        if st.session_state.level_2_result:
+            st.markdown("### 📊 Level 2 JSON Results")
+            st.json(st.session_state.level_2_result)
+            
+            # Optionally, allow downloading the results
+            json_output = json.dumps(st.session_state.level_2_result, indent=4)
+            st.download_button(
+                label="📥 Download Level 2 Questions",
+                data=json_output,
+                file_name=f"level_2_questions_{st.session_state.collection_name}.json",
+                mime="application/json"
+            )
 
 # FAQs tab
 with tab_faqs:
