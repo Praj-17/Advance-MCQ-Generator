@@ -6,7 +6,7 @@ import json
 import os
 import re
 
-class AdvanceQuestionGenerator:
+class AdvanceQuestionGeneratorClass:
     def __init__(self, openai_key=None, model_name=None, temperature=0.7) -> None:
         self.openai = OpenAiRunnerClass(
             model_name=model_name,
