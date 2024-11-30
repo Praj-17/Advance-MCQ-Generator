@@ -368,6 +368,8 @@ with tab_faqs:
         {"question": "How do I ask a question about the PDF?", "answer": "Type your question in the chat input at the bottom of the Chat tab."},
         {"question": "How do I delete all the ingested data?", "answer": "You will have to delete the folder `chroma` manually from the code-base."},
         {"question": "Why is there only one collection?", "answer": "The application is designed to handle only one PDF at a time for simplicity."},
+        {"question": "Where do i get the OpenAI-API Key", "answer": "You can generate a new API key here - https://platform.openai.com/settings/organization/api-keys"},
+        # {"question": "Why is there only one collection?", "answer": "The application is designed to handle only one PDF at a time for simplicity."},
     ]
     
     for faq in faqs:
