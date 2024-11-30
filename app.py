@@ -27,7 +27,9 @@ async def ingest_pdf(
     Ingests a PDF file, processes it, and stores embeddings.
     """
     try:
-        collection_name = await generator.ingest_input_pdf(pdf_file)
+        print(pdf_file.file,type(pdf_file.file))
+        print(pdf_file.filename,type(pdf_file.file))
+        collection_name = await generator.ingest_input_pdf(pdf_file.filename)
         return IngestPDFResponse(collection_name=collection_name, status="success")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))

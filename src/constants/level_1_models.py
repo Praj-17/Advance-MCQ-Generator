@@ -68,19 +68,6 @@ class Metadata(BaseModel):
     book_title: str
     tool_used: str
 
-
-
-class ProjectManagementProfessionalGuide(BaseModel):
-    book_info: BookInfo
-    questions_data: QuestionsModel
-
-    def to_json_schema(self) -> str:
-        """Convert the entire ProjectManagementProfessionalGuide instance to JSON."""
-        return json.dumps({
-            "book_info": json.loads(self.book_info.to_json_schema()),
-            "questions_data": json.loads(self.questions_data.to_json_schema())
-        }, indent=4)
-
 # Example Usage
 if __name__ == "__main__":
     book_info = BookInfo(

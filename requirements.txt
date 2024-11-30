@@ -8,3 +8,6 @@ langchain-openai
 PyMuPDF
 langchain-community
 streamlit
+fastapi
+uvicorn
+python-multipart

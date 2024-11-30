@@ -1,7 +1,7 @@
 # app/dependencies.py
 from fastapi import Header, HTTPException, Depends
 from typing import Optional
-from src  import AdvanceQuestionGenerator
+from src  import AdvanceQuestionGeneratorClass
 
 async def get_openai_key(x_openai_key: Optional[str] = Header(None)):
     if not x_openai_key:
@@ -9,5 +9,5 @@ async def get_openai_key(x_openai_key: Optional[str] = Header(None)):
     return x_openai_key
 
 async def get_question_generator(openai_key: str = Depends(get_openai_key)):
-    generator = AdvanceQuestionGenerator(openai_key=openai_key)
+    generator = AdvanceQuestionGeneratorClass(openai_key=openai_key)
     return generator

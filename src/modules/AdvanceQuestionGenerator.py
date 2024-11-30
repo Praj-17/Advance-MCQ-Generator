@@ -1,9 +1,9 @@
 import asyncio
 from io import BytesIO
-from src import OpenAiRunnerClass, ChromaVectorStore, PDFtoText
-from src import MetadataRAG
-import json
-import os
+from .OpenAiRunner import OpenAiRunnerClass
+from .RAG_implementation import ChromaVectorStore
+from .pdf_to_text import PDFtoText
+from src.constants import MetadataRAG
 import re
 
 class AdvanceQuestionGeneratorClass:
