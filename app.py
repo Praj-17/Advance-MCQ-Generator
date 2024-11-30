@@ -55,6 +55,10 @@ if "OPENAI_API_KEY" not in st.session_state:
     st.session_state.OPENAI_API_KEY = None
 if "api_key_valid" not in st.session_state:
     st.session_state.api_key_valid = False
+if "model_name" not in st.session_state:
+    st.session_state.model_name = "gpt-4o-mini"  # Default model name set to 'gpt-4o-mini'
+if "temperature" not in st.session_state:
+    st.session_state.temperature = 0.7  # Default temperature
 
 # Sidebar for API Key Input and PDF upload
 with st.sidebar:
@@ -76,12 +80,6 @@ with st.sidebar:
             st.session_state["api_key_valid"] = True
             os.environ["OPENAI_API_KEY"] = api_key_input  # Set environment variable for use in the app
             st.success("✅ **API Key is valid and has been set.**")
-            
-            # Instantiate AdvanceQuestionGenerator with the API key
-            if st.session_state.question_generator is None:
-                st.session_state.question_generator = AdvanceQuestionGenerator(openai_key=api_key_input)
-            else:
-                st.session_state.question_generator.openai.openai_key = api_key_input
         else:
             st.session_state["api_key_valid"] = False
             st.error("❌ **Invalid API Key.** It should start with `sk-`.")
@@ -91,7 +89,46 @@ with st.sidebar:
     
     st.markdown("---")
     
+    # Configuration Settings
+    st.header("⚙️ Configurations")
+    
+    # Model Selection
+    model_options = ["gpt-4o", "gpt-4o-mini"]
+    model_name = st.selectbox(
+        "Select Model",
+        options=model_options,
+        index=model_options.index(st.session_state.get("model_name", "gpt-4o-mini"))  # Default to 'gpt-4o-mini'
+    )
+    st.session_state.model_name = model_name
+    
+    # Temperature Slider
+    temperature = st.slider(
+        "Select Temperature",
+        min_value=0.0,
+        max_value=1.0,
+        value=st.session_state.get("temperature", 0.7),
+        step=0.1,
+        help="Controls the randomness of the model's output. 0 is deterministic, 1 is very random."
+    )
+    st.session_state.temperature = temperature
+    
+    st.markdown("---")
+    
     st.header("📥 Upload and Process PDF")
+    
+    # Instantiate AdvanceQuestionGenerator with the API key and configurations
+    if st.session_state.api_key_valid:
+        if st.session_state.question_generator is None:
+            st.session_state.question_generator = AdvanceQuestionGenerator(
+                openai_key=st.session_state.OPENAI_API_KEY,
+                model_name=st.session_state.model_name,
+                temperature=st.session_state.temperature
+            )
+        else:
+            # Update the existing instance with new configurations
+            st.session_state.question_generator.openai.openai_key = st.session_state.OPENAI_API_KEY
+            st.session_state.question_generator.openai.model_name = st.session_state.model_name
+            st.session_state.question_generator.openai.temperature = st.session_state.temperature
     
     # File uploader - Limited to single file
     uploaded_file = st.file_uploader(
@@ -167,7 +204,7 @@ with tab_chat:
         # Clear outputs button
         if st.button("🗑️ Clear Chat History"):
             st.session_state.messages = []
-            st.rerun()
+            st.experimental_rerun()
         
         # Display chat messages
         for message in st.session_state.messages:
@@ -270,7 +307,7 @@ with tab_level1:
         # Clear outputs button
         if st.button("🗑️ Clear Level 1 Output"):
             st.session_state.level_1_result = None
-            st.rerun()
+            st.experimental_rerun()
         
         # Disable the button if API key is invalid
         generate_level1_disabled = not st.session_state.api_key_valid or not st.session_state.question_generator
@@ -318,7 +355,7 @@ with tab_level2:
         # Clear outputs button
         if st.button("🗑️ Clear Level 2 Output"):
             st.session_state.level_2_result = None
-            st.rerun()
+            st.experimental_rerun()
         
         # Disable the button if API key is invalid
         generate_level2_disabled = not st.session_state.api_key_valid or not st.session_state.question_generator
@@ -368,8 +405,7 @@ with tab_faqs:
         {"question": "How do I ask a question about the PDF?", "answer": "Type your question in the chat input at the bottom of the Chat tab."},
         {"question": "How do I delete all the ingested data?", "answer": "You will have to delete the folder `chroma` manually from the code-base."},
         {"question": "Why is there only one collection?", "answer": "The application is designed to handle only one PDF at a time for simplicity."},
-        {"question": "Where do i get the OpenAI-API Key", "answer": "You can generate a new API key here - https://platform.openai.com/settings/organization/api-keys"},
-        # {"question": "Why is there only one collection?", "answer": "The application is designed to handle only one PDF at a time for simplicity."},
+        {"question": "Can I change the model and temperature?", "answer": "Yes, use the configurations in the sidebar to select the model and set the temperature."},
     ]
     
     for faq in faqs:

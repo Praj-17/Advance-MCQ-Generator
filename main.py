@@ -6,8 +6,8 @@ import os
 import re
 
 class AdvanceQuestionGenerator:
-    def __init__(self, openai_key=None, model_name=None) -> None:
-        self.openai = OpenAiRunnerClass(model_name=model_name, openai_key=openai_key)
+    def __init__(self, openai_key=None, model_name=None, temperature = 0) -> None:
+        self.openai = OpenAiRunnerClass(model_name=model_name, openai_key=openai_key, temp = temperature)
         self.RAG = ChromaVectorStore()
         self.pdf = PDFtoText()
         self.ingested_pdfs = []  # List to keep track of ingested PDFs

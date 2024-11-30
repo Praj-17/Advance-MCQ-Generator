@@ -9,10 +9,10 @@ import os
 load_dotenv()
 
 class OpenAiRunnerClass:
-    def __init__(self, model_name: str = "gpt-4o", openai_key  = None) -> None:
+    def __init__(self, model_name: str = "gpt-4o", openai_key  = None, temp = 0) -> None:
         self.model_name = model_name
         if not model_name:
-            self.model_name = "gpt-4o"
+            self.model_name = "gpt-4o-mini"
 
         with open(r"src\constants\level_1_question_prompt.prompt", "r",encoding = "utf-8") as f:
             self.question_prompt = f.read()
@@ -27,7 +27,7 @@ class OpenAiRunnerClass:
             self.openai_key = os.getenv("OPENAI_API_KEY")
         else:
             self.openai_key = openai_key
-        self.llm_instance = LLM.create(provider=LLMProvider.OPENAI, model_name=self.model_name, api_key=self.openai_key)
+        self.llm_instance = LLM.create(provider=LLMProvider.OPENAI, model_name=self.model_name, api_key=self.openai_key, temperature=temp)
     
     def _format_prompt_mcq(self, context: str, prompt: str, topic: str, n: int) -> str:
         return prompt.format(context=context, topic=topic, n=n)
@@ -56,8 +56,16 @@ class OpenAiRunnerClass:
         prompt = self._format_prompt_chat(context=context, question=question, prompt=self.chat_prompt)
 
         answer = gen_json(llm_instance=self.llm_instance, model_class=ChatResponse, prompt=prompt)
+        if isinstance(answer, ChatResponse):
+            return answer.model_dump()
+        elif isinstance(answer, str):
+            j = json.loads(answer)
+            obj = ChatResponse(**j)
+            return obj.to_json_schema()
+        else:
+            raise ValueError("OpenAI did not return a Valid Output Type")
+            
 
-        return answer.model_dump()
 
     
     async def generate_mcq_with_RAG(self, context: str, topic: str, documents: list, n: int = 5) -> dict:
