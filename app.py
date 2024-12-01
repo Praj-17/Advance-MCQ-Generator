@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI(
     title="Advanced Question Generator API",
-    description="API for generating Level 1 & 2 questions and performing chat operations using OpenAI and RAG.",
+    description="API for generating Level 1 & 2 questions and performing chat operations using Gemini and RAG.",
     version="1.0.0"
 )
 

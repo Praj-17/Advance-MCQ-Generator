@@ -24,7 +24,7 @@ class OpenAiRunnerClass:
             self.chat_prompt = f.read()
         
         if not openai_key:
-            self.openai_key = os.getenv("OPENAI_API_KEY")
+            self.openai_key = os.getenv("GEMINI_API_KEY")
         else:
             self.openai_key = openai_key
         self.llm_instance = LLM.create(provider=LLMProvider.GEMINI, model_name=self.model_name, api_key=self.openai_key, temperature=temperature)

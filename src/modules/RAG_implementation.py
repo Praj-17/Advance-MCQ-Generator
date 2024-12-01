@@ -22,7 +22,7 @@ class ChromaVectorStore:
 
     def __init__(
         self,
-        openai_api_key: Optional[str] = os.getenv("OPENAI_API_KEY"),
+        openai_api_key: Optional[str] = os.getenv("GEMINI_API_KEY"),
         chroma_db_impl: str = "duckdb+parquet",
         persist_directory: str = "./data/chroma_db",
         model: str = "sentence-transformers/all-MiniLM-L6-v2",
@@ -30,7 +30,7 @@ class ChromaVectorStore:
         """
         Initializes the ChromaVectorStore with the provided configurations.
 
-        :param openai_api_key: Your OpenAI API key. If None, it will be fetched from the OPENAI_API_KEY environment variable.
+        :param openai_api_key: Your OpenAI API key. If None, it will be fetched from the GEMINI_API_KEY environment variable.
         :param chroma_db_impl: Implementation of the Chroma database. Defaults to 'duckdb+parquet'.
         :param persist_directory: Directory where Chroma will persist the database.
         :param embedding_model: The Hugging Face embedding model to use.
