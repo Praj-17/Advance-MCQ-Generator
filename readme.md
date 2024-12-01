@@ -266,7 +266,7 @@ curl -X POST "http://127.0.0.1:8000/generate_level_1?collection_name=my_collecti
     "detail": "An error occurred while generating Level 2 questions."
   }
   ```
-
+ 
 #### Example
 
 ```bash
