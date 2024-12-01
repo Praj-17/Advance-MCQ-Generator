@@ -54,8 +54,11 @@ Key functionalities include:
 
 - [Streamlit Dashboard](https://advance-question-generator-streamlit.onrender.com) - Presents a functioning streamlit dashboard providing all the above mentioned functionlity and features
 
+![Streamlit Dashboard Image](src/Gallery/ "Optional Title")
+
 - [API Reference](https://advance-question-generator-fastapi.onrender.com) - Presents a FASTAPI interface where you can use the endpoints. Find the [Swagger-UI](https://advance-question-generator-fastapi.onrender.com/docs#/) here for the deployed reference here
 
+![FASTAPI interface Image](src/Gallery/fastapi.png "Optional Title")
 ### Prerequisites
 
 Before you begin, ensure you have met the following requirements:

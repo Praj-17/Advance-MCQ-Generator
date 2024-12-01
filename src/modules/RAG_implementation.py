@@ -45,7 +45,7 @@ class ChromaVectorStore:
 
         # Initialize LangChain's OpenAIEmbeddings
         self.embeddings = OpenAIEmbeddings(
-            openai_api_key=self.openai_api_key,
+            api_key=self.openai_api_key,
             model=embedding_model
         )
 
