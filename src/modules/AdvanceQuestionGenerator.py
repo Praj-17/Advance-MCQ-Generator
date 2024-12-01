@@ -157,7 +157,7 @@ class AdvanceQuestionGeneratorClass:
         """
         self.ingested_pdfs = []
         self.collection_texts = {}
-        await asyncio.to_thread(self.RAG.reset_client())
+        await asyncio.to_thread(self.RAG.reset_client)
 
     async def _process_input_pdf(self, pdf_name: str) -> str:
         """
@@ -172,6 +172,7 @@ class AdvanceQuestionGeneratorClass:
         # Replace spaces with underscores and remove other special characters
         # This regex keeps alphanumerics, underscores, and dots (for the extension)
         sanitized_pdf_name = re.sub(r'[^\w\.]', '_', pdf_name)
+        sanitized_pdf_name = sanitized_pdf_name.replace(".", "_")
 
         return sanitized_pdf_name
 
