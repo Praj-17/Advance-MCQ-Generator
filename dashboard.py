@@ -57,7 +57,7 @@ if "OPENAI_API_KEY" not in st.session_state:
 if "api_key_valid" not in st.session_state:
     st.session_state.api_key_valid = False
 if "model_name" not in st.session_state:
-    st.session_state.model_name = "gpt-4o-mini"  # Default model name set to 'gpt-4o-mini'
+    st.session_state.model_name = "gemini-1.5-flash"  
 if "temperature" not in st.session_state:
     st.session_state.temperature = 0.7  # Default temperature
 if "uploaded_file" not in st.session_state:
@@ -80,14 +80,11 @@ with st.sidebar:
     
     # Validate API Key
     if api_key_input:
-        if api_key_input.startswith("sk-"):
-            st.session_state["OPENAI_API_KEY"] = api_key_input
-            st.session_state["api_key_valid"] = True
-            os.environ["OPENAI_API_KEY"] = api_key_input  # Set environment variable for use in the app
-            st.success("✅ **API Key is valid and has been set.**")
-        else:
-            st.session_state["api_key_valid"] = False
-            st.error("❌ **Invalid API Key.** It should start with `sk-`.")
+        st.session_state["OPENAI_API_KEY"] = api_key_input
+        st.session_state["api_key_valid"] = True
+        os.environ["OPENAI_API_KEY"] = api_key_input  # Set environment variable for use in the app
+        st.success("✅ **API Key is valid and has been set.**")
+
     else:
         st.session_state["api_key_valid"] = False
         st.warning("⚠️ **Please enter your OpenAI API Key to enable functionalities.**")
@@ -98,11 +95,11 @@ with st.sidebar:
     st.header("⚙️ Configurations")
     
     # Model Selection
-    model_options = ["gpt-4o", "gpt-4o-mini"]
+    model_options = ["gemini-1.5-flash", "gemini-1.5-pro"]
     model_name = st.selectbox(
         "Select Model",
         options=model_options,
-        index=model_options.index(st.session_state.get("model_name", "gpt-4o-mini"))  # Default to 'gpt-4o-mini'
+        index=model_options.index(st.session_state.get("model_name", "gemini-1.5-pro")) 
     )
     st.session_state.model_name = model_name
     

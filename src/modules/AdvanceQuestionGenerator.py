@@ -143,11 +143,14 @@ class AdvanceQuestionGeneratorClass:
             tuple: Answer from the LLM and the relevant documents.
         """
         # Fetch relevant documents for this question from this collection
+        print("Fetching ReleVant documents")
         results, output = await asyncio.to_thread(
             self.RAG.fetch_relevant_documents, question, collection_name, top_k=3
         )
+        print("Fetched ReleVant documents")
 
         context = await self._process_documents_context(output)
+        print("Going for Chat")
         ans = await self.openai.chat(context=context, question=question)
 
         return ans, output

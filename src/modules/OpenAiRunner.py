@@ -9,10 +9,10 @@ import os
 load_dotenv()
 
 class OpenAiRunnerClass:
-    def __init__(self, model_name: str = "gpt-4o", openai_key  = None, temperature = 0) -> None:
+    def __init__(self, model_name: str = "gemini-1.5-pro", openai_key  = None, temperature = 0) -> None:
         self.model_name = model_name
         if not model_name:
-            self.model_name = "gpt-4o-mini"
+            self.model_name = "gemini-1.5-flash"
 
         with open(r"src/constants/level_1_question_prompt.prompt", "r",encoding = "utf-8") as f:
             self.question_prompt = f.read()
@@ -27,7 +27,7 @@ class OpenAiRunnerClass:
             self.openai_key = os.getenv("OPENAI_API_KEY")
         else:
             self.openai_key = openai_key
-        self.llm_instance = LLM.create(provider=LLMProvider.OPENAI, model_name=self.model_name, api_key=self.openai_key, temperature=temperature)
+        self.llm_instance = LLM.create(provider=LLMProvider.GEMINI, model_name=self.model_name, api_key=self.openai_key, temperature=temperature)
     
     def _format_prompt_mcq(self, context: str, prompt: str, topic: str, n: int) -> str:
         return prompt.format(context=context, topic=topic, n=n)
@@ -44,10 +44,13 @@ class OpenAiRunnerClass:
         Asynchronously generate multiple-choice questions.
         """
         prompt = self._format_prompt_mcq(context, self.question_prompt, topic=topic, n=n)
-        # Run the synchronous gen_json in a separate thread
-        json_response = await asyncio.to_thread(
-            gen_json, model_class=QuestionsModel, prompt=prompt, llm_instance=self.llm_instance
-        )
+        try:
+            # Run the synchronous gen_json in a separate thread
+            json_response = await asyncio.to_thread(
+                gen_json, model_class=QuestionsModel, prompt=prompt, llm_instance=self.llm_instance
+            )
+        except Exception as e:
+            print("Exception: ", str(e))
 
         if isinstance(json_response, QuestionsModel):
             print("In If")
@@ -72,7 +75,12 @@ class OpenAiRunnerClass:
     async def chat(self, context, question):
         prompt = self._format_prompt_chat(context=context, question=question, prompt=self.chat_prompt)
 
-        answer = gen_json(llm_instance=self.llm_instance, model_class=ChatResponse, prompt=prompt)
+        print("Calling endpoint")
+        try:
+            answer = gen_json(llm_instance=self.llm_instance, model_class=ChatResponse, prompt=prompt)
+            print("Received Answer", answer)
+        except Exception as e:
+            print("Exception: ", str(e))
         if isinstance(answer, ChatResponse):
             return answer.model_dump()
         elif isinstance(answer, str):
@@ -100,10 +108,13 @@ class OpenAiRunnerClass:
         Asynchronously generate book title and main topics.
         """
         prompt = self._format_prompt(context, self.topics_prompt)
-        # Run the synchronous gen_json in a separate thread
-        json_response = await asyncio.to_thread(
-            gen_json, model_class=BookInfo, prompt=prompt, llm_instance=self.llm_instance
-        )
+        try:
+            # Run the synchronous gen_json in a separate thread
+            json_response = await asyncio.to_thread(
+                gen_json, model_class=BookInfo, prompt=prompt, llm_instance=self.llm_instance
+            )
+        except Exception as e:
+            print("Exception: ", str(e))
 
         # obj = BookInfo(**(json_response.model_dump()))
         # Parse the JSON response
