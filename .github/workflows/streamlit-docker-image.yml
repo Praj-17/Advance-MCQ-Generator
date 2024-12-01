@@ -39,7 +39,6 @@ jobs:
           push: true # Push the built image to Docker Hub
           tags: |
             prajwal1717/advance-question-generator-streamlit:latest
-            prajwal1717/advance-question-generator-streamlit:${{ github.sha }} # Add a commit-specific tag for traceability
 
       - name: Post-build cleanup
         run: docker system prune -f # Optional cleanup step to remove unused data

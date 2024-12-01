@@ -39,7 +39,6 @@ jobs:
           push: true # Push the built image to Docker Hub
           tags: |
             prajwal1717/advance-question-generator-fastapi:latest
-            prajwal1717/advance-question-generator-fastapi:${{ github.sha }} # Add a unique tag with commit SHA for traceability
 
       - name: Post-build cleanup
         run: docker system prune -f # Optional cleanup step to remove unused data
