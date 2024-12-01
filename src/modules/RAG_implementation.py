@@ -1,13 +1,15 @@
 import os
 import sys
 from typing import Dict, Any, List, Optional
-
+import google.generativeai as genai
 import chromadb
 from chromadb.config import Settings
 from dotenv import load_dotenv
 import json
 from sentence_transformers import SentenceTransformer
-from SimplerLLM.language.embeddings import EmbeddingsLLM, EmbeddingsProvider
+# use directly
+
+from chromadb.utils.embedding_functions.google_embedding_function import GoogleGenerativeAiEmbeddingFunction
 
 
 
@@ -35,11 +37,14 @@ class ChromaVectorStore:
         :param persist_directory: Directory where Chroma will persist the database.
         :param embedding_model: The Hugging Face embedding model to use.
         """
+       
         # Set OpenAI API key (Not used in Hugging Face embeddings, kept for compatibility)
         if openai_api_key:
             self.openai_api_key = openai_api_key
-            self.model = "text-embedding-ada-002"
-            self.embedding_model = EmbeddingsLLM.create(provider=EmbeddingsProvider.OPENAI, api_key=self.openai_api_key, model_name=self.model)
+            self.model = "models/text-embedding-004"
+            self.embedding_model  = GoogleGenerativeAiEmbeddingFunction(api_key=self.openai_api_key,model_name= self.openai_api_key)
+            self.google_ef  = GoogleGenerativeAiEmbeddingFunction(api_key=self.openai_api_key,model_name= self.model, task_type="RETRIEVAL_DOCUMENT")
+           
         else:
             self.openai_api_key = None
             self.model = model
@@ -71,10 +76,19 @@ class ChromaVectorStore:
         :return: The Chroma collection object.
         """
         try:
-            collection = self.chroma_client.get_collection(name=collection_name)
+            if self.openai_api_key:
+                collection = self.chroma_client.get_collection(name=collection_name, embedding_function=self.google_ef)
+            else:
+                collection = self.chroma_client.get_collection(name=collection_name)
+
             print(f"Using existing collection: '{collection_name}'")
         except Exception:
-            collection = self.chroma_client.create_collection(name=collection_name)
+            if self.openai_api_key:
+                collection = self.chroma_client.create_collection(name=collection_name, embedding_function=self.google_ef)
+                print(collection._embedding_function)
+            else:
+                collection = self.chroma_client.create_collection(name=collection_name)
+                
             print(f"Created new collection: '{collection_name}'")
         return collection
     
@@ -97,7 +111,7 @@ class ChromaVectorStore:
         """
         try:
             if self.openai_api_key:
-                embedding = self.embedding_model.generate_embeddings(text)
+                embedding = genai.embed_content(model =self.model, content = text, task_type="retrieval_query").get("embedding")
             else:
                 embedding = self.embedding_model.encode(text, convert_to_numpy=True).tolist()
             return embedding
@@ -135,24 +149,38 @@ class ChromaVectorStore:
             if not text.strip():
                 print(f"Warning: Page {page_num} is empty. Skipping.")
                 continue
-            try:
-                embedding = self.get_embedding(text)
-            except Exception as e:
-                print(f"Failed to generate embedding for page {page_num}: {e}")
-                continue
-            embeddings.append(embedding)
+            if not self.openai_api_key:
+                try:
+                    print("NO API KEY in store")
+                    embedding = self.get_embedding(text)
+                except Exception as e:
+                    print(f"Failed to generate embedding for page {page_num}: {e}")
+                    continue
+                embeddings.append(embedding)
+            else:
+                print("Using GEMINI in store")
+            
+
             texts.append(text)
             metadatas.append({"page_number": page_num})
             ids.append(doc_id)
+        embeddings = None
 
         if texts:
             try:
-                collection.add(
-                    documents=texts,
-                    embeddings=embeddings,
-                    metadatas=metadatas,
-                    ids=ids,
-                )
+                if embeddings:
+                    collection.add(
+                        documents=texts,
+                        embeddings=embeddings,
+                        metadatas=metadatas,
+                        ids=ids,
+                    )
+                else:
+                    collection.add(
+                        documents=texts,
+                        metadatas=metadatas,
+                        ids=ids,)
+
                 print(f"Successfully added {len(texts)} documents to collection '{collection_name}'.")
             except Exception as e:
                 print(f"Error adding documents to collection '{collection_name}': {e}")
@@ -171,18 +199,34 @@ class ChromaVectorStore:
         :return: A tuple containing the raw results and a list of dictionaries with the document, metadata, and confidence score.
         """
         collection = self.get_or_create_collection(collection_name)
+        results = {
+            "documents": ["None"],
+            "metadatas":[{}],
+            "distances":[0]
+            
+        }
 
         try:
-            query_embedding = self.get_embedding(topic)
-        except Exception as e:
-            print(f"Failed to generate embedding for the topic: {e}")
+            if self.openai_api_key:
+                print("Fetching docs using Gemini")
+                results = collection.query(
+                    query_texts=[topic],
+                    n_results=top_k,
+                    include=["metadatas", "distances", "documents"]
+                )
+            else:
+                    try:
+                        query_embedding = self.get_embedding(topic)
+                        print("QUERY EMBEDDING SIZE", len(query_embedding))
+                    except Exception as e:
+                        print(f"Failed to generate embedding for the topic: {e}")
 
-        try:
-            results = collection.query(
-                query_embeddings=[query_embedding],
-                n_results=top_k,
-                include=["metadatas", "distances", "documents"]
-            )
+                    print("Fetching docs using Sentence")
+                    results = collection.query(
+                    query_embeddings=[query_embedding],
+                    n_results=top_k,
+                    include=["metadatas", "distances", "documents"]
+                )
         except Exception as e:
             print(f"Error querying the Chroma collection '{collection_name}': {e}")
 
@@ -209,13 +253,21 @@ class ChromaVectorStore:
 
 if __name__ == "__main__":
     
-    chroma_store = ChromaVectorStore(openai_api_key=None)
+    chroma_store = ChromaVectorStore(openai_api_key="AIzaSyAVTmb8OIsAVcSsw3_DWVPQ_UWdIDzh_7Q")
     text = "Random Text"
 
-    out = chroma_store.get_all_text_str("Project_Management_pdf")
-    print(type(out)) 
-    print(len(out))
+    pages = {
+        "page_0": "Text 1",
+        "page_1": "Text 2"
+    }
+    collection_name = "random5"
+
+    inp = chroma_store.store_texts(pages=pages, collection_name=collection_name)
+    out = chroma_store.fetch_relevant_documents(topic="Text", collection_name=collection_name)
+    reset = chroma_store.reset_client()
+    print(reset)
     print(out)
+
 
     # try:
     #     chroma_store = ChromaVectorStore()

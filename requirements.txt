@@ -8,3 +8,4 @@ uvicorn
 python-multipart
 simplerllm==0.3.1.1
 sentence_transformers
+google-generativeai
