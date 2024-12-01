@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Question Generator API</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Container Styles */
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        /* Heading Styles */
+        h1 {
+            color: #333333;
+            margin-bottom: 20px;
+            font-size: 2em;
+        }
+
+        /* Paragraph Styles */
+        p {
+            color: #555555;
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        /* Button Styles */
+        .redirect-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 25px;
+            font-size: 1em;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        .redirect-button:hover {
+            background-color: #45a049;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 1em;
+            }
+
+            .redirect-button {
+                padding: 12px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Advanced Question Generator API</h1>
+        <p>
+            Welcome to the Advanced Question Generator API! 
+            Our API allows you to ingest PDF files, generate Level 1 & 2 questions, and engage in interactive chat operations using cutting-edge Gemini and Retrieval-Augmented Generation (RAG) technologies.
+        </p>
+        <button class="redirect-button" onclick="window.location.href='https://advance-question-generator-fastapi.onrender.com/docs'">
+            Visit API Dashboard
+        </button>
+    </div>
+</body>
+</html>

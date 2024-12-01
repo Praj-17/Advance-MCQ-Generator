@@ -3,8 +3,10 @@
 import asyncio
 import logging
 from fastapi import FastAPI, UploadFile, File, HTTPException, Depends, Query, Form
+from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse
+import os
 from typing import Optional
 from src import get_question_generator
 from src import (
@@ -33,6 +35,22 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],)
 # Wrapper class to map 'filename' to 'name' and provide a synchronous 'read' method
+
+app.mount("/static", StaticFiles(directory="src/static"), name="static")
+# Route to serve the HTML page at the root URL
+@app.get("/", response_class=HTMLResponse)
+async def read_index():
+    index_path = os.path.join("src", "static", "index.html")
+    try:
+        with open(index_path, "r", encoding="utf-8") as f:
+            html_content = f.read()
+        return HTMLResponse(content=html_content, status_code=200)
+    except Exception as e:
+        logger.error(f"Error serving index.html: {e}")
+        raise HTTPException(status_code=500, detail="Internal Server Error")
+    
+# Mount the static directory to serve static files
+
 class UploadFileWrapper:
     def __init__(self, upload_file: UploadFile):
         self.filename = upload_file.filename
@@ -174,3 +192,5 @@ async def reset_data(
     except Exception as e:
         logger.exception(f"Unexpected error during data reset: {e}")
         raise HTTPException(status_code=500, detail="An error occurred while resetting the data.")
+    
+
