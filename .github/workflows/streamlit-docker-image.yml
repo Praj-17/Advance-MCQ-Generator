@@ -2,11 +2,14 @@ name: Build and Push Streamlit Docker Image
 
 on:
   push:
+    branches:
+      - main # Trigger only for the main branch. Adjust as needed.
     paths:
       - 'dashboard.py'
       - 'src/**'
       - 'requirements.txt'
       - '.github/workflows/streamlit-docker-image.yml'
+      - 'Dockerfile.streamlit' # Include Dockerfile changes to trigger this workflow
 
 jobs:
   build:
@@ -31,8 +34,12 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: .
-          file: Dockerfile.streamlit
-          push: true
-          tags: prajwal1717/advance-question-generator-streamlit:latest
+          context: . # Set the build context to the root of the repository
+          file: Dockerfile.streamlit # Specify the Dockerfile for Streamlit
+          push: true # Push the built image to Docker Hub
+          tags: |
+            prajwal1717/advance-question-generator-streamlit:latest
+            prajwal1717/advance-question-generator-streamlit:${{ github.sha }} # Add a commit-specific tag for traceability
 
+      - name: Post-build cleanup
+        run: docker system prune -f # Optional cleanup step to remove unused data

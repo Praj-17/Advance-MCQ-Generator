@@ -2,11 +2,14 @@ name: Build and Push FastAPI Docker Image
 
 on:
   push:
+    branches:
+      - main # Specify the branch to trigger on. Adjust as needed.
     paths:
       - 'app.py'
       - 'src/**'
       - 'requirements.txt'
       - '.github/workflows/fastapi-docker-image.yml'
+      - 'Dockerfile.fastapi' # Ensure Dockerfile changes also trigger this workflow
 
 jobs:
   build:
@@ -31,7 +34,12 @@ jobs:
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
-          context: .
-          file: Dockerfile.fastapi
-          push: true
-          tags: prajwal1717/advance-question-generator-fastapi:latest
+          context: . # Ensure the correct build context
+          file: Dockerfile.fastapi # Point to the correct Dockerfile
+          push: true # Push the built image to Docker Hub
+          tags: |
+            prajwal1717/advance-question-generator-fastapi:latest
+            prajwal1717/advance-question-generator-fastapi:${{ github.sha }} # Add a unique tag with commit SHA for traceability
+
+      - name: Post-build cleanup
+        run: docker system prune -f # Optional cleanup step to remove unused data
