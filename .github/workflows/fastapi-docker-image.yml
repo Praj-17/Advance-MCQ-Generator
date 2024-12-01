@@ -34,4 +34,4 @@ jobs:
           context: .
           file: Dockerfile.fastapi
           push: true
-          tags: yourdockerhubusername/fastapi_app:latest
+          tags: praj-1717/advance-question-generator-fastapi:latest

@@ -34,4 +34,4 @@ jobs:
           context: .
           file: Dockerfile.streamlit
           push: true
-          tags: yourdockerhubusername/streamlit_app:latest
+          tags: praj1717/advance-question-generator-streamlit:latest
