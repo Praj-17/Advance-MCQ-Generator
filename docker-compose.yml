@@ -13,3 +13,4 @@ services:
       dockerfile: Dockerfile.streamlit
     ports:
       - "8501:8501"
+ 
