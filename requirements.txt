@@ -1,6 +1,4 @@
-simplerllm
 chromadb
-openai
 pydantic
 langchain
 langchain-openai
@@ -10,3 +8,4 @@ streamlit
 fastapi
 uvicorn
 python-multipart
+simplerllm==0.3.1.1

@@ -3,14 +3,14 @@ import sys
 from typing import Dict, Any, List, Optional
 
 import chromadb
+import chromadb.utils.embedding_functions as embedding_functions
 from chromadb.config import Settings
 from dotenv import load_dotenv
 import json
 
-# Import LangChain's OpenAIEmbeddings
-from langchain_openai import OpenAIEmbeddings
 
 load_dotenv()
+
 
 
 class ChromaVectorStore:
@@ -42,14 +42,19 @@ class ChromaVectorStore:
                 raise ValueError(
                     "OpenAI API key not provided and OPENAI_API_KEY environment variable not set."
                 )
-        if self.openai_api_key:
-            # Initialize LangChain's OpenAIEmbeddings
-            self.embeddings = OpenAIEmbeddings(
+        # if self.openai_api_key:
+        #     # Initialize LangChain's OpenAIEmbeddings
+        #     self.embeddings = OpenAIEmbeddings(
+        #         api_key=self.openai_api_key,
+        #         model=embedding_model
+        #     )
+        # else:
+        #     self.embeddings = None
+
+        self.openai_ef = embedding_functions.OpenAIEmbeddingFunction(
                 api_key=self.openai_api_key,
-                model=embedding_model
+                model_name=self.embeddings_model_name
             )
-        else:
-            self.embeddings = None
 
         self.embeddings_model_name = embedding_model
         self.method = "RAG Pipeline"
@@ -73,7 +78,7 @@ class ChromaVectorStore:
             collection = self.chroma_client.get_collection(name=collection_name)
             print(f"Using existing collection: '{collection_name}'")
         except Exception:
-            collection = self.chroma_client.create_collection(name=collection_name)
+            collection = self.chroma_client.create_collection(name=collection_name, embedding_function=self.openai_ef)
             print(f"Created new collection: '{collection_name}'")
         return collection
 
