@@ -13,7 +13,8 @@ class AdvanceQuestionGeneratorClass:
             openai_key=openai_key,
             temperature=temperature
         )
-        self.RAG = ChromaVectorStore()
+        self.RAG = ChromaVectorStore(
+            openai_api_key= openai_key)
         self.pdf = PDFtoText()
         self.ingested_pdfs = []  # List to keep track of ingested PDFs
         self.collection_texts = {}  # Dict to map collection_name to extracted text

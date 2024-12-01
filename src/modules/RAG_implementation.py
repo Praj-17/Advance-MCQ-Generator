@@ -42,12 +42,14 @@ class ChromaVectorStore:
                 raise ValueError(
                     "OpenAI API key not provided and OPENAI_API_KEY environment variable not set."
                 )
-
-        # Initialize LangChain's OpenAIEmbeddings
-        self.embeddings = OpenAIEmbeddings(
-            api_key=self.openai_api_key,
-            model=embedding_model
-        )
+        if self.openai_api_key:
+            # Initialize LangChain's OpenAIEmbeddings
+            self.embeddings = OpenAIEmbeddings(
+                api_key=self.openai_api_key,
+                model=embedding_model
+            )
+        else:
+            self.embeddings = None
 
         self.embeddings_model_name = embedding_model
         self.method = "RAG Pipeline"
