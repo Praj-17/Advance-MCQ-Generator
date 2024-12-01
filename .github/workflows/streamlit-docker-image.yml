@@ -35,3 +35,4 @@ jobs:
           file: Dockerfile.streamlit
           push: true
           tags: praj1717/advance-question-generator-streamlit:latest
+
