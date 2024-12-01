@@ -1,0 +1,36 @@
+[
+    {
+        "input": "Hi",
+        "output": "\ud83d\udc4b Hello! How can I assist you today?",
+        "segments": [],
+        "timestamp": "2024-11-30T18:28:43.886760"
+    },
+    {
+        "input": "What is the PDF about",
+        "output": "The PDF is about Project Planning and Management at Dilla University, detailing project objectives, terminology related to log frames, and explaining the hierarchy of objectives, including goals, purposes, outputs, activities, indicators, and evidence for monitoring and evaluation.",
+        "segments": [
+            {
+                "document": "Project Planning and Management: Dilla University \n50 \n \nachievement of objectives, we can compare these data with those that we collect after or during \nthe implementation of the project. \n",
+                "metadata": {
+                    "page_number": "50"
+                },
+                "confidence": 0.4947
+            },
+            {
+                "document": "Project Planning and Management: Dilla University \n32 \n \nTerminology \nDifferent organizations use different terms for the components of the log frame. We explain the \nterms simply below. Wherever we are aware of alternative names used by other organizations, \nwe provide that name in brackets. The terms will be explained further in the section about \ncompleting a log frame. \nSummary (Intervention logic) \nThe Summary outlines the project\u2018s objectives: what it hopes to achieve and how. There are \nmany different words that describe different types of objectives. We use the term \u2017objective\u2018 as a \ngeneral term for a desired change. In the log frame, the summary separates out the different \nlevels of objectives to form a \u2017hierarchy of objectives\u2018 and uses special terms to refer to each \nlevel. \nGoal; the Goal refers to the overall problem we are trying to address. It is sometimes referred to \nas the wider development objective. This might be improved incomes, improved access to water \nor reduced crime. Example: Improved farm productivity by small farmers. \nPurpose The Purpose is the specific change that we want the project to make to contribute to the \nachievement of the goal. It is sometimes called the Immediate Project Objective. Example: \nImproved farming methods and varieties of rice adopted by small farmers. \nOutputs; the Outputs are what we want to see as a result of our activities, in order to fulfill the \npurpose. Example: Improved crop varieties acceptable to users made available and distributed. \nActivities; the Activities describe the tasks we will carry out. Example: Farmer participatory \nresearch into crop varieties. \nIndicators (Measurable/ Objectively Verifiable Indicators\u2013 OVIs) \nIndicators answer the question \u2017How do we know when we have got there?\u2018 They are signs \nwhich measure project performance against objectives and play an important part in monitoring \nand evaluation. Example: 75% of small farmers in the diocese have adopted new rice varieties by \nthe end of year 3 \nEvidence (Means of Verification \u2013 MoVs) \nEvidence refers to the source of the information needed to measure performance, who will be \nresponsible for collecting it, and how often. Example: Sample survey carried out by project staff \nat the end of year 3. \n",
+                "metadata": {
+                    "page_number": "32"
+                },
+                "confidence": 0.494
+            },
+            {
+                "document": "Project Planning and Management: Dilla University \n28 \n \nEXAMPLE of an objectives tree with focus on one area \n \n \n \n \n \n \n \n \n \n \n \n \nWastage at \nhousehold \nlevel reduced \nFarming made \nmore \nwaterefficient \nHand-pumps \nrepaired \nDemand for \nfarm \nuse reduced \nWells \nprotected \nand yielding \nWater table \nreached \nMore wells \ndug \nPopulation \npressure \nCONSTRAINT \nACCESS TO \nSAFE \nWATER \nIMPROVED \n",
+                "metadata": {
+                    "page_number": "28"
+                },
+                "confidence": 0.4934
+            }
+        ],
+        "timestamp": "2024-11-30T18:29:27.430343"
+    }
+]

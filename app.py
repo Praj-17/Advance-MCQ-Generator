@@ -3,6 +3,7 @@
 import asyncio
 import logging
 from fastapi import FastAPI, UploadFile, File, HTTPException, Depends, Query
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from typing import Optional
 from src import get_question_generator
@@ -25,6 +26,12 @@ app = FastAPI(
     version="1.0.0"
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Update with specific origins as needed
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],)
 # Wrapper class to map 'filename' to 'name' and provide a synchronous 'read' method
 class UploadFileWrapper:
     def __init__(self, upload_file: UploadFile):

@@ -1,0 +1,685 @@
+{
+    "metadata": {
+        "generated_at": "2024-11-30T18:31:33.993545",
+        "total_questions": 45,
+        "book_title": "Project Planning and Management: Dilla University",
+        "tool_used": "gpt-4o-mini"
+    },
+    "questions": [
+        {
+            "id": "9a64ac9f-6fdb-4a4f-ba81-bdd0f93b1810",
+            "topic": "Introduction to Project Management",
+            "type": "MCQ fixed",
+            "question": "What is a distinguishing feature of all projects?",
+            "options": [
+                "They are ongoing and indefinite",
+                "They have a specific time frame",
+                "They are always conducted by large teams",
+                "They have no specific goals"
+            ],
+            "correct_answer": "B",
+            "page_number": 1,
+            "explanation": "All projects have a beginning and an end, making the specific time frame a key characteristic. (Page 1)"
+        },
+        {
+            "id": "c8d77d7a-1320-47e9-a3b5-d70663c63b22",
+            "topic": "Introduction to Project Management",
+            "type": "MCQ fixed",
+            "question": "Which of the following best defines Project Management?",
+            "options": [
+                "The process of achieving project objectives through a set of activities",
+                "The methodology of developing an organization's structure",
+                "The act of managing people in a corporate environment",
+                "The financial management of organizational resources"
+            ],
+            "correct_answer": "A",
+            "page_number": 4,
+            "explanation": "Project Management is distinctly defined as achieving project objectives through a set of activities. (Page 4)"
+        },
+        {
+            "id": "211a106b-944a-4c1c-8241-1000aa36fd00",
+            "topic": "Introduction to Project Management",
+            "type": "MCQ fixed",
+            "question": "What is the primary role of a project manager?",
+            "options": [
+                "To oversee the entire organization",
+                "To manage the project's scope, schedule, and cost",
+                "To handle all financial transactions",
+                "To develop training for team members"
+            ],
+            "correct_answer": "B",
+            "page_number": 6,
+            "explanation": "The project manager is responsible for managing the project's scope, schedule, and cost to ensure successful completion. (Page 6)"
+        },
+        {
+            "id": "71fad805-69da-42a7-b169-45b1d962f4e8",
+            "topic": "Introduction to Project Management",
+            "type": "MCQ fixed",
+            "question": "What does a project plan typically include?",
+            "options": [
+                "Only the budget and schedule",
+                "A formal, approved document for managing a project",
+                "A detailed list of all stakeholders",
+                "A summary of all organizational policies"
+            ],
+            "correct_answer": "B",
+            "page_number": 3,
+            "explanation": "A project plan is a formal, approved document that is used to manage and control a project. (Page 3)"
+        },
+        {
+            "id": "9b12d1bd-637c-4d0c-a51a-169679b7beb3",
+            "topic": "Introduction to Project Management",
+            "type": "MCQ fixed",
+            "question": "Which term describes the unique and temporary nature of a project?",
+            "options": [
+                "Ongoing process",
+                "Permanent activity",
+                "Temporary endeavor",
+                "Routine task"
+            ],
+            "correct_answer": "C",
+            "page_number": 2,
+            "explanation": "A project is defined as a temporary endeavor undertaken to create a unique product or service. (Page 2)"
+        },
+        {
+            "id": "dcc654be-696f-4b0d-a195-2b9e472d3294",
+            "topic": "Project Planning",
+            "type": "MCQ fixed",
+            "question": "What is a key distinguishing feature of a project?",
+            "options": [
+                "It has a fixed budget and no deadline.",
+                "It is a temporary endeavor with a clear start and end.",
+                "It is usually repetitive and continuous.",
+                "It involves no specific objectives."
+            ],
+            "correct_answer": "B",
+            "page_number": 1,
+            "explanation": "A project is defined as a temporary effort with a clear beginning and end, which is crucial for its identification (Page 1)."
+        },
+        {
+            "id": "ccd5ef7d-2579-4b7a-83d8-c1571b26ffaa",
+            "topic": "Project Planning",
+            "type": "MCQ fixed",
+            "question": "What is the purpose of project planning?",
+            "options": [
+                "To create a detailed budget for the project.",
+                "To define project activities and end products.",
+                "To assign roles and responsibilities to team members.",
+                "To assess the risks involved in the project."
+            ],
+            "correct_answer": "B",
+            "page_number": 2,
+            "explanation": "Project planning defines the activities and end products to be performed and describes how they will be accomplished (Page 2)."
+        },
+        {
+            "id": "d972d9b9-71d9-4438-a195-dea9bb1b0c58",
+            "topic": "Project Planning",
+            "type": "MCQ fixed",
+            "question": "Which of the following is NOT a characteristic of a project?",
+            "options": [
+                "It has a unique outcome.",
+                "It is a continuous process.",
+                "It has a defined budget.",
+                "It has a specific time frame."
+            ],
+            "correct_answer": "B",
+            "page_number": 1,
+            "explanation": "Projects are temporary efforts with a defined start and end, making them distinct from continuous processes (Page 1)."
+        },
+        {
+            "id": "72b6b31f-1fb2-444e-b3df-622624067d4c",
+            "topic": "Project Planning",
+            "type": "MCQ fixed",
+            "question": "In project planning, what does the term 'scope' refer to?",
+            "options": [
+                "The financial resources required.",
+                "The tasks and deliverables to be completed.",
+                "The timeline for project completion.",
+                "The stakeholders involved in the project."
+            ],
+            "correct_answer": "B",
+            "page_number": 3,
+            "explanation": "The scope of a project defines the specific work and tasks that will be performed to achieve the project's goals (Page 3)."
+        },
+        {
+            "id": "06349052-0e67-4779-978d-5e547c633104",
+            "topic": "Project Planning",
+            "type": "MCQ fixed",
+            "question": "Which of the following is a step in the project planning process?",
+            "options": [
+                "Defining the project's financial contributions.",
+                "Identifying the project's main competitor.",
+                "Estimating the technical scope of the effort.",
+                "Creating a marketing strategy."
+            ],
+            "correct_answer": "C",
+            "page_number": 3,
+            "explanation": "Estimating the technical scope is a critical step in the planning process to outline what the project will entail (Page 3)."
+        },
+        {
+            "id": "e2b5f8dc-fc22-4621-997c-3cc6b25dfe7a",
+            "topic": "Project Management Principles",
+            "type": "MCQ fixed",
+            "question": "What is a key characteristic of a project?",
+            "options": [
+                "A project has infinite resources.",
+                "A project has a defined beginning and end.",
+                "A project is a repetitive activity.",
+                "A project does not require a manager."
+            ],
+            "correct_answer": "B",
+            "page_number": 2,
+            "explanation": "A project is defined as a temporary effort with a clear start and end date, making option B correct. (Page 2)"
+        },
+        {
+            "id": "49070a72-d578-45f2-9d33-7c5b18d370f2",
+            "topic": "Project Management Principles",
+            "type": "MCQ fixed",
+            "question": "What does project planning primarily aim to define?",
+            "options": [
+                "The exact cost of the project.",
+                "The specific work to be performed and the goals.",
+                "The team members involved in the project.",
+                "The marketing strategy for the project."
+            ],
+            "correct_answer": "B",
+            "page_number": 3,
+            "explanation": "Project planning aims to define the specific work to be performed and the goals that bind the project. (Page 3)"
+        },
+        {
+            "id": "0c1757fb-3a1b-4681-a135-b4b2c92f4b38",
+            "topic": "Project Management Principles",
+            "type": "MCQ fixed",
+            "question": "Which of the following best describes project management?",
+            "options": [
+                "A set of principles for repetitive tasks.",
+                "Managing a single activity without a team.",
+                "The art of combining tasks, resources, and people to meet objectives.",
+                "A process that does not require documentation."
+            ],
+            "correct_answer": "C",
+            "page_number": 4,
+            "explanation": "Project management is defined as the process of combining tasks, resources, and people to achieve objectives. (Page 4)"
+        },
+        {
+            "id": "b30ce81c-d4e9-4949-b093-f2c034303b26",
+            "topic": "Project Management Principles",
+            "type": "MCQ fixed",
+            "question": "What is the purpose of conducting a needs assessment?",
+            "options": [
+                "To evaluate the project after completion.",
+                "To identify gaps between current conditions and desired states.",
+                "To gather information about team members.",
+                "To create a marketing strategy."
+            ],
+            "correct_answer": "B",
+            "page_number": 11,
+            "explanation": "A needs assessment aims to identify gaps between current conditions and desired states to set priorities for actions. (Page 11)"
+        },
+        {
+            "id": "a9dc84df-386a-48b4-86ef-8b2a3ff8fd1d",
+            "topic": "Project Management Principles",
+            "type": "MCQ fixed",
+            "question": "In project management, what does the acronym SMART stand for?",
+            "options": [
+                "Simple, Manageable, Achievable, Relevant, Time-bound.",
+                "Specific, Measurable, Achievable, Relevant, Time-bound.",
+                "Strategic, Measurable, Attainable, Realistic, Timely.",
+                "Specific, Manageable, Actionable, Relevant, Time-sensitive."
+            ],
+            "correct_answer": "B",
+            "page_number": 28,
+            "explanation": "SMART stands for Specific, Measurable, Achievable, Relevant, and Time-bound, which are criteria for setting effective objectives. (Page 28)"
+        },
+        {
+            "id": "8b45d3c2-b48e-438a-b8a9-fea2980c8f32",
+            "topic": "Project Management Tools and Techniques",
+            "type": "MCQ fixed",
+            "question": "What is a project?",
+            "options": [
+                "A permanent endeavor with ongoing activities",
+                "A temporary effort with a specific goal and time frame",
+                "An unstructured approach to managing tasks",
+                "A collection of unrelated activities"
+            ],
+            "correct_answer": "B",
+            "page_number": 1,
+            "explanation": "A project is defined as a temporary effort undertaken to create a unique product or service with a specific time frame, which differentiates it from ongoing operations. (Page 1)"
+        },
+        {
+            "id": "1ce5c860-1a1f-4d2c-99ac-8fec2ce008eb",
+            "topic": "Project Management Tools and Techniques",
+            "type": "MCQ fixed",
+            "question": "What is the primary purpose of project planning?",
+            "options": [
+                "To allocate resources randomly",
+                "To define project activities and end products",
+                "To manage team conflicts",
+                "To set a static budget"
+            ],
+            "correct_answer": "B",
+            "page_number": 2,
+            "explanation": "The primary purpose of project planning is to define the specific work to be performed and the goals that bind the project, ensuring a structured approach. (Page 2)"
+        },
+        {
+            "id": "c90682dc-46ac-47fd-bfd7-8d888c54972b",
+            "topic": "Project Management Tools and Techniques",
+            "type": "MCQ fixed",
+            "question": "What is a log frame?",
+            "options": [
+                "A tool for monitoring team performance",
+                "A document for tracking project finances",
+                "A table that outlines project goals, purposes, outputs, and activities",
+                "A type of software used for project scheduling"
+            ],
+            "correct_answer": "C",
+            "page_number": 30,
+            "explanation": "The log frame is a tool used to strengthen project design, implementation, and evaluation by outlining the project's structure in terms of goals, purposes, outputs, and activities. (Page 30)"
+        },
+        {
+            "id": "0e906acf-0d85-43c5-87ea-4cde51888250",
+            "topic": "Project Management Tools and Techniques",
+            "type": "MCQ fixed",
+            "question": "What is the main function of monitoring in project management?",
+            "options": [
+                "To compare actual progress against planned progress",
+                "To finalize project documentation",
+                "To conduct financial audits",
+                "To terminate underperforming teams"
+            ],
+            "correct_answer": "A",
+            "page_number": 46,
+            "explanation": "Monitoring is primarily concerned with systematically collecting information to compare actual progress with planned progress, allowing for timely adjustments. (Page 46)"
+        },
+        {
+            "id": "e7255c6f-8ef0-48b2-8a7b-65352b9c0d22",
+            "topic": "Project Management Tools and Techniques",
+            "type": "MCQ fixed",
+            "question": "Which of the following is NOT a characteristic of a project?",
+            "options": [
+                "A project has a defined start and end date",
+                "A project aims to produce a unique product or service",
+                "A project involves repetitive tasks that last indefinitely",
+                "A project has specific objectives and constraints"
+            ],
+            "correct_answer": "C",
+            "page_number": 3,
+            "explanation": "A project is characterized by having a defined start and end date and aims to produce unique outcomes, unlike repetitive tasks that last indefinitely, which are typical of ongoing operations. (Page 3)"
+        },
+        {
+            "id": "ed719c21-a0b9-474e-bbc7-fe4c142a68ad",
+            "topic": "Project Cycle and Phases",
+            "type": "MCQ fixed",
+            "question": "What is the first phase of the project cycle?",
+            "options": [
+                "Implementation",
+                "Design",
+                "Identification",
+                "Evaluation"
+            ],
+            "correct_answer": "C",
+            "page_number": 8,
+            "explanation": "The first phase of the project cycle is Identification, where the focus is on determining what the project will address and who will benefit from it. (Page 8)"
+        },
+        {
+            "id": "b5228af2-fec1-45f9-99fd-9c425040dbc8",
+            "topic": "Project Cycle and Phases",
+            "type": "MCQ fixed",
+            "question": "During which phase of the project cycle is performance measurement conducted?",
+            "options": [
+                "Design",
+                "Implementation",
+                "Monitoring",
+                "Reviewing"
+            ],
+            "correct_answer": "C",
+            "page_number": 47,
+            "explanation": "Performance measurement and progress tracking occur during the Monitoring phase of the project cycle. (Page 47)"
+        },
+        {
+            "id": "5409da20-0ebd-496a-b5c3-b7c2ae882a32",
+            "topic": "Project Cycle and Phases",
+            "type": "MCQ fixed",
+            "question": "What is the primary focus of the Evaluation phase in the project cycle?",
+            "options": [
+                "To implement project activities",
+                "To assess project performance and impact",
+                "To identify project stakeholders",
+                "To design project strategies"
+            ],
+            "correct_answer": "B",
+            "page_number": 48,
+            "explanation": "The Evaluation phase focuses on systematically assessing the project's performance and impact against its objectives. (Page 48)"
+        },
+        {
+            "id": "534f239a-55a4-4c95-934d-f872a438e147",
+            "topic": "Project Cycle and Phases",
+            "type": "MCQ fixed",
+            "question": "Which phase of the project cycle involves adjusting project plans based on progress?",
+            "options": [
+                "Design",
+                "Implementation",
+                "Monitoring",
+                "Evaluation"
+            ],
+            "correct_answer": "C",
+            "page_number": 46,
+            "explanation": "During the Monitoring phase, project plans may be adjusted based on the progress and any issues identified. (Page 46)"
+        },
+        {
+            "id": "cb5a9a7a-e1f1-4a13-aa74-e42018929217",
+            "topic": "Project Cycle and Phases",
+            "type": "MCQ fixed",
+            "question": "What is the purpose of the Designing phase in the project cycle?",
+            "options": [
+                "To implement activities",
+                "To set project objectives and strategies",
+                "To evaluate project outcomes",
+                "To monitor project progress"
+            ],
+            "correct_answer": "B",
+            "page_number": 8,
+            "explanation": "The Design phase is aimed at setting the project objectives and developing strategies to achieve them. (Page 8)"
+        },
+        {
+            "id": "ce7369d6-aee8-4c7a-9536-027d95ba6bc6",
+            "topic": "Needs Assessment",
+            "type": "MCQ fixed",
+            "question": "What is the primary purpose of a needs assessment?",
+            "options": [
+                "To identify gaps between current and desired states",
+                "To collect data for training purposes",
+                "To evaluate project outcomes",
+                "To allocate resources effectively"
+            ],
+            "correct_answer": "A",
+            "page_number": 10,
+            "explanation": "A needs assessment aims to identify discrepancies between the current state and desired outcomes, which is crucial for determining priorities for future actions (Page 10)."
+        },
+        {
+            "id": "740481c7-cf60-4798-aa45-cfa7242a429e",
+            "topic": "Needs Assessment",
+            "type": "MCQ fixed",
+            "question": "Which of the following is NOT a characteristic of a good needs assessment?",
+            "options": [
+                "Focuses on results rather than means",
+                "Involves all stakeholders in establishing priorities",
+                "Is a one-time process with no need for repetition",
+                "Provides an objective basis for decision-making"
+            ],
+            "correct_answer": "C",
+            "page_number": 12,
+            "explanation": "A good needs assessment is a cyclic process that integrates within strategic planning, meaning it is not a one-time process (Page 12)."
+        },
+        {
+            "id": "bf968983-1271-4d48-bad5-d5c1bd76376d",
+            "topic": "Needs Assessment",
+            "type": "MCQ fixed",
+            "question": "What type of information is typically NOT collected during a needs assessment?",
+            "options": [
+                "Demographic data",
+                "Community beliefs and customs",
+                "Personal opinions of project staff",
+                "Health statistics"
+            ],
+            "correct_answer": "C",
+            "page_number": 12,
+            "explanation": "Needs assessments focus on community needs and conditions, not personal opinions of project staff (Page 12)."
+        },
+        {
+            "id": "0cd6efb1-1d54-4913-9e03-5cb7b2b86f2a",
+            "topic": "Needs Assessment",
+            "type": "MCQ fixed",
+            "question": "Why is it important to involve stakeholders in the needs assessment process?",
+            "options": [
+                "To ensure the assessment is biased towards project staff",
+                "To establish common goals and action areas",
+                "To reduce the workload of the project manager",
+                "To limit the scope of the assessment"
+            ],
+            "correct_answer": "B",
+            "page_number": 12,
+            "explanation": "Involving stakeholders helps to establish common goals and ensures that the needs assessment reflects a comprehensive view of the community's priorities (Page 12)."
+        },
+        {
+            "id": "f66c5754-1d06-49aa-8c59-98983970679e",
+            "topic": "Needs Assessment",
+            "type": "MCQ fixed",
+            "question": "Which method is commonly used in needs assessment to analyze internal and external factors?",
+            "options": [
+                "PESTE Analysis",
+                "SWOT Analysis",
+                "Logical Framework",
+                "Budget Analysis"
+            ],
+            "correct_answer": "B",
+            "page_number": 13,
+            "explanation": "SWOT Analysis is used to evaluate strengths, weaknesses, opportunities, and threats in the context of needs assessment (Page 13)."
+        },
+        {
+            "id": "b10e4ac6-6fa3-4263-9c83-2c316b0561a8",
+            "topic": "Stakeholder Analysis",
+            "type": "MCQ fixed",
+            "question": "What is a stakeholder in the context of project management?",
+            "options": [
+                "Only the project manager",
+                "Individuals or groups affected by or can influence the project",
+                "Only the funding agencies",
+                "None of the above"
+            ],
+            "correct_answer": "B",
+            "page_number": 17,
+            "explanation": "A stakeholder is defined as any individual or group affected by the impact of an activity or who can influence it. This includes a broad range of individuals and groups, making option B the correct answer."
+        },
+        {
+            "id": "54133409-effb-4fdd-b730-c7efb2ea9aca",
+            "topic": "Stakeholder Analysis",
+            "type": "MCQ fixed",
+            "question": "Which of the following is a primary stakeholder?",
+            "options": [
+                "Government officials",
+                "Local businesses",
+                "Community members directly affected by the project",
+                "NGO representatives"
+            ],
+            "correct_answer": "C",
+            "page_number": 19,
+            "explanation": "Primary stakeholders are those who benefit from or are adversely affected by project activities, making community members directly affected by the project the correct choice."
+        },
+        {
+            "id": "0c0ffe19-0518-4b98-9beb-d7ba86b4fc6b",
+            "topic": "Stakeholder Analysis",
+            "type": "MCQ fixed",
+            "question": "Why is stakeholder analysis important at the beginning of project design?",
+            "options": [
+                "To identify project funding",
+                "To gain an understanding of stakeholder interests and influence",
+                "To finalize project objectives",
+                "To evaluate project costs"
+            ],
+            "correct_answer": "B",
+            "page_number": 18,
+            "explanation": "Conducting stakeholder analysis at the beginning of project design helps to understand which organizations or groups have an interest in the issues, making option B the right choice."
+        },
+        {
+            "id": "bf7a1cf2-c09b-4b2a-b8ec-268d49978709",
+            "topic": "Stakeholder Analysis",
+            "type": "MCQ fixed",
+            "question": "What should be considered when identifying stakeholders?",
+            "options": [
+                "Only their financial contribution",
+                "Their level of knowledge and influence regarding the project",
+                "Their geographic location",
+                "Their previous projects"
+            ],
+            "correct_answer": "B",
+            "page_number": 18,
+            "explanation": "When identifying stakeholders, it is crucial to consider their level of knowledge and influence regarding the project, which makes option B the correct answer."
+        },
+        {
+            "id": "3b696300-b28c-4794-85cd-3d89cd1010b1",
+            "topic": "Stakeholder Analysis",
+            "type": "MCQ fixed",
+            "question": "What does the term 'proponent' refer to in stakeholder analysis?",
+            "options": [
+                "A stakeholder that opposes the project",
+                "A stakeholder that supports the project",
+                "A neutral stakeholder",
+                "A funding agency"
+            ],
+            "correct_answer": "B",
+            "page_number": 18,
+            "explanation": "In stakeholder analysis, a 'proponent' refers to a stakeholder that supports the project and can help fulfill its objectives, making option B the correct choice."
+        },
+        {
+            "id": "00b82c02-421a-4a23-8dde-a84e56bf0e48",
+            "topic": "Problem Analysis and Objectives",
+            "type": "MCQ fixed",
+            "question": "What is a key characteristic that distinguishes a project from a program?",
+            "options": [
+                "A project has indefinite duration.",
+                "A project has a specific time frame.",
+                "A project can adapt to any situation.",
+                "A project has multiple objectives."
+            ],
+            "correct_answer": "B",
+            "page_number": 1,
+            "explanation": "A project is defined as having a specific time frame with a clear beginning and end, while a program generally extends indefinitely. (Page 1)"
+        },
+        {
+            "id": "7bf78e51-c62a-47dd-b0b6-c2d045b607c3",
+            "topic": "Problem Analysis and Objectives",
+            "type": "MCQ fixed",
+            "question": "Which of the following best describes a project objective?",
+            "options": [
+                "It is a casual goal.",
+                "It is a broad vision.",
+                "It is specific and identifiable.",
+                "It is a theoretical framework."
+            ],
+            "correct_answer": "C",
+            "page_number": 1,
+            "explanation": "A project objective must be specific and identifiable, allowing for clear measurement of success. (Page 1)"
+        },
+        {
+            "id": "67e306bc-1262-44b2-93c4-959cae2a3a0b",
+            "topic": "Problem Analysis and Objectives",
+            "type": "MCQ fixed",
+            "question": "What does the 'SMART' criteria stand for in project objectives?",
+            "options": [
+                "Simple, Measurable, Achievable, Relevant, Time-bound",
+                "Specific, Measurable, Achievable, Relevant, Time-bound",
+                "Strategic, Manageable, Achievable, Realistic, Time-constrained",
+                "Specific, Manageable, Appropriate, Relevant, Timely"
+            ],
+            "correct_answer": "B",
+            "page_number": 27,
+            "explanation": "SMART stands for Specific, Measurable, Achievable, Relevant, and Time-bound, which are key criteria for effective objectives. (Page 27)"
+        },
+        {
+            "id": "0270b876-7eb6-4e78-9d76-dfbb733c642d",
+            "topic": "Problem Analysis and Objectives",
+            "type": "MCQ fixed",
+            "question": "Which of the following is NOT a key step in project planning?",
+            "options": [
+                "Define the technical approach",
+                "Estimate the resources required",
+                "Implement the project immediately",
+                "Schedule all tasks to be performed"
+            ],
+            "correct_answer": "C",
+            "page_number": 3,
+            "explanation": "Implementing the project immediately is not a planning step; rather, thorough planning must be completed first. (Page 3)"
+        },
+        {
+            "id": "bc30204e-5d57-4a53-86e9-e97dd40adf5a",
+            "topic": "Problem Analysis and Objectives",
+            "type": "MCQ fixed",
+            "question": "What is the purpose of conducting a needs assessment in project planning?",
+            "options": [
+                "To assess project costs.",
+                "To identify social problems and their extent.",
+                "To finalize project objectives.",
+                "To allocate resources efficiently."
+            ],
+            "correct_answer": "B",
+            "page_number": 11,
+            "explanation": "The needs assessment aims to identify social problems, determine their extent, and accurately define the target population to be served. (Page 11)"
+        },
+        {
+            "id": "415e607f-3ede-46b6-9aa4-c182030e000b",
+            "topic": "Monitoring and Evaluation",
+            "type": "MCQ fixed",
+            "question": "What is the primary purpose of project monitoring?",
+            "options": [
+                "To assess the long-term impact of the project",
+                "To track the routine activities and progress of the project",
+                "To evaluate the overall success of the project after completion",
+                "To collect baseline data before project implementation"
+            ],
+            "correct_answer": "B",
+            "page_number": 46,
+            "explanation": "The primary purpose of project monitoring is to track the routine activities and progress of the project, ensuring it stays on schedule. This is detailed on page 46."
+        },
+        {
+            "id": "5a4ef0bc-08d3-442d-8c11-cd34703b8be9",
+            "topic": "Monitoring and Evaluation",
+            "type": "MCQ fixed",
+            "question": "What does evaluation determine in the context of a project?",
+            "options": [
+                "The efficiency of resource use",
+                "The number of activities completed",
+                "The routine tracking of project activities",
+                "The overall budget adherence"
+            ],
+            "correct_answer": "A",
+            "page_number": 49,
+            "explanation": "Evaluation is primarily concerned with ascertaining whether the project has achieved its intended objectives, which includes assessing the efficiency of resource use, as stated on page 49."
+        },
+        {
+            "id": "59c87c4e-4bc9-4972-83be-ca3b8e917cda",
+            "topic": "Monitoring and Evaluation",
+            "type": "MCQ fixed",
+            "question": "What is a key component of a Monitoring and Evaluation (M&E) plan?",
+            "options": [
+                "A description of the project's history",
+                "A list of all stakeholders involved",
+                "Indicators to measure project progress",
+                "A detailed budget for project activities"
+            ],
+            "correct_answer": "C",
+            "page_number": 46,
+            "explanation": "A key component of an M&E plan is the indicators used to measure project progress, ensuring that the project meets its objectives, as outlined on page 46."
+        },
+        {
+            "id": "1a405c4b-c660-4caf-9057-5ebed645fedd",
+            "topic": "Monitoring and Evaluation",
+            "type": "MCQ fixed",
+            "question": "Which of the following best describes the difference between monitoring and evaluation?",
+            "options": [
+                "Monitoring is less frequent than evaluation.",
+                "Monitoring is focused on tracking activities; evaluation assesses outcomes.",
+                "Monitoring is only done by project managers; evaluation is done by external consultants.",
+                "Monitoring involves data collection; evaluation does not."
+            ],
+            "correct_answer": "B",
+            "page_number": 46,
+            "explanation": "Monitoring focuses on the routine tracking of activities, while evaluation involves a more in-depth assessment of outcomes and impact, as explained on page 46."
+        },
+        {
+            "id": "26a94b48-943d-4233-8b6b-dc782fa5a96b",
+            "topic": "Monitoring and Evaluation",
+            "type": "MCQ fixed",
+            "question": "What type of indicators are typically used during an ongoing project for immediate feedback?",
+            "options": [
+                "Impact indicators",
+                "Summative indicators",
+                "Formative indicators",
+                "Goal level indicators"
+            ],
+            "correct_answer": "C",
+            "page_number": 38,
+            "explanation": "Formative indicators are used during an activity, phase, or project to show whether progress is on track, as mentioned on page 38."
+        }
+    ]
+}

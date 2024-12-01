@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "ba5108d3-824d-446e-8681-8dae3444e225",
+		"name": "Advance-MCQ-Generator",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35950469"
+	},
+	"item": [
+		{
+			"name": "Ingest PDF",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-openai-key",
+						"value": "temp_api_key",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "pdf_file",
+							"type": "file",
+							"src": "/E:/Prajwal/Advance MCQ Generator/data/Project Management.pdf"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/ingest_pdf",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"ingest_pdf"
+					],
+					"query": [
+						{
+							"key": "pdf_file",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Level 1 - Questions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-openai-key",
+						"value": "temp_api_key",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "collection_name",
+							"value": "Project_Management_pdf",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/generate_level_1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"generate_level_1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Level 2 - Questions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-openai-key",
+						"value": "temp_api_key",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "collection_name",
+							"value": "Project_Management_pdf",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/generate_level_2",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"generate_level_2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Chat",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-openai-key",
+						"value": "temp_api_key",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "collection_name",
+							"value": "Project_Management_pdf",
+							"type": "text"
+						},
+						{
+							"key": "question",
+							"value": "Summarize the PDF in 100 words",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/chat",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"chat"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reset Data",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-openai-key",
+						"value": "temp_api_key",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/reset_data",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"reset_data"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
