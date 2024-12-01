@@ -14,13 +14,13 @@ class OpenAiRunnerClass:
         if not model_name:
             self.model_name = "gpt-4o-mini"
 
-        with open(r"src\constants\level_1_question_prompt.prompt", "r",encoding = "utf-8") as f:
+        with open(r"src/constants/level_1_question_prompt.prompt", "r",encoding = "utf-8") as f:
             self.question_prompt = f.read()
         
-        with open(r"src\constants\level_1_topics.prompt", "r",encoding = "utf-8") as f:
+        with open(r"src/constants/level_1_topics.prompt", "r",encoding = "utf-8") as f:
             self.topics_prompt = f.read()
         
-        with open(r"src\constants\chat_prompt.prompt", "r",encoding = "utf-8") as f:
+        with open(r"src/constants/chat_prompt.prompt", "r",encoding = "utf-8") as f:
             self.chat_prompt = f.read()
         
         if not openai_key:

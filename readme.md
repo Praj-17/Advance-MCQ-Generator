@@ -45,6 +45,17 @@ Key functionalities include:
 
 ## Getting Started
 
+
+### Deployed Reference
+
+**Why Bother Setting up the envirnoment when you have a deployed Reference?😊**
+
+*Note that both streamlit and FASTAPI use a Free-tier version of Render(A popular cloud-infra platform), hence it spins-down with inactivity and might take upto a minute to load both of the following pages*
+
+- [Streamlit Dashboard](https://advance-question-generator-streamlit.onrender.com) - Presents a functioning streamlit dashboard providing all the above mentioned functionlity and features
+
+- [API Reference](https://advance-question-generator-fastapi.onrender.com) - Presents a FASTAPI interface where you can use the endpoints. Find the [Swagger-UI](https://advance-question-generator-fastapi.onrender.com/docs#/) here for the deployed reference here
+
 ### Prerequisites
 
 Before you begin, ensure you have met the following requirements:
