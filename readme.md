@@ -1,6 +1,6 @@
 # Advanced Question Generator API Documentation
 
-Welcome to the **Advanced Question Generator API** documentation. This API facilitates the ingestion of PDF documents, generation of Level 1 and Level 2 questions, and provides a chat interface leveraging Retrieval-Augmented Generation (RAG) using OpenAI. Additionally, it offers functionality to reset ingested data and clear the vector store.
+Welcome to the **Advanced Question Generator API** documentation. This API facilitates the ingestion of PDF documents, generation of Level 1 and Level 2 questions, and provides a chat interface leveraging Retrieval-Augmented Generation (RAG) using Gemni. Additionally, it offers functionality to reset ingested data and clear the vector store.
 
 ## Table of Contents
 
@@ -48,17 +48,18 @@ Key functionalities include:
 
 ### Deployed Reference
 
-**Why Bother Setting up the envirnoment when you have a deployed Reference?😊**
+**Why Bother Setting up the environment when you have a deployed Reference?😊**
 
-*Note that both streamlit and FASTAPI use a Free-tier version of Render(A popular cloud-infra platform), hence it spins-down with inactivity and might take upto a minute to load both of the following pages*
+*Note that both Streamlit and FASTAPI use a Free-tier version of Render (a popular cloud-infra platform), hence it spins down with inactivity and might take up to a minute to load both of the following pages*
 
-- [Streamlit Dashboard](https://advance-question-generator-streamlit.onrender.com) - Presents a functioning streamlit dashboard providing all the above mentioned functionlity and features
+- [Streamlit Dashboard](https://advance-question-generator-streamlit.onrender.com) - Presents a functioning Streamlit dashboard providing all the above mentioned functionality and features
 
 ![Streamlit Dashboard Image](src/Gallery/ "Optional Title")
 
 - [API Reference](https://advance-question-generator-fastapi.onrender.com) - Presents a FASTAPI interface where you can use the endpoints. Find the [Swagger-UI](https://advance-question-generator-fastapi.onrender.com/docs#/) here for the deployed reference here
 
 ![FASTAPI interface Image](src/Gallery/fastapi.png "Optional Title")
+
 ### Prerequisites
 
 Before you begin, ensure you have met the following requirements:
@@ -92,7 +93,6 @@ Before you begin, ensure you have met the following requirements:
    pip install -r requirements.txt
    ```
 
-
 ### Running the Server
 
 Start the FastAPI server using Uvicorn:
@@ -111,7 +111,7 @@ FastAPI automatically generates interactive API documentation. You can access it
 - **Swagger UI:** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 - **ReDoc:** [http://127.0.0.1:8000/redoc](http://127.0.0.1:8000/redoc)
 
-  *Note that these auto-documentations are available only on the `local` server, once deployed these documentations cannot be found, use this[`Postman Collection`](src/constants/Advance-MCQ-Generator.postman_collection.json) instead*
+  *Note that these auto-documentations are available only on the `local` server, once deployed these documentations cannot be found, use this [`Postman Collection`](src/constants/Advance-MCQ-Generator.postman_collection.json) instead*
 
 ---
 
@@ -130,9 +130,10 @@ FastAPI automatically generates interactive API documentation. You can access it
   - `pdf_file` (file, required): The PDF file to ingest. Must have a `.pdf` extension.
 
 - **Headers:**
-  - `x-openai-key` - Your OpenAI API key - Please make sure it has quite some balance around `$10` would be sufficient. 
+  - `x_api_key` - Your Gemni API key - Please make sure it has quite some balance around `$10` would be sufficient. 
 
   *Note- The Free API KEY will get exhausted real soon so do not try with a free one*
+
 #### Response
 
 - **Status Code:** `200 OK`
@@ -172,7 +173,7 @@ FastAPI automatically generates interactive API documentation. You can access it
 curl -X POST "http://127.0.0.1:8000/ingest_pdf" \
   -H "accept: application/json" \
   -H "Content-Type: multipart/form-data" \
-  -H "x-openai-key: YOUR_API_KEY" \
+  -H "x_api_key: YOUR_API_KEY" \
   -F "pdf_file=@/path/to/your/document.pdf"
 ```
 
@@ -188,7 +189,7 @@ curl -X POST "http://127.0.0.1:8000/ingest_pdf" \
   - `collection_name` (query, string, required): The name of the collection to generate questions from.
 
 - **Headers:**
-  - `x-openai-key` - Your OpenAI API key - Please make sure it has quite some balance around `$10` would be sufficient. 
+  - `x_api_key` - Your Gemni API key - Please make sure it has quite some balance around `$10` would be sufficient. 
 
   *Note- The Free API KEY will get exhausted real soon so do not try with a free one*
 
@@ -197,7 +198,6 @@ curl -X POST "http://127.0.0.1:8000/ingest_pdf" \
 - **Status Code:** `200 OK`
 - **Body:** Find the [sample response](src/results/level_1_questions_Project_Management.pdf.json) here
    
-
   *Note: The exact structure depends on the `GenerateLevel1Response` model.*
 
 #### Errors
@@ -223,7 +223,7 @@ curl -X POST "http://127.0.0.1:8000/ingest_pdf" \
 ```bash
 curl -X POST "http://127.0.0.1:8000/generate_level_1?collection_name=my_collection" \
   -H "accept: application/json" \
-  -H "x-openai-key: YOUR_API_KEY" 
+  -H "x_api_key: YOUR_API_KEY" 
 ```
 
 ### 3. Generate Level 2 Questions
@@ -238,7 +238,7 @@ curl -X POST "http://127.0.0.1:8000/generate_level_1?collection_name=my_collecti
   - `collection_name` (query, string, required): The name of the collection to generate questions from.
 
 - **Headers:**
-  - `x-openai-key` - Your OpenAI API key - Please make sure it has quite some balance around `$10` would be sufficient. 
+  - `x_api_key` - Your Gemni API key - Please make sure it has quite some balance around `$10` would be sufficient. 
 
   *Note- The Free API KEY will get exhausted real soon so do not try with a free one*
 
@@ -246,7 +246,6 @@ curl -X POST "http://127.0.0.1:8000/generate_level_1?collection_name=my_collecti
 
 - **Status Code:** `200 OK`
 - **Body:** Find the [sample response](src/results/level_2_questions_Project_Management.pdf.json) here
-
 
   *Note: The exact structure depends on the `GenerateLevel2Response` model.*
 
@@ -272,7 +271,7 @@ curl -X POST "http://127.0.0.1:8000/generate_level_1?collection_name=my_collecti
 
 ```bash
 curl -X POST "http://127.0.0.1:8000/generate_level_2?collection_name=my_collection" \
-  -H "x-openai-key: YOUR_API_KEY" \
+  -H "x_api_key: YOUR_API_KEY" \
   -H "accept: application/json"
 ```
 
@@ -289,9 +288,10 @@ curl -X POST "http://127.0.0.1:8000/generate_level_2?collection_name=my_collecti
   - `question` (query, string, required): The user's question.
 
 - **Headers:**
-  - `x-openai-key` - Your OpenAI API key - Please make sure it has quite some balance around `$10` would be sufficient. 
+  - `x_api_key` - Your Gemni API key - Please make sure it has quite some balance around `$10` would be sufficient. 
 
   *Note- The Free API KEY will get exhausted real soon so do not try with a free one*
+
 #### Response
 
 - **Status Code:** `200 OK`
@@ -340,7 +340,7 @@ curl -X POST "http://127.0.0.1:8000/generate_level_2?collection_name=my_collecti
 ```bash
 curl -X POST "http://127.0.0.1:8000/chat?collection_name=my_collection&question=What%20is%20AI?" \
   -H "accept: application/json" \
-  -H "x-openai-key: YOUR_API_KEY" 
+  -H "x_api_key: YOUR_API_KEY" 
 ```
 
 ### 5. Reset Data
@@ -485,12 +485,6 @@ EXCEPTION:app.main:Unexpected error during chat generation: Traceback (most rece
 
 You can customize the logging configuration as needed, such as setting different log levels, formatting, or output destinations (e.g., files, external logging services).
 
-
 ### Asynchronous Operations
 
 All endpoints are defined as asynchronous functions using `async def`, allowing the server to handle multiple requests concurrently without blocking.
-
-
-
-
-

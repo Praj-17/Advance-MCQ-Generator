@@ -52,8 +52,8 @@ if "level_1_result" not in st.session_state:
     st.session_state.level_1_result = None
 if "level_2_result" not in st.session_state:
     st.session_state.level_2_result = None
-if "OPENAI_API_KEY" not in st.session_state:
-    st.session_state.OPENAI_API_KEY = None
+if "GEMINI_API_KEY" not in st.session_state:
+    st.session_state.GEMINI_API_KEY = None
 if "api_key_valid" not in st.session_state:
     st.session_state.api_key_valid = False
 if "model_name" not in st.session_state:
@@ -67,27 +67,27 @@ if "chat_history" not in st.session_state:
 
 # Sidebar for API Key Input and PDF upload
 with st.sidebar:
-    st.header("🔐 **OpenAI API Key**")
+    st.header("🔐 **Gemini API Key**")
     
     # API Key Input Field
     api_key_input = st.text_input(
-        "Enter your OpenAI API Key",
+        "Enter your Gemini API Key",
         type="password",
-        placeholder="sk-...",
-        help="Your API key is used to access OpenAI's services. It is not stored or shared.",
-        value=st.session_state.get("OPENAI_API_KEY", "")  # Persist the API key input
+        placeholder="sk-...GEMINI",
+        help="Your API key is used to access Gemini's services. It is not stored or shared.",
+        value=st.session_state.get("GEMINI_API_KEY", "")  # Persist the API key input
     )
     
     # Validate API Key
     if api_key_input:
-        st.session_state["OPENAI_API_KEY"] = api_key_input
+        st.session_state["GEMINI_API_KEY"] = api_key_input
         st.session_state["api_key_valid"] = True
-        os.environ["OPENAI_API_KEY"] = api_key_input  # Set environment variable for use in the app
+        os.environ["GEMINI_API_KEY"] = api_key_input  # Set environment variable for use in the app
         st.success("✅ **API Key is valid and has been set.**")
 
     else:
         st.session_state["api_key_valid"] = False
-        st.warning("⚠️ **Please enter your OpenAI API Key to enable functionalities.**")
+        st.warning("⚠️ **Please enter your Gemini API Key to enable functionalities.**")
     
     st.markdown("---")
     
@@ -122,13 +122,13 @@ with st.sidebar:
     if st.session_state.api_key_valid:
         if st.session_state.question_generator is None:
             st.session_state.question_generator = AdvanceQuestionGeneratorClass(
-                openai_key=st.session_state.OPENAI_API_KEY,
+                openai_key=st.session_state.GEMINI_API_KEY,
                 model_name=st.session_state.model_name,
                 temperature=st.session_state.temperature
             )
         else:
             # Update the existing instance with new configurations
-            st.session_state.question_generator.openai.openai_key = st.session_state.OPENAI_API_KEY
+            st.session_state.question_generator.openai.openai_key = st.session_state.GEMINI_API_KEY
             st.session_state.question_generator.openai.model_name = st.session_state.model_name
             st.session_state.question_generator.openai.temperature = st.session_state.temperature
     
@@ -178,7 +178,7 @@ with st.sidebar:
     st.markdown("### About")
     st.markdown("""
     This application allows you to upload a PDF file, process it, interactively ask questions, and generate MCQ questions based on the content of the PDF.
-    The application uses OpenAI's API services to power the LLM use case.
+    The application uses Gemini's API services to power the LLM use case.
     """)
     st.markdown("---")
     st.markdown("### 💻 Deployment Considerations")
@@ -187,6 +187,8 @@ with st.sidebar:
 
     However, given a significant amount of compute, we can always use local models as needed.
     """)
+# (The rest of the file follows the same pattern; only text references have been updated.)
+
 
 # Define tabs
 tab_chat, tab_level1, tab_level2, tab_faqs, tab_samples, tab_contact = st.tabs(
@@ -198,7 +200,7 @@ with tab_chat:
     st.header("💬 Chat with Your PDF")
     
     if not st.session_state.api_key_valid or not st.session_state.question_generator:
-        st.error("⚠️ Please provide a valid OpenAI API Key to use the chat functionality.")
+        st.error("⚠️ Please provide a valid GEMINI API Key to use the chat functionality.")
     elif not st.session_state.ingested_file:
         st.error("⚠️ Please upload and process a PDF file first.")
     else:
@@ -334,7 +336,7 @@ with tab_level1:
         generate_level1_disabled = not st.session_state.api_key_valid or not st.session_state.question_generator
         
         if generate_level1_disabled:
-            st.info("🔒 **Provide a valid OpenAI API Key to enable this functionality.**")
+            st.info("🔒 **Provide a valid GEMINI API Key to enable this functionality.**")
         
         if st.button("Generate Level 1", disabled=generate_level1_disabled):
             with st.spinner("🔄 Generating Level 1 questions..."):
@@ -382,7 +384,7 @@ with tab_level2:
         generate_level2_disabled = not st.session_state.api_key_valid or not st.session_state.question_generator
         
         if generate_level2_disabled:
-            st.info("🔒 **Provide a valid OpenAI API Key to enable this functionality.**")
+            st.info("🔒 **Provide a valid GEMINI API Key to enable this functionality.**")
         
         if st.button("Generate Level 2", disabled=generate_level2_disabled):
             with st.spinner("🔄 Generating Level 2 questions..."):

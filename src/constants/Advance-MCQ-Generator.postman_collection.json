@@ -12,7 +12,7 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "x-openai-key",
+						"key": "x_api_key",
 						"value": "temp_api_key",
 						"type": "text"
 					}
@@ -57,7 +57,7 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "x-openai-key",
+						"key": "x_api_key",
 						"value": "temp_api_key",
 						"type": "text"
 					}
@@ -95,7 +95,7 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "x-openai-key",
+						"key": "x_api_key",
 						"value": "temp_api_key",
 						"type": "text"
 					}
@@ -133,7 +133,7 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "x-openai-key",
+						"key": "x_api_key",
 						"value": "temp_api_key",
 						"type": "text"
 					}
@@ -176,7 +176,7 @@
 				"method": "POST",
 				"header": [
 					{
-						"key": "x-openai-key",
+						"key": "x_api_key",
 						"value": "temp_api_key",
 						"type": "text"
 					}
