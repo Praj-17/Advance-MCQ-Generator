@@ -3,19 +3,21 @@ import sys
 from typing import Dict, Any, List, Optional
 
 import chromadb
-import chromadb.utils.embedding_functions as embedding_functions
 from chromadb.config import Settings
 from dotenv import load_dotenv
 import json
+from sentence_transformers import SentenceTransformer
+from SimplerLLM.language.embeddings import EmbeddingsLLM, EmbeddingsProvider
+
+
 
 
 load_dotenv()
 
 
-
 class ChromaVectorStore:
     """
-    A class to handle storing and querying documents in Chroma Vector Store using LangChain's OpenAI embeddings.
+    A class to handle storing and querying documents in Chroma Vector Store using Hugging Face embeddings.
     """
 
     def __init__(
@@ -23,7 +25,7 @@ class ChromaVectorStore:
         openai_api_key: Optional[str] = os.getenv("OPENAI_API_KEY"),
         chroma_db_impl: str = "duckdb+parquet",
         persist_directory: str = "./data/chroma_db",
-        embedding_model: str = "text-embedding-ada-002",
+        model: str = "sentence-transformers/all-MiniLM-L6-v2",
     ):
         """
         Initializes the ChromaVectorStore with the provided configurations.
@@ -31,40 +33,34 @@ class ChromaVectorStore:
         :param openai_api_key: Your OpenAI API key. If None, it will be fetched from the OPENAI_API_KEY environment variable.
         :param chroma_db_impl: Implementation of the Chroma database. Defaults to 'duckdb+parquet'.
         :param persist_directory: Directory where Chroma will persist the database.
-        :param embedding_model: The OpenAI embedding model to use.
+        :param embedding_model: The Hugging Face embedding model to use.
         """
-        # Set OpenAI API key
+        # Set OpenAI API key (Not used in Hugging Face embeddings, kept for compatibility)
         if openai_api_key:
             self.openai_api_key = openai_api_key
+            self.model = "text-embedding-ada-002"
+            self.embedding_model = EmbeddingsLLM.create(provider=EmbeddingsProvider.OPENAI, api_key=self.openai_api_key, model_name=self.model)
         else:
-            self.openai_api_key = os.getenv("OPENAI_API_KEY")
-            if not self.openai_api_key:
-                raise ValueError(
-                    "OpenAI API key not provided and OPENAI_API_KEY environment variable not set."
-                )
-        # if self.openai_api_key:
-        #     # Initialize LangChain's OpenAIEmbeddings
-        #     self.embeddings = OpenAIEmbeddings(
-        #         api_key=self.openai_api_key,
-        #         model=embedding_model
-        #     )
-        # else:
-        #     self.embeddings = None
+            self.openai_api_key = None
+            self.model = model
+            try:
+                self.embedding_model = SentenceTransformer(model)
+            except Exception as e:
+                print(f"Error loading embedding model '{model}': {e}")
 
-        self.openai_ef = embedding_functions.OpenAIEmbeddingFunction(
-                api_key=self.openai_api_key,
-                model_name=self.embeddings_model_name
-            )
 
-        self.embeddings_model_name = embedding_model
+        self.embeddings_model_name = self.model
         self.method = "RAG Pipeline"
         self.vector_store = "Chroma"
+
+        # Initialize the Hugging Face embedding model
+
+       
 
         # Initialize Chroma client
         self.chroma_client = chromadb.PersistentClient(
             path=persist_directory,
-            settings=Settings(allow_reset  = True)
-            
+            settings=Settings(allow_reset=True)
         )
 
     def get_or_create_collection(self, collection_name: str):
@@ -78,23 +74,25 @@ class ChromaVectorStore:
             collection = self.chroma_client.get_collection(name=collection_name)
             print(f"Using existing collection: '{collection_name}'")
         except Exception:
-            collection = self.chroma_client.create_collection(name=collection_name, embedding_function=self.openai_ef)
+            collection = self.chroma_client.create_collection(name=collection_name)
             print(f"Created new collection: '{collection_name}'")
         return collection
 
     def get_embedding(self, text: str) -> List[float]:
         """
-        Generates an embedding for the given text using LangChain's OpenAIEmbeddings.
+        Generates an embedding for the given text using the Hugging Face model.
 
         :param text: The text to embed.
         :return: A list of floats representing the embedding.
         """
         try:
-            embedding = self.embeddings.embed_query(text)
+            if self.openai_api_key:
+                embedding = self.embedding_model.generate_embeddings(text)
+            else:
+                embedding = self.embedding_model.encode(text, convert_to_numpy=True).tolist()
             return embedding
         except Exception as e:
-            print(f"Error generating embedding with LangChain: {e}")
-            raise
+            print(f"Error generating embedding with Hugging Face model: {e}")
 
     def store_texts(self, pages: Dict[int, str], collection_name: str) -> None:
         """
@@ -168,7 +166,6 @@ class ChromaVectorStore:
             query_embedding = self.get_embedding(topic)
         except Exception as e:
             print(f"Failed to generate embedding for the topic: {e}")
-            raise
 
         try:
             results = collection.query(
@@ -178,7 +175,6 @@ class ChromaVectorStore:
             )
         except Exception as e:
             print(f"Error querying the Chroma collection '{collection_name}': {e}")
-            raise
 
         fetched_docs = []
         # Access the first (and only) query's results
@@ -202,30 +198,38 @@ class ChromaVectorStore:
         return self.chroma_client.reset()
 
 if __name__ == "__main__":
-    try:
-        chroma_store = ChromaVectorStore()
-        pdf_name = "Project_Management_pdf"
+    
+    chroma_store = ChromaVectorStore(openai_api_key=None)
+    text = "Random Text"
 
-        # Load data from 'extracted_data.json'
-        with open("extracted_data.json", "r") as f:
-            data = json.load(f)
+    out = chroma_store.get_embedding(text)
+    print(type(out)) 
+    print(len(out))
 
-        # Store texts into the Chroma collection
-        chroma_store.store_texts(data, collection_name=pdf_name)
+    # try:
+    #     chroma_store = ChromaVectorStore()
+    #     pdf_name = "Project_Management_pdf"
 
-        query = "Project Manager"
+    #     # Load data from 'extracted_data.json'
+    #     with open("extracted_data.json", "r") as f:
+    #         data = json.load(f)
 
-        # Fetch relevant documents using the correct method name
-        results, output = chroma_store.fetch_relevant_documents(query, pdf_name)
-        print(output)
+    #     # Store texts into the Chroma collection
+    #     chroma_store.store_texts(data, collection_name=pdf_name)
 
-        # Save outputs to JSON files
-        with open("RAG_output.json", "w") as f:
-            json.dump(output, f, indent=4)
+    #     query = "Project Manager"
 
-        with open("results.json", "w") as f:
-            json.dump(results, f, indent=4)
+    #     # Fetch relevant documents using the correct method name
+    #     results, output = chroma_store.fetch_relevant_documents(query, pdf_name)
+    #     print(output)
 
-    except Exception as e:
-        print(f"An error occurred: {e}")
-        sys.exit(1)
+    #     # Save outputs to JSON files
+    #     with open("RAG_output.json", "w") as f:
+    #         json.dump(output, f, indent=4)
+
+    #     with open("results.json", "w") as f:
+    #         json.dump(results, f, indent=4)
+
+    # except Exception as e:
+    #     print(f"An error occurred: {e}")
+    #     sys.exit(1)
