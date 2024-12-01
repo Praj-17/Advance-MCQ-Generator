@@ -6,5 +6,6 @@ import uuid
 
 class ChatResponse(BaseModel):
     generated_at: str = Field(default_factory=lambda: datetime.now().isoformat())
-    question: str
+    question: Optional[str]
     answer: str
+    documents: Optional[list[dict]]

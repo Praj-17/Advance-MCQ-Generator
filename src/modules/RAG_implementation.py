@@ -77,6 +77,16 @@ class ChromaVectorStore:
             collection = self.chroma_client.create_collection(name=collection_name)
             print(f"Created new collection: '{collection_name}'")
         return collection
+    
+    def get_all_text(self, collection_name:str):
+        collection = self.get_or_create_collection(collection_name)
+        return collection.get(include=['documents'])['documents']
+    def get_all_text_str(self, collection_name):
+        collection = self.get_or_create_collection(collection_name)
+        docs = collection.get(include=['documents'])['documents']
+
+        return " ".join(docs)
+
 
     def get_embedding(self, text: str) -> List[float]:
         """
@@ -202,9 +212,10 @@ if __name__ == "__main__":
     chroma_store = ChromaVectorStore(openai_api_key=None)
     text = "Random Text"
 
-    out = chroma_store.get_embedding(text)
+    out = chroma_store.get_all_text_str("Project_Management_pdf")
     print(type(out)) 
     print(len(out))
+    print(out)
 
     # try:
     #     chroma_store = ChromaVectorStore()

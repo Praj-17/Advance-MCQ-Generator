@@ -2,7 +2,7 @@
 
 import asyncio
 import logging
-from fastapi import FastAPI, UploadFile, File, HTTPException, Depends, Query
+from fastapi import FastAPI, UploadFile, File, HTTPException, Depends, Query, Form
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from typing import Optional
@@ -82,7 +82,7 @@ async def ingest_pdf(
 
 @app.post("/generate_level_1", response_model=GenerateLevel1Response)
 async def generate_level_1(
-    collection_name: str = Query(..., min_length=1),
+    collection_name: str = Form(...),
     generator: AdvanceQuestionGeneratorClass = Depends(get_question_generator)
 ):
     """
@@ -95,6 +95,7 @@ async def generate_level_1(
     try:
         logger.info(f"Generating Level 1 questions for collection: {collection_name}")
         result = await generator.generate_level_1(collection_name)
+        print()
         logger.info(f"Level 1 questions generated successfully for collection: {collection_name}")
         return GenerateLevel1Response(**result)
     except ValueError as ve:
@@ -106,7 +107,7 @@ async def generate_level_1(
 
 @app.post("/generate_level_2", response_model=GenerateLevel2Response)
 async def generate_level_2(
-    collection_name: str = Query(..., min_length=1),
+    collection_name: str = Form(...),
     generator: AdvanceQuestionGeneratorClass = Depends(get_question_generator)
 ):
     """
@@ -130,8 +131,8 @@ async def generate_level_2(
 
 @app.post("/chat", response_model=ChatResponse)
 async def chat(
-    collection_name: str = Query(..., min_length=1),
-    question: str = Query(..., min_length=1),
+    collection_name: str = Form(...),
+    question: str = Form(...),
     generator: AdvanceQuestionGeneratorClass = Depends(get_question_generator)
 ):
     """
@@ -147,8 +148,10 @@ async def chat(
     try:
         logger.info(f"Generating chat response for question: '{question}' in collection: {collection_name}")
         answer, documents = await generator.generate_chat_RAG(question, collection_name)
+        answer['documents'] = documents
+
         logger.info(f"Chat response generated successfully for question: '{question}'")
-        return ChatResponse(answer=answer, documents=documents)
+        return ChatResponse(**answer)
     except ValueError as ve:
         logger.error(f"ValueError during chat generation: {ve}")
         raise HTTPException(status_code=400, detail=str(ve))

@@ -73,9 +73,10 @@ class AdvanceQuestionGeneratorClass:
             dict: Generated topics and questions.
         """
         # Retrieve the extracted text
-        all_text = self.collection_texts.get(collection_name)
+        all_text = self.collection_texts.get(collection_name) 
         if not all_text:
-            raise ValueError(f"No extracted text found for collection {collection_name}")
+           all_text = self.RAG.get_all_text_str(collection_name)
+           
 
         # Generate topics and MCQs using OpenAI
         res = await self.openai.generate_topics_and_mcqs(context=all_text)
@@ -94,8 +95,9 @@ class AdvanceQuestionGeneratorClass:
         """
         # Retrieve the extracted text
         all_text_str = self.collection_texts.get(collection_name)
+        
         if not all_text_str:
-            raise ValueError(f"No extracted text found for collection {collection_name}")
+            all_text_str = self.RAG.get_all_text_str(collection_name)
 
         # Generate book information asynchronously
         book_info = await self.openai.generate_book_title(all_text_str)

@@ -7,14 +7,16 @@ class IngestPDFResponse(BaseModel):
     status: str
 
 class GenerateLevel1Response(BaseModel):
-    topics: List[str]
-    questions: List[str]
+    metadata: dict
+    questions: List[dict]
 
 class GenerateLevel2Response(BaseModel):
     metadata: dict
     questions: List[dict]
 
 class ChatResponse(BaseModel):
+    generated_at: str
+    question: str
     answer: str
     documents: List[dict]
 

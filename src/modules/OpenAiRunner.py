@@ -1,6 +1,7 @@
 import asyncio
 from SimplerLLM.language.llm import LLM, LLMProvider
 from SimplerLLM.language.llm_addons import generate_pydantic_json_model as gen_json
+from SimplerLLM.language.llm import GeminiLLM
 from src.constants import QuestionsModel, BookInfo, Metadata, ChatResponse
 import json
 from dotenv import load_dotenv
@@ -28,7 +29,6 @@ class OpenAiRunnerClass:
         else:
             self.openai_key = openai_key
         self.llm_instance = LLM.create(provider=LLMProvider.GEMINI, model_name=self.model_name, api_key=self.openai_key, temperature=temperature)
-    
     def _format_prompt_mcq(self, context: str, prompt: str, topic: str, n: int) -> str:
         return prompt.format(context=context, topic=topic, n=n)
     
@@ -68,15 +68,15 @@ class OpenAiRunnerClass:
         elif isinstance(ans, dict):
             return ans
         elif isinstance(ans, QuestionsModel):
-            ans = ans.to_json_schema()
-            return json.loads(ans)
+            return ans.to_json_schema()
         else:
             raise ValueError("OpenAI did not return a Valid Output Type")
     async def chat(self, context, question):
         prompt = self._format_prompt_chat(context=context, question=question, prompt=self.chat_prompt)
-
+        answer = None
         print("Calling endpoint")
         try:
+            
             answer = gen_json(llm_instance=self.llm_instance, model_class=ChatResponse, prompt=prompt)
             print("Received Answer", answer)
         except Exception as e:
@@ -160,6 +160,7 @@ class OpenAiRunnerClass:
         
         # Run all tasks concurrently
         questions_list = await asyncio.gather(*tasks)
+        print("questions Recieved")
         
         # Aggregate all questions
         all_questions = []
@@ -172,6 +173,7 @@ class OpenAiRunnerClass:
             total_questions=len(all_questions),
             book_title=book_info.get("book_title", "")
         )
+        print("created metadata obj", print(metadata))
         
         return  {
                 "metadata": metadata.model_dump(),
