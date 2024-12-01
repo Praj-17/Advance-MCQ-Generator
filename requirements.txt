@@ -2,7 +2,6 @@ simplerllm
 chromadb
 openai
 pydantic
-json
 langchain
 langchain-openai
 PyMuPDF
