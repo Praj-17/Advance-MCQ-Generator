@@ -73,7 +73,7 @@ with st.sidebar:
     api_key_input = st.text_input(
         "Enter your Gemini API Key",
         type="password",
-        placeholder="sk-...GEMINI",
+        placeholder="GEMINI-api-key",
         help="Your API key is used to access Gemini's services. It is not stored or shared.",
         value=st.session_state.get("GEMINI_API_KEY", "")  # Persist the API key input
     )

@@ -253,7 +253,7 @@ class ChromaVectorStore:
 
 if __name__ == "__main__":
     
-    chroma_store = ChromaVectorStore(openai_api_key="AIzaSyAVTmb8OIsAVcSsw3_DWVPQ_UWdIDzh_7Q")
+    chroma_store = ChromaVectorStore(openai_api_key= None)
     text = "Random Text"
 
     pages = {
