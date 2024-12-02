@@ -44,6 +44,7 @@ class ChromaVectorStore:
             self.model = "models/text-embedding-004"
             self.embedding_model  = GoogleGenerativeAiEmbeddingFunction(api_key=self.openai_api_key,model_name= self.openai_api_key)
             self.google_ef  = GoogleGenerativeAiEmbeddingFunction(api_key=self.openai_api_key,model_name= self.model, task_type="RETRIEVAL_DOCUMENT")
+            self.google_ef_r  = GoogleGenerativeAiEmbeddingFunction(api_key=self.openai_api_key,model_name= self.model, task_type="RETRIEVAL_QUERY")
            
         else:
             self.openai_api_key = None
@@ -77,7 +78,7 @@ class ChromaVectorStore:
         """
         try:
             if self.openai_api_key:
-                collection = self.chroma_client.get_collection(name=collection_name, embedding_function=self.google_ef)
+                collection = self.chroma_client.get_collection(name=collection_name, embedding_function=self.google_ef_r)
             else:
                 collection = self.chroma_client.get_collection(name=collection_name)
 
