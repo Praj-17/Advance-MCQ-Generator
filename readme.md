@@ -2,6 +2,11 @@
 
 Welcome to the **Advanced Question Generator API** documentation. This API facilitates the ingestion of PDF documents, generation of Level 1 and Level 2 questions, and provides a chat interface leveraging Retrieval-Augmented Generation (RAG) using Gemni. Additionally, it offers functionality to reset ingested data and clear the vector store.
 
+# Demo  Video
+
+[![YouTube Video](https://img.youtube.com/vi/9BnLPoM3y0M/0.jpg)](https://www.youtube.com/watch?v=9BnLPoM3y0M)
+
+
 ## Table of Contents
 
 1. [Overview](#overview)

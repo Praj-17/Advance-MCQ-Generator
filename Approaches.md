@@ -1,4 +1,9 @@
 Copy
+# Demo  Video
+
+[![YouTube Video](https://img.youtube.com/vi/9BnLPoM3y0M/0.jpg)](https://www.youtube.com/watch?v=9BnLPoM3y0M)
+
+
 # Tools & Frameworks
 - Used Gemini 1.5-pro and flash models for question generation and chat.
 - Used Gemini- text-Embeddings-004 for embedding generation
@@ -8,7 +13,7 @@ Copy
 - FastAPI for API endpoints generation, [Swagger-UI](https://advance-question-generator-fastapi.onrender.com/docs) for testing endpoints.
 - HTML for [FASTAPI Homepage](https://advance-question-generator-fastapi.onrender.com).
 - Alternatively also created a [postman-collection](src/constants/Advance-MCQ-Generator.postman_collection.json) for the same api.
-- Docker for contenarization,[ Github-actions](https://github.com/Praj-17/Advance-MCQ-Generator) and [Docker-Hub]() for CI/CD
+- Docker for contenarization,[ Github-actions](https://github.com/Praj-17/Advance-MCQ-Generator) and Docker-Hub for CI/CD
 - Render for Deployment
 - Created Different images for [FASTAPI]( prajwal1717/advance-question-generator-fastapi:latest ) and [Streamlit](prajwal1717/advance-question-generator-streamlit:latest)
 
