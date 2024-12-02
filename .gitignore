@@ -176,5 +176,5 @@ pyrightconfig.json
 
 data/chroma_db/
 # End of https://www.toptal.com/developers/gitignore/api/python
-
+dataset/
 temp_files/
