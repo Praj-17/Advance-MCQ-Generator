@@ -47,3 +47,4 @@ Level 2:
 4. Add support for embedding, Chat models
 5. Impement Local model, given more compute.
 6. Implement more PDF related functionality like Google-Search, Entity Explainations, related-image support. 
+7. Implement Celery + Redis Backend to set PDF ingestion as a background Task. 

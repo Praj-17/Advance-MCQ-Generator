@@ -5,3 +5,4 @@ __pycache__
 Dockerfile.fastapi
 Dockerfile.streamlit
 README.md
+Approaches.md
